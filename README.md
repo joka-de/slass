@@ -11,7 +11,7 @@
 *License:* GNU GPLv3
 
 ## General
-This is not a one-click-get-a-server script. Read this manual BEFORE you begin. Really.
+This script will greatly ease the installation and management of three Arma3 servers including mods from the Steam workshop.</br>It is not a one-click-get-a-server script. Read this manual BEFORE you begin. Really.
 
 ## What it does
 The seelenlos Arma 3 Server Script
@@ -60,15 +60,15 @@ On start, all config files are newly read in to consider possible config edits. 
 - ensure you have the root password for your machine at hand
 - create an arbitrary folder for the servers, we suggest **/srv/arma3/**
 - copy the script folder "installer" in that folder, e.g. **/srv/arma3/installer**
-- open the file install.cfg inside the folder "installer", change the user informations therein to your wishes. The users can be created by the script, or manually before you start the installation; refer to the commands in **./installer/adddelusr.sh** on how to do so. They will have the following functions
-**useradmin** - Is owner of the files in the server folder, can add/delete/modify files and manage servers. You can use your normal user account with sudo privileges for this. Make sure he is in **grpserver** (see below).
+- open the file install.cfg inside the folder "installer", change the user informations therein to your wishes. The users can be created by the script, or manually before you start the installation; refer to the commands in **./installer/adddelusr.sh** on how to do so. They will have the following functions</br>
+**useradmin** - Is owner of the files in the server folder, can add/delete/modify files and manage servers. You can use your normal user account with sudo privileges for this. Make sure he is in **grpserver** (see below).</br>
 **userlnch** - Is the owner of the server process once fired up. For security reasons, he should not be able to get a shell nor become root.</br></br>	*Use strong Passwords for both users anyway, never hand them out! A server with web access is not a toy!*</br></br>**grpserver** - a user group in which both preceding noted users must be, preferably as initial-group. Add additional users to that group, to allow them to make basic maintenance of the gameserver (update, mod/mission install, restart, cfg changes)
 - prepare the server config files in **./installer/rsc**</br>
-**a3common.cfg** - Master config file containing settings common for all server instances.</br>
-**a3inidi.cfg** - Template config file containing individual settings for each server instance. After installation, three individual copies of this file will exist, edit them if needed.</br>
+**a3common.cfg** - master config file containing settings common for all server instances.</br>
+**a3inidi.cfg** - template config file containing individual settings for each server instance. After installation, three individual copies of this file will exist, edit them if needed.</br>
 **basic.cfg** - loaded as -cfg file by the server process</br>
 **profile.Arma3Profile** - the Arma3Profile of the Server, set difficulty there</br>
-**prepserv.sh** - Defines the server names, among other stuff. Edit the entry **hostname_base="Generic Arma3"** and the entrys **" hostname id1=' Server 1 |' "** to **" hostname id3=' Server 3 |' "** to your wishes. The final server name will be composed as</br>
+**prepserv.sh** - defines the server names, among other stuff. Edit the entry **hostname_base="Generic Arma3"** and the entrys **" hostname id1=' Server 1 |' "** to **" hostname id3=' Server 3 |' "** to your wishes. The final server name will be composed as</br>
 **Hostname_base+hostname_idx+Modlist**, e.g. **"Generic Arma3 Server 1 | SLT, ACE"**</br>Edit more of the file to break it ...
 - determine the mods to install, to do so edit **./installer/rsc/modlist.inp** . The file has seven columns:</br>
 	I. shortname of the mod</br>
