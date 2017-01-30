@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://github.com/joka-de/slass/doc/logo.png" width="480">
+    <img src="https://github.com/joka-de/slass/raw/master/doc/logo.png" width="480">
 </p>
 
 <p align="center">
