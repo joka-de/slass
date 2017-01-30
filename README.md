@@ -1,11 +1,11 @@
 <p align="center">
-    <img src="https://github.com/joka-de/slass/raw/master/doc/logo.png" width="480">
+    <img src="https://github.com/joka-de/slass/raw/master/doc/logo.png" width="640">
 </p>
 
 <p align="center">
     <sup><strong>short: slass</br>
 	Tested on Ubuntu 16.04 (Xenial)</br>
-    Visit us on <a href="ts3server://ts3.seelenlos.eu?port=9987">Teamspeak 3</a> | <a href="http://arma.seelenlos.eu">seelenlos.eu</a> | <a href="https://units.arma3.com/unit/seelenlos">seelenlos on Steam</a></br>
+    Visit us on TS3: ts3.seelenlos.eu?port=9987 | <a href="http://arma.seelenlos.eu">seelenlos.eu</a> | <a href="https://units.arma3.com/unit/seelenlos">seelenlos on Steam</a></br>
 	(c)2017 by seelenlos</strong></sup></p>
 
 *License:* GNU GPLv3
