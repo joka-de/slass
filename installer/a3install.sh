@@ -69,8 +69,8 @@ sudo -u $useradm mkdir ${a3instdir}/a3master/_mods --mode=775
 sudo -u $useradm mkdir ${a3instdir}/a3master/cfg --mode=775
 sudo -u $useradm mkdir ${a3instdir}/a3master/log --mode=775
 sudo -u $useradm mkdir ${a3instdir}/scripts/logs --mode=775
-sudo -u $useradm mkdir -p ${a3instdir}/a3master/userconfig/slmd --mode=775
-sudo -u $useradm mkdir -p ${a3instdir}/a3master/userconfig/slz --mode=775
+#sudo -u $useradm mkdir -p ${a3instdir}/a3master/userconfig/slmd --mode=775
+#sudo -u $useradm mkdir -p ${a3instdir}/a3master/userconfig/slz --mode=775
 
 # copy files
 sudo -u $useradm cp ${a3instdir}/installer/rsc/servervars.cfg ${a3instdir}/scripts/service/
@@ -85,10 +85,10 @@ sudo -u $useradm cp ${a3instdir}/installer/rsc/a3common.cfg ${a3instdir}/a3maste
 sudo -u $useradm chmod 664 ${a3instdir}/a3master/cfg/a3common.cfg
 sudo -u $useradm cp ${a3instdir}/installer/rsc/basic.cfg ${a3instdir}/a3master/cfg/
 sudo -u $useradm chmod 664 ${a3instdir}/a3master/cfg/basic.cfg
-sudo -u $useradm cp ${a3instdir}/installer/optrsc/slmd_settings.sqf  ${a3instdir}/a3master/userconfig/slmd/slmd_settings.sqf
-sudo -u $useradm chmod 664 ${a3instdir}/a3master/userconfig/slmd/slmd_settings.sqf
-sudo -u $useradm cp ${a3instdir}/installer/optrsc/slz_settings.sqf  ${a3instdir}/a3master/userconfig/slz/slz_settings.sqf
-sudo -u $useradm chmod 664 ${a3instdir}/a3master/userconfig/slz/slz_settings.sqf
+#sudo -u $useradm cp ${a3instdir}/installer/optrsc/slmd_settings.sqf  ${a3instdir}/a3master/userconfig/slmd/slmd_settings.sqf
+#sudo -u $useradm chmod 664 ${a3instdir}/a3master/userconfig/slmd/slmd_settings.sqf
+#sudo -u $useradm cp ${a3instdir}/installer/optrsc/slz_settings.sqf  ${a3instdir}/a3master/userconfig/slz/slz_settings.sqf
+#sudo -u $useradm chmod 664 ${a3instdir}/a3master/userconfig/slz/slz_settings.sqf
 for index in $(seq 3); do
         sudo -u $useradm cp  ${a3instdir}/installer/rsc/a3indi.cfg ${a3instdir}/a3master/cfg/a3indi${index}.cfg
 	sudo -u $useradm chmod 664 ${a3instdir}/a3master/cfg/a3indi${index}.cfg
@@ -103,9 +103,10 @@ sudo -u $userlnch mkdir -p /home/${userlnch}"/.local/share/Arma 3 - Other Profil
 sudo -u $userlnch cp ${a3instdir}/installer/rsc/profile.Arma3Profile /home/${userlnch}"/.local/share/Arma 3 - Other Profiles/"${grpserver}/${grpserver}.Arma3Profile
 sudo -u $userlnch chmod 464 /home/${userlnch}'/.local/share/Arma 3 - Other Profiles/'${grpserver}/*.Arma3Profile
 
+# store User settings
 sudo -u $useradm chmod 664 ${a3instdir}/scripts/service/servervars.cfg
 
-# store User settings
+sudo bash -c "echo \"
 useradm=${useradm}
 username=${userlnch}
 profile=${grpserver}\" >> ${a3instdir}/scripts/service/servervars.cfg"
