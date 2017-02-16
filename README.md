@@ -111,11 +111,12 @@ to the sudoers file with visudo to avoid the system asking for the password. Thi
 
 **2. Install mods**</br>
 For **workshop** mods: Ensure you have the mod subscribed for the user you wish to use for the update. Write an entry for the mod to install into modlist.inp as described in the installation section. Run an update.</br></br>
-For **non-workshop** (i.e. local) mods: Put the mod into **/srv/a3master/_mods/** and set the file owner and permissions like the other mods have it. You may alternatively run an update to let the script set the permissions. Write an entry for the mod to install into **modlist.inp** as described in the installation section. reboot the respective server to load the mod.</br></br>
-In both cases, ensure the **.bikey** file (if one is needed) is in a folder **./_mods/@modname/keys**, otherwise the script won't find it.
+For **non-workshop** (i.e. local) mods: Put the mod into **/srv/arma3/a3master/_mods/** and copy the **.bikey** file (if one is needed) in a respective folder **./_mods/@modname/keys**. Set the file owner and permissions like the other mods have it. You may alternatively run an update to let the script set the permissions. Write an entry for the mod to install into **modlist.inp** as described in the installation section. reboot the respective server to load the mod. </br></br>
+
+In both cases, ensure the **.bikey** file (if one is needed) is in a folder **./_mods/@modname/keys**, if you observe problems loading the mod. Otherwise the script won't find it.
 
 **3. Edit server configs**</br>
-Thats simple: Edit what you need to, and restart the respective server.
+Thats simple: Edit what you need to, and restart the corresponding server.
 
 ##Appendix
 **I. Enter Steam Guard code**
