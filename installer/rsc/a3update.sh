@@ -2,7 +2,7 @@
 exec &> >(tee ${a3instdir}/scripts/logs/a3update.log)
 
 echo "
-In case the download of the game or a mod fails with a timeout, just start a3update.sh again and again.
+In case the download of the game or a mod fails with a timeout, just start runupdate.sh again and again.
 This is a known bug of steamcmd in when a download takes long (esp. large mods).
 
 You will now need a steam-user with A3 and the mods subscribed.
