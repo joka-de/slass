@@ -11,7 +11,7 @@
 *License:* GNU GPLv3
 
 ## General
-This script will greatly ease the installation and management of three Arma3 servers including mods from the Steam workshop.</br>It is not a one-click-get-a-server script. Read this manual BEFORE you begin. Really.
+This script will greatly ease the installation and management of three Arma3 servers including mods from the Steam workshop.</br></br>It is not a one-click-get-a-server script. Read this manual BEFORE you begin. Really. Basic knowledge of the linux command line usage is assumed.
 
 ## What it does
 The seelenlos Arma 3 Server Script
@@ -85,8 +85,9 @@ On start, all config files are newly read in to consider possible config edits. 
 - ensure the file **./installer/a3install.sh** is executable for your current user (chown , chmod 744)
 - run **./installer/a3install.sh** , confirm continuation request
 - decide, if you want the users to be created, see above
+- the script may ask you to install some packages named like libc6.., those are needed by steamcmd
 - confirm the begin of the download, or choose to download later by issuing the update script (see below).
-- The login into steam may fail on the first try, because you are probably logging in from a machine unknown to steam. Abort the script by pressing **Ctrl-C** if the login fails. Then start **/srv/arma3/steamcmd/steamcmd.sh** and enter the guard code received per mail. Refer to the steamcmd manual on HowTo, or see below. Afterwards restart the update process by issuing **sudo /srv/arma3/scripts/runupdate.sh**. **runupdate.sh** from now on will always be the file to start in order to **update arma3 or install a mod**.
+- The login into steam may fail on the first try, because you are probably logging in from a machine unknown to steam. In this case the script will freeze at the line "Verifiying Login-Data...". Abort the script by pressing **Ctrl-C** in that case. Then start **/srv/arma3/steamcmd/steamcmd.sh** and enter the guard code received per mail. Refer to the steamcmd manual on HowTo, or see below. Afterwards restart the update process by issuing **sudo /srv/arma3/scripts/runupdate.sh**. **runupdate.sh** from now on will always be the file to start in order to **update arma3 or install a mod**.
 - when you see **app_update 233780 validate** arma3 is being downloaded, be patient
 - when prompted, you may copy missions and non-workshop mods into the **./a3master** folder
 - ote the instructions on screen. If the installation of mods **...workshop_download_item ...** fails with timeout, abort the update process with **Ctrl-C**. This will happen if you download a large mod for the first time and the download takes long. The donwload attempts are cumulative, so each time you run the update, you make progress. For RHS for instance i needed to run the script 5 times. The issue is a bug in steamcmd.
@@ -94,7 +95,7 @@ On start, all config files are newly read in to consider possible config edits. 
 **4. Done**</br>
 Put at least one mission into mpmissions and Enjoy Arma3! You may delete the **installer** folder now.
 
-##Usage
+## Usage
 **1. Manage Servers**</br>
 The servers are implemented into your system as system services. You **manage** them by issuing the command</br>
 **sudo service a3srvX OPTION**</br>
@@ -103,7 +104,7 @@ Replace X with the number of the server and OPTION with</br>
 **stop** - ahem...well</br>
 **restart** - Does a restart. If you have many big mods loaded, this command may fail because the server takes to long to stop. Just issue stop and after a short wait start again.</br>
 **status** - prints the service status</br>
-**log** - prints the serverlog onto the in realtime as it is written, abort with Ctrl-C</br></br>
+**log** - prints the serverlog onto the prompt in realtime as it is written, abort with Ctrl-C</br></br>
 **Update** the servers and mods by running **sudo /srv/arma3/scripts/runupdate.sh**. The script will then download/update A3 and the workshop-mods registered in **modlist.inp**.</br>
 You may want to add the line</br>
 **%{grpserver}      ALL=NOPASSWD: /usr/sbin/service a3srv[1-3] *, {a3instdir}/scripts/runupdate.sh**</br>
@@ -117,7 +118,7 @@ In both cases, ensure the **.bikey** file (if one is needed) is in a folder **./
 **3. Edit server configs**</br>
 Thats simple: Edit what you need to, and restart the corresponding server.
 
-##Appendix
+## Appendix
 **I. Enter Steam Guard code**
 - run **/srv/arma3/steamcmd/steamcmd.sh**
 - enter **login USERNAME**
