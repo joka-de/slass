@@ -11,7 +11,7 @@
 *License:* GNU GPLv3
 
 ## General
-This script will greatly ease the installation and management of three Arma3 servers including mods from the Steam workshop.</br></br>It is not a one-click-get-a-server script. Read this manual BEFORE you begin. Really. Basic knowledge of the linux command line usage is assumed.
+This script will greatly ease the installation and management of three Arma3 servers including mods from the Steam workshop.</br></br>This is not a one-click-get-a-server script. Its usage is simple, but do yourself a favor and read this manual BEFORE you begin. Really. Basic knowledge of the linux command line usage is assumed.
 
 ## What it does
 The seelenlos Arma 3 Server Script
@@ -67,9 +67,7 @@ On start, all config files are newly read in to consider possible config edits. 
 **a3common.cfg** - master config file containing settings common for all server instances.</br>
 **a3inidi.cfg** - template config file containing individual settings for each server instance. After installation, three individual copies of this file will exist, edit them if needed.</br>
 **basic.cfg** - loaded as -cfg file by the server process</br>
-**profile.Arma3Profile** - the Arma3Profile of the Server, set difficulty there</br>
-**prepserv.sh** - defines the server names, among other stuff. Edit the entry **hostname_base="Generic Arma3"** and the entrys **" hostname id1=' Server 1 |' "** to **" hostname id3=' Server 3 |' "** to your wishes. The final server name will be composed as</br>
-**Hostname_base+hostname_idx+Modlist**, e.g. **"Generic Arma3 Server 1 | SLT, ACE"**</br>Edit more of the file to break it ...
+**servervars.cfg** - config file setting additional options for the server executable, normally you don't need to edit this</br>
 - determine the mods to install, to do so edit **./installer/rsc/modlist.inp** . The file has seven columns:</br>
 	I. shortname of the mod</br>
 	II. steam-app-id of the mod; if the mod is not in the workshop, insert the word **local**</br>
@@ -78,7 +76,9 @@ On start, all config files are newly read in to consider possible config edits. 
 		**cmod** if the mod is only to be loaded client side (only mod is loaded), e.g. JSRS</br>
 		**smod** if the mod is only to be loaded by the server (only key is loaded), e.g. ace_server</br>
 	IV. to VI. contains a binary key 0/1 selecting if the mod is to be loaded on server #1/#2/#3</br>
-	VII. is the name of the mod included in the servername for the server browser; Type "xx" if do not want the mod to appear in the server browser; see also the example file in **./installer/optrsc/**
+	VII. is the name of the mod included in the servername for the server browser; Type "xx" if do not want the mod to appear in the server name for the server browser; see also the example file in **./installer/optrsc/**
+**prepserv.sh** - defines the server names, among other stuff. Edit the entry **hostname_base="Generic Arma3"** and the entrys **" hostname id1=' Server 1 |' "** to **" hostname id3=' Server 3 |' "** to your wishes. The final server name will be composed as</br>
+**Hostname_base+hostname_idx+Modlist**, e.g. **"Generic Arma3 Server 1 | SLT, ACE"**</br>Edit more of the file to break it ...
 - Make sure that you have the steam login of a user with arma3 and the mods being stated in "modlist.inp" subscribed at hand.
 
 **3. Start Installation**
