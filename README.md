@@ -54,7 +54,7 @@ File ownership in a3master will be reset to avoid issues from remote upload of m
 
 **What happens on start/restart**
 On start, all config files are newly read in to consider possible config edits. The config file **modlist.inp** defines the mods to load, individually for each instance. Depending on that config, the server name and the startup options (-mods= ) are build. Then the script will generate the config file for the respective instance, and copy the individually needed set of **.bikey - files** into its **keys** folder. Logfiles older than {deldays} **(servervars.cfg)** will be deleted, a new logfile will be written. Afterwards, the instance will boot, being monitored by a watchdog process. The watchdog reboots the server if it crashes. The watchdog is also active if the server stopped externally, i.e. you can issue the #shutdown command ingame to read an updated server config.
-##Installation
+## Installation
 
 **1. Prerequisites**
 - ensure you have the root password for your machine at hand
@@ -107,7 +107,7 @@ Replace X with the number of the server and OPTION with</br>
 **log** - prints the serverlog onto the prompt in realtime as it is written, abort with Ctrl-C</br></br>
 **Update** the servers and mods by running **sudo /srv/arma3/scripts/runupdate.sh**. The script will then download/update A3 and the workshop-mods registered in **modlist.inp**.</br>
 You may want to add the line</br>
-**%{grpserver}      ALL=NOPASSWD: /usr/sbin/service a3srv[1-3] *, {a3instdir}/scripts/runupdate.sh**</br>
+*%{grpserver}      ALL=NOPASSWD: /usr/sbin/service a3srv[1-3] *, {a3instdir}/scripts/runupdate.sh**</br>
 to the sudoers file with visudo to avoid the system asking for the password. This is a must if you want to enable other members of the group that do not have root permissions (i.e. the maintance users) to issue the commands. Replcace {grpserver} with your groupname and {a3instdir} with your installation path.
 
 **2. Install mods**</br>
