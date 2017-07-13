@@ -85,7 +85,7 @@ On start, all config files are newly read in to consider possible config edits. 
 - ensure the file **./installer/a3install.sh** is executable for your current user (chown , chmod 744)
 - run **./installer/a3install.sh** , confirm continuation request
 - decide, if you want the users to be created, see above
-- the script may ask you to install some packages named like libc6.., those are needed by steamcmd
+- the script may ask you to install some packages named like lib32..., those are needed by steamcmd
 - confirm the begin of the download, or choose to download later by issuing the update script (see below).
 - The login into steam may fail on the first try, because you are probably logging in from a machine unknown to steam. In this case the script will freeze at the line "Verifiying Login-Data...". Abort the script by pressing **Ctrl-C** in that case. Then start **/srv/arma3/steamcmd/steamcmd.sh** and enter the guard code received per mail. Refer to the steamcmd manual on HowTo, or see below. Afterwards restart the update process by issuing **sudo /srv/arma3/scripts/runupdate.sh**. **runupdate.sh** from now on will always be the file to start in order to **update arma3 or install a mod**.
 - when you see **app_update 233780 validate** arma3 is being downloaded, be patient
