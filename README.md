@@ -112,7 +112,7 @@ You may want to add the line</br>
 to the sudoers file with visudo to avoid the system asking for the password. This is a must if you want to enable other members of the group that do not have root permissions (i.e. the maintance users) to issue the commands. Replcace {grpserver} with your groupname and {a3instdir} with your installation path.</br>
 You will also need to execute the command</br>
 *ln -s /home/{useradmin}/Steam /home/{userupdate}/Steam*</br>
-for each user you want to enable to run the update script. Replace {useradmin} and {userupdate} with the respective user names. The command will create a symlink of the Steam cache folder into the home directory of {userupdate}. This forces steam to use only one repository of cache files for all users, preventing several issues.
+for each user you want to enable to run the update script. Run the command as the user {userupdate}. Replace {useradmin} and {userupdate} with the respective user names. The command will create a symlink of the Steam cache folder into the home directory of {userupdate}. This forces steam to use only one repository of cache files for all users, preventing several issues.
 
 **2. Install mods**</br>
 For **workshop** mods: Ensure you have the mod subscribed for the user you wish to use for the update. Write an entry for the mod to install into modlist.inp as described in the installation section. Run an update.</br></br>
