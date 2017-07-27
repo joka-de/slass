@@ -124,7 +124,7 @@ Thats simple: Edit what you need to, and restart the corresponding server.
 
 ## Appendix
 **I. Enter Steam Guard code**
-- run **/srv/arma3/steamcmd/steamcmd.sh**
+- run **/srv/arma3/steamcmd/steamcmd.sh**; make sure you run this command as {useradmin} or a {userupdate} for whom the *ln* command has already been applied
 - enter **login USERNAME**
 - enter the guard code
 - enter **exit**
