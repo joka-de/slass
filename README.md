@@ -86,6 +86,7 @@ On start, all config files are newly read in to consider possible config edits. 
 - run **./installer/a3install.sh** , confirm continuation request
 - decide, if you want the users to be created, see above
 - the script may ask you to install some packages named like lib32..., those are needed by steamcmd
+- consider saving or immediately applying the commands printed on the prompt (visudo, ln) in another console; refer to the *Usage-Update* section below
 - confirm the begin of the download, or choose to download later by issuing the update script (see below).
 - The login into steam may fail on the first try, because you are probably logging in from a machine unknown to steam. In this case the script will freeze at the line "Verifiying Login-Data...". Abort the script by pressing **Ctrl-C** in that case. Then start **/srv/arma3/steamcmd/steamcmd.sh** and enter the guard code received per mail. Refer to the steamcmd manual on HowTo, or see below. Afterwards restart the update process by issuing **sudo /srv/arma3/scripts/runupdate.sh**. **runupdate.sh** from now on will always be the file to start in order to **update arma3 or install a mod**.
 - when you see **app_update 233780 validate** arma3 is being downloaded, be patient
@@ -108,7 +109,10 @@ Replace X with the number of the server and OPTION with</br>
 **Update** the servers and mods by running **sudo /srv/arma3/scripts/runupdate.sh**. The script will then download/update A3 and the workshop-mods registered in **modlist.inp**.</br>
 You may want to add the line</br>
 *%{grpserver}      ALL=NOPASSWD: /usr/sbin/service a3srv[1-3] *, {a3instdir}/scripts/runupdate.sh**</br>
-to the sudoers file with visudo to avoid the system asking for the password. This is a must if you want to enable other members of the group that do not have root permissions (i.e. the maintance users) to issue the commands. Replcace {grpserver} with your groupname and {a3instdir} with your installation path.
+to the sudoers file with visudo to avoid the system asking for the password. This is a must if you want to enable other members of the group that do not have root permissions (i.e. the maintance users) to issue the commands. Replcace {grpserver} with your groupname and {a3instdir} with your installation path.</br>
+You will also need to execute the command</br>
+*ln -s /home/{useradmin}/Steam /home/{userupdate}/Steam*</br>
+for each user you want to enable to run the update script. Replace {useradmin} and {userupdate} with the respective user names. The command will create a symlink of the Steam cache folder into the home directory of {userupdate}. This forces steam to use only one repository of cache files for all users, preventing several issues.
 
 **2. Install mods**</br>
 For **workshop** mods: Ensure you have the mod subscribed for the user you wish to use for the update. Write an entry for the mod to install into modlist.inp as described in the installation section. Run an update.</br></br>
