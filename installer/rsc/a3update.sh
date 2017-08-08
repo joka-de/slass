@@ -1,3 +1,5 @@
+execdownload="y"
+
 # duplex output to log
 exec &> >(tee ${a3instdir}/scripts/logs/a3update.log)
 
@@ -21,30 +23,22 @@ for index in $(seq 3); do
 done
 echo $' - DONE\n'
 
-# (re)build steam script file
-# -game
+# build steam script file - game
+tmpfile=$(mktemp)
 echo "@ShutdownOnFailedCommand 1
 @NoPromptForPassword 1
 force_install_dir ${a3instdir}/a3master
-app_update 233780 validate
-quit" > ${a3instdir}/scripts/a3gameupdate.steam
-
-# -mods
-echo "@ShutdownOnFailedCommand 1
-@NoPromptForPassword 1" > ${a3instdir}/scripts/a3modupdate.steam
-
-while read line; do
-        appid=$(echo $line | awk '{ printf "%s", $2 }')
-        if [ "${appid}" != "local" ]; then
-                echo "workshop_download_item 107410 "${appid}" validate" >> ${a3instdir}/scripts/a3modupdate.steam
-        fi
-done < ${a3instdir}/scripts/modlist.inp
-
-echo "quit"  >> ${a3instdir}/scripts/a3modupdate.steam
+login $user $pw" >> $tmpfile
+if [ "${execdownload}" == "y" ]; then
+	echo "app_update 233780 validate" >> $tmpfile
+fi
+echo "quit" >> $tmpfile
 
 # update game
-${steamdir}/steamcmd.sh +login $user $pw +runscript ${a3instdir}/scripts/a3gameupdate.steam
-rm -f ${a3instdir}/scripts/a3gameupdate.steam
+${steamdir}/steamcmd.sh +runscript $tmpfile | sed -u "s/${pw}/----/g" &
+steampid=$!
+wait $steampid
+rm $tmpfile
 
 # request update halt
 goon="n"
@@ -58,9 +52,30 @@ Go on? (y)"
 read goon
 done
 
+# build steam script file - mods
+tmpfile=$(mktemp)
+echo "@ShutdownOnFailedCommand 1
+@NoPromptForPassword 1
+DepotDownloadProgressTimeout 600
+force_install_dir ${a3instdir}
+login $user $pw" >> $tmpfile
+
+while read line; do
+        appid=$(echo $line | awk '{ printf "%s", $2 }')
+        if [ "${execdownload}" == "y" ]; then
+		if [ "${appid}" != "local" ]; then
+                	echo "workshop_download_item 107410 "${appid}" validate" >> $tmpfile
+        	fi
+	fi
+done < ${a3instdir}/scripts/modlist.inp
+
+echo "quit"  >> $tmpfile
+
 # update workshop mods
-${steamdir}/steamcmd.sh +login $user $pw +runscript ${a3instdir}/scripts/a3modupdate.steam
-rm -f ${a3instdir}/scripts/a3modupdate.steam
+${steamdir}/steamcmd.sh +runscript $tmpfile | sed -u "s/${pw}/----/g" &
+steampid=$!
+wait $steampid
+rm $tmpfile
 
 # (re)make symlinks to the mods
 find ${a3instdir}/a3master/_mods/ -maxdepth 1 -type l -delete
@@ -69,13 +84,13 @@ while read line; do
 	appname=$(echo $line | awk '{ printf "%s", $1 }')
         if [ "${appid}" != "local" ]; then
 		echo "  ... make symlink for app ${appid} to ${appname}"
-        	ln -s ${steamdir}/steamapps/workshop/content/107410/${appid} ${a3instdir}/a3master/_mods/@${appname}
+        	ln -s ${a3instdir}/steamapps/workshop/content/107410/${appid} ${a3instdir}/a3master/_mods/@${appname}
         fi
 done < ${a3instdir}/scripts/modlist.inp
 
 
 #---------------------
-# get rhs incl. keys - obsolete
+# get rhs incl. keys - obsolete, may be used as template
 #wget -m -nv -nH --cut-dirs=2 --retry-connrefused --timeout=30 -P ${a3instdir}/a3master/_mods/@rhsafrf ftp://ftp.rhsmods.org/beta/rhsafrf/
 #wget -m -nv -nH --cut-dirs=2 --retry-connrefused --timeout=30 -P ${a3instdir}/a3master/_mods/@rhsafrf/keys/ ftp://ftp.rhsmods.org/beta/keys/rhsafrf.0.4.1.1.bikey
 #wget -m -nv -nH --cut-dirs=2 --retry-connrefused --timeout=30 -P ${a3instdir}/a3master/_mods/@rhsusaf ftp://ftp.rhsmods.org/beta/rhsusaf/
@@ -84,8 +99,8 @@ done < ${a3instdir}/scripts/modlist.inp
 #wget -m -nv -nH --cut-dirs=2 --retry-connrefused --timeout=30 -P ${a3instdir}/a3master/_mods/@rhsgref/keys/ ftp://ftp.rhsmods.org/beta/keys/rhsgref.0.4.1.1.bikey
 
 
-# reset the file rights in a3master
-echo -n " ...reseting the file rights in a3master"
+# reset the file permissions in a3master
+echo -n " ...reseting the file permissions in a3master"
 find -L $a3instdir/a3master -type d -exec chmod 775 {} \;
 find -L $a3instdir/a3master -type f -exec chmod 664 {} \;
 chmod 774 $a3instdir/a3master/arma3server
@@ -97,7 +112,7 @@ echo -n "  ... renaming mods to lowercase"
 find -L ${a3instdir}/a3master/_mods/ -depth -execdir rename -f 's/(.*)\/([^\/]*)/$1\/\L$2/' {} \;
 echo $' - DONE\n'
 
-# update the instances
+# (re)create the folders of the instances
 for index in $(seq 3); do
         if [ -d "${a3instdir}/a3srv${index}" ]; then
                 rm -rf $a3instdir/a3srv${index}
