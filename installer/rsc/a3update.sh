@@ -35,7 +35,7 @@ fi
 echo "quit" >> $tmpfile
 
 # update game
-${steamdir}/steamcmd.sh +runscript $tmpfile | sed -u "s/${pw}/----/g" &
+${steamdir}/steamcmd.sh +runscript $tmpfile | sed -u "s/${pw}/----\n\nEnter two-factor code if used:/g" &
 steampid=$!
 wait $steampid
 rm $tmpfile
@@ -72,7 +72,7 @@ done < ${a3instdir}/scripts/modlist.inp
 echo "quit"  >> $tmpfile
 
 # update workshop mods
-${steamdir}/steamcmd.sh +runscript $tmpfile | sed -u "s/${pw}/----/g" &
+${steamdir}/steamcmd.sh +runscript $tmpfile | sed -u "s/${pw}/----\n\nEnter two-factor code if used:/g" &
 steampid=$!
 wait $steampid
 rm $tmpfile
