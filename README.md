@@ -73,8 +73,8 @@ On start, all config files are newly read in to consider possible config edits. 
 	II. steam-app-id of the mod; if the mod is not in the workshop, insert the word **local**</br>
  	III. mod type; use</br>
 		**mod** if the mod is to be loaded by server and client (key and mod is loaded), e.g. ACE</br>
-		**cmod** if the mod is only to be loaded client side (only mod is loaded), e.g. JSRS</br>
-		**smod** if the mod is only to be loaded by the server (only key is loaded), e.g. ace_server</br>
+		**cmod** if the mod is only to be loaded client side (only key is loaded on server), e.g. JSRS</br>
+		**smod** if the mod is only to be loaded by the server (only mod is loaded on server), e.g. ace_server</br>
 	IV. to VI. contains a binary key 0/1 selecting if the mod is to be loaded on server #1/#2/#3</br>
 	VII. is the name of the mod included in the servername for the server browser; Type "xx" if do not want the mod to appear in the server name for the server browser; see also the example file in **./installer/optrsc/**
 **prepserv.sh** - defines the server names, among other stuff. Edit the entry **hostname_base="Generic Arma3"** and the entrys **" hostname id1=' Server 1 |' "** to **" hostname id3=' Server 3 |' "** to your wishes. The final server name will be composed as</br>
