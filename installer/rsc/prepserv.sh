@@ -94,6 +94,6 @@ while read line; do
         #echo "appkey = ${appkey} for ${appname}"
         if [ "${apptype}" != "smod" ] && [ "${appkey}" = "1" ]; then
 	#echo " ... ${appname}-key on server #${serverid}"
-		ln -sf ${basepath}/a3master/_mods/@${appname}/*key*/*.bikey ${basepath}/a3srv${serverid}/keys/
+		find ${basepath}/a3master/_mods/@${appname}/ -type f -name "*.bikey" -exec ln -sf {} ${basepath}/a3srv${serverid}/keys/ \;
         fi
 done < ${basepath}/scripts/modlist.inp
