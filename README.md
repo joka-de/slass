@@ -104,9 +104,10 @@ Replace X with the number of the server and OPTION with</br>
 **stop** - ahem...well</br>
 **restart** - Does a restart. If you have many big mods loaded, this command may fail because the server takes to long to stop. Just issue **stop** and after a short wait **start** again.</br>
 **status** - prints the service status</br>
-**log** - prints the serverlog onto the prompt in realtime as it is written, abort with Ctrl-C</br></br>
-**Update** the servers and mods by running **sudo /srv/arma3/scripts/runupdate.sh**. The script will then download/update A3 and the workshop-mods registered in **modlist.inp**.</br>
-**Update Mods only** by running **sudo /srv/arma3/scripts/runwsupdate.sh**. The script will then download/update the workshop-mods registered in **modlist.inp**.</br>
+**log** - prints the serverlog onto the prompt in realtime as it is written, abort with Ctrl-C</br>
+**Update** - the servers and mods by running **sudo /srv/arma3/scripts/runupdate.sh**. The script will then download/update A3 and the workshop-mods registered in **modlist.inp**.</br>
+**Update Mods only** - by running **sudo /srv/arma3/scripts/runwsupdate.sh**. The script will then download/update the workshop-mods registered in **modlist.inp**.</br>
+</br>
 You may want to add the line</br>
 *%{grpserver}      ALL=NOPASSWD: /usr/sbin/service a3srv[1-3] *, {a3instdir}/scripts/runupdate.sh**</br>
 to the sudoers file with visudo to avoid the system asking for the password. This is a must if you want to enable other members of the group that do not have root permissions (i.e. the maintance users) to issue the commands. Replcace {grpserver} with your groupname and {a3instdir} with your installation path.</br>
