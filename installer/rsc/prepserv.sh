@@ -1,7 +1,9 @@
-hostname_base="Generic Arma3"
-hostname_id1=' Server 1 |'
-hostname_id2=' Server 2 |'
-hostname_id3=' Server 3 |'
+#!/bin/bash
+
+hostname_base="seelenlos "
+hostname_id1=' Dessau |'
+hostname_id2=' Rosslau | '
+hostname_id3=' Meinsdorf |'
 
 # build modlist
 
@@ -22,7 +24,13 @@ while read line; do
 	#echo "appname ${appname} appkey ${appkey} apptype ${apptype} applistname ${applistname}"
 
 	if [ "${apptype}" = "mod" ] && [ "${appkey}" = "1" ]; then
-		mods=${mods}"_mods/@"${appname}";"
+                case "$appname" in
+                gm|vn|csla|ws)
+                        mods=${mods}${appname}";"
+                ;;
+                *)
+                        mods=${mods}"_mods/@"${appname}";"
+                esac
 	fi
 
         if [ "${apptype}" = "smod" ] && [ "${appkey}" = "1" ]; then
@@ -66,9 +74,7 @@ echo "//-------------------------------------
 //
 //***Start of scripted part***
 //
-
 hostname = \"${hostname}\";
-
 //
 //***End of Scripted part***
 //
@@ -94,6 +100,12 @@ while read line; do
         #echo "appkey = ${appkey} for ${appname}"
         if [ "${apptype}" != "smod" ] && [ "${appkey}" = "1" ]; then
 	#echo " ... ${appname}-key on server #${serverid}"
-		find ${basepath}/a3master/_mods/@${appname}/ -type f -name "*.bikey" -exec ln -sf {} ${basepath}/a3srv${serverid}/keys/ \;
+                case "$appname" in
+                gm|vn|csla|ws)
+                        ln -s ${basepath}/a3master/keys/${appname}.bikey ${basepath}/a3srv${serverid}/keys/
+                ;;
+                *)
+                        find ${basepath}/a3master/_mods/@${appname}/ -type f -name "*.bikey" -exec ln -sf {} ${basepath}/a3srv${serverid}/keys/ \;
+                esac
         fi
 done < ${basepath}/scripts/modlist.inp
