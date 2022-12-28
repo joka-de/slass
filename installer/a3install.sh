@@ -84,6 +84,7 @@ sudo -u $useradm mkdir ${a3instdir}/a3master/_mods --mode=775
 sudo -u $useradm mkdir ${a3instdir}/a3master/cfg --mode=775
 sudo -u $useradm mkdir ${a3instdir}/a3master/log --mode=775
 sudo -u $useradm mkdir ${a3instdir}/scripts/logs --mode=775
+sudo -u $useradm mkdir ${a3instdir}/scripts/tmp --mode=775
 sudo -u $useradm mkdir ${a3instdir}/a3master/userconfig/ --mode=775
 
 # copy files
@@ -140,8 +141,7 @@ done
 
 # install steamcmd
 if [ $debug != "y"  ]; then
-	sudo apt-get install lib32gcc1
-	sudo apt-get install lib32stdc++6
+	sudo apt install lib32gcc-s1 lib32stdc++6 rename
 	cd $a3instdir/steamcmd
 	sudo -u $useradm wget -nv http://media.steampowered.com/installer/steamcmd_linux.tar.gz
 	sudo -u $useradm tar -xvzf steamcmd_linux.tar.gz
@@ -155,24 +155,59 @@ sudo -u $useradm find -L /home/${useradm}/Steam -type d -exec chmod 775 {} \;
 sudo -u $useradm find -L /home/${useradm}/Steam -type f -exec chmod 664 {} \;
 
 # build update scripts
-sudo -u $useradm touch ${a3instdir}/scripts/a3update.sh
-sudo -u $useradm chmod 744 ${a3instdir}/scripts/a3update.sh
+sudo -u $useradm touch ${a3instdir}/scripts/a3update_header.sh
+sudo -u $useradm chmod 744 ${a3instdir}/scripts/a3update_header.sh
 sudo -u $useradm bash -c "echo \"#!/bin/bash
 
 steamdir=${a3instdir}/steamcmd
-a3instdir=$a3instdir\" >> ${a3instdir}/scripts/a3update.sh"
-sudo -u $useradm bash -c "cat ${a3instdir}/installer/rsc/a3update.sh >> ${a3instdir}/scripts/a3update.sh"
+a3instdir=$a3instdir\" >> ${a3instdir}/scripts/a3update_header.sh"
+sudo -u $useradm bash -c "cat ${a3instdir}/installer/rsc/a3update_header.sh >> ${a3instdir}/scripts/a3update_header.sh"
+sudo -u $useradm cp ${a3instdir}/installer/rsc/a3update_finish.sh ${a3instdir}/scripts/a3update_finish.sh
+sudo -u $useradm cp ${a3instdir}/installer/rsc/a3update_game.sh ${a3instdir}/scripts/a3update_game.sh
+sudo -u $useradm cp ${a3instdir}/installer/rsc/a3update_works.sh ${a3instdir}/scripts/a3update_works.sh
+sudo -u $useradm chmod 744 ${a3instdir}/scripts/a3update_finish.sh
+sudo -u $useradm chmod 744 ${a3instdir}/scripts/a3update_game.sh
+sudo -u $useradm chmod 744 ${a3instdir}/scripts/a3update_works.sh
 
+
+# build file runupdate.sh
 sudo -u $useradm touch ${a3instdir}/scripts/runupdate.sh
 sudo -u $useradm chmod 754 ${a3instdir}/scripts/runupdate.sh
 sudo -u $useradm bash -c "cat ${a3instdir}/installer/rsc/runupdate.sh > ${a3instdir}/scripts/runupdate.sh"
 sudo -u $useradm bash -c "echo \"
 
 chown -R ${useradm}:${grpserver} ${a3instdir}/a3master
-sudo -iu ${useradm} ${a3instdir}/scripts/a3update.sh
+
+tmpscript=\\\$(sudo -u ${useradm} mktemp --tmpdir=${a3instdir}/scripts/tmp/ file.XXXXX)
+chmod 700 \\\$tmpscript
+
+sudo -u ${useradm} cat ${a3instdir}/scripts/a3update_header.sh ${a3instdir}/scripts/a3update_game.sh ${a3instdir}/scripts/a3update_works.sh ${a3instdir}/scripts/a3update_finish.sh > \\\$tmpscript
+
+sudo -iu ${useradm} \\\$tmpscript
+sudo -u ${useradm} rm -f  ${a3instdir}/scripts/tmp/*
 
 fi
 exit 0\" >> ${a3instdir}/scripts/runupdate.sh"
+
+
+#build file runwsupdate.sh
+sudo -u $useradm touch ${a3instdir}/scripts/runwsupdate.sh
+sudo -u $useradm chmod 754 ${a3instdir}/scripts/runwsupdate.sh
+sudo -u $useradm bash -c "cat ${a3instdir}/installer/rsc/runupdate.sh > ${a3instdir}/scripts/runwsupdate.sh"
+sudo -u $useradm bash -c "echo \"
+
+chown -R ${useradm}:${grpserver} ${a3instdir}/a3master
+
+tmpscript=\\\$(sudo -u ${useradm} mktemp --tmpdir=${a3instdir}/scripts/tmp/ file.XXXXX)
+chmod 700 \\\$tmpscript
+
+sudo -u ${useradm} cat ${a3instdir}/scripts/a3update_header.sh ${a3instdir}/scripts/a3update_works.sh ${a3instdir}/scripts/a3update_finish.sh > \\\$tmpscript
+
+sudo -iu ${useradm} \\\$tmpscript
+sudo -u ${useradm} rm -f  ${a3instdir}/scripts/tmp/*
+
+fi
+exit 0\" >> ${a3instdir}/scripts/runwsupdate.sh"
 
 # request download
 echo -n "Installation is now prepared. You may want to add the line
@@ -183,14 +218,7 @@ You need to execute the command
 ln -s /home/${useradm}/Steam /home/UPDATEUSER/Steam
 once for every user you want to enable to run the update script.
 
-If you choose to abort now, you can still continue later by running the A3-update script.
-Begin download of A3? (y/n)?"
-read goinst
-if [ $goinst != "y" ]; then
-        exit 0
-fi
-
 # install A3
-sudo -iu $useradm ${a3instdir}/scripts/a3update.sh
+sudo ${a3instdir}/scripts/runupdate.sh
 
 exit 0
