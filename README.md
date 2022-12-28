@@ -90,7 +90,7 @@ On start, all config files are newly read in to consider possible config edits. 
 - The login into steam may fail on the first try, because you are probably logging in from a machine unknown to steam. In this case the script will freeze at the line "Verifiying Login-Data...". Abort the script by pressing **Ctrl-C** in that case. Then start **/srv/arma3/steamcmd/steamcmd.sh** and enter the guard code received per mail. Refer to the steamcmd manual on HowTo, or see below. Afterwards restart the update process by issuing **sudo /srv/arma3/scripts/runupdate.sh**. **runupdate.sh** from now on will always be the file to start in order to **update arma3 or install a mod**.
 - when you see **app_update 233780 validate** arma3 is being downloaded, be patient
 - when prompted, you may copy missions and non-workshop mods into the **./a3master** folder
-- note the output on screen. If the installation of mods **...workshop_download_item ...** fails with timeout, abort the update process with **Ctrl-C**. This will happen if you download a large mod for the first time and the download takes long. The download attempts are cumulative, so each time you run the update, you make progress. For RHS for instance i needed to run the script 5 times. The issue is a bug in steamcmd.
+- note the output on screen. If the installation of mods **...workshop_download_item ...** fails with timeout, this is becaus you download a large mod for the first time and the download takes too long. The issue is a bug in steamcmd. The script will attempt to download it again multiple times. The download attempts are cumulative, so each time you run the update, you make progress.
 
 **4. Done**</br>
 Put at least one mission into mpmissions and Enjoy Arma3! You may delete the **installer** folder now.
@@ -106,6 +106,7 @@ Replace X with the number of the server and OPTION with</br>
 **status** - prints the service status</br>
 **log** - prints the serverlog onto the prompt in realtime as it is written, abort with Ctrl-C</br></br>
 **Update** the servers and mods by running **sudo /srv/arma3/scripts/runupdate.sh**. The script will then download/update A3 and the workshop-mods registered in **modlist.inp**.</br>
+**Update Mods only** by running **sudo /srv/arma3/scripts/runwsupdate.sh**. The script will then download/update the workshop-mods registered in **modlist.inp**.</br>
 You may want to add the line</br>
 *%{grpserver}      ALL=NOPASSWD: /usr/sbin/service a3srv[1-3] *, {a3instdir}/scripts/runupdate.sh**</br>
 to the sudoers file with visudo to avoid the system asking for the password. This is a must if you want to enable other members of the group that do not have root permissions (i.e. the maintance users) to issue the commands. Replcace {grpserver} with your groupname and {a3instdir} with your installation path.</br>
