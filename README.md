@@ -45,14 +45,14 @@ All instances will share</br>
 - basic config settings
 - a common logfile folder
 
-**What happens on installation**
+**What happens on installation**</br>
 You begin by putting the script folder **installer** into an arbitrary folder on your system. Upon start, the script will then establish an Arma3 installation inside that arbitrary folder. Depending on you installation path, it will build individual config and script files for your server, install steamcmd, set the required file ownerships and rights, and install the servers as a system service. The installation finishes with an update of Arma3 and the mods.
 Refer to the file **doc/folder_struc.png** for a general overview where to find the files and what they do.
 
-**What happens on update**
+**What happens on update**</br>
 File ownership in a3master will be reset to avoid issues from remote upload of mission files etc. The server instances are then stopped, and an update (or install, if not already there) of Arma3 and the mods is performed. After the update, the file rights in a3master are reset, all mods are renamed to lower case (avoids issues with crashing mods on linux) and the folders of the instances are cleared and rebuild. Finally, the severs are booted back up.
 
-**What happens on start/restart**
+**What happens on start/restart**</br>
 On start, all config files are newly read in to consider possible config edits. The config file **modlist.inp** defines the mods to load, individually for each instance. Depending on that config, the server name and the startup options (-mods= ) are build. Then the script will generate the config file for the respective instance, and copy the individually needed set of **.bikey - files** into its **keys** folder. Logfiles older than {deldays} **(servervars.cfg)** will be deleted, a new logfile will be written. Afterwards, the instance will boot, being monitored by a watchdog process. The watchdog reboots the server if it crashes. The watchdog is also active if the server stopped externally, i.e. you can issue the #shutdown command ingame to read an updated server config.
 ## Installation
 
