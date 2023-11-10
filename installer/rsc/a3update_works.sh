@@ -17,8 +17,7 @@ while read line; do
 			download_status=1
 			counter=1
 			until [ "${download_status}" == "0" ]; do
-				echo "Attempt ${counter} downloading app ${appid} - ${appname}"
-				((counter++))
+				echo "--- Attempt ${counter} downloading app ${appid} - ${appname} ---"
 				${steamdir}/steamcmd.sh +runscript $tmpfile | sed -u "s/${pw}/----/g" | awk 'BEGIN{s=0} /ERROR/{s=1} 1; END{exit(s)}' &
 				steampid=$!
 				wait $steampid
@@ -29,6 +28,7 @@ while read line; do
           			  sleep 2s
 				  exit 1
         			fi
+				((counter++))
 			done
 			rm $tmpfile
         	fi
