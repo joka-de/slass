@@ -216,7 +216,7 @@ to sudoers with the visudo command. Consider reading the wiki/manpage on visudo 
 
 You need to execute the command
 ln -s /home/${useradm}/Steam /home/UPDATEUSER/Steam
-once for every user you want to enable to run the update script.
+once for every user you want to enable to run the update script."
 
 # install A3
 sudo ${a3instdir}/scripts/runupdate.sh
