@@ -10,7 +10,6 @@ a3instdir=${a3instdir%/installer}
 
 . $a3instdir/installer/install.cfg
 
-
 goinst="n"
 echo -n "
 
