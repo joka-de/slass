@@ -3,44 +3,57 @@
 # set this to "y" to avoid deletion of downloaded data (arma3 and steamcmd)
 debug="y"
 
+RED='\033[0;31m'
+YELLOW='\033[0;33m'
+NC='\033[0m' # No Color
+
 installerPath=$(dirname "$(readlink -f "$0")")
 installPath="$(dirname "$installerPath")"
-. $installerPath/functions/functionlist.sh
+
+for var in $installerPath/functions/*.sh
+	do
+    	. "$var"
+done
+
 . $installerPath/install.cfg
 
-debugMessage "Debug mode is ON" "-" "RED"
-debugMessage "Path to Installer: $installerPath" " " "RED"
-debugMessage "Path to install: $installPath" " " "RED"
+fn_debugMessage "Debug mode is ON" ""
+fn_debugMessage "Path to Installer: $installerPath" ""
+fn_debugMessage "Path to install: $installPath" ""
 
-printCentered "-" "-"
-printCentered "-" "-"
-printCentered "This will install SLASS including SteamCMD and startup / update scripts"
-printCentered "-" "-"
-printCentered "-" "-"
-printCentered "Install Path: $installPath" 
-printCentered "Admin-User: $userAdmin"
-printCentered "Arma 3 Server executed by: $userLaunch"
-printCentered "User Group: $groupServer"
-printCentered ""
-printCentered "Modify ./install.cfg to change the above."
-printCentered "The script will OVERWRITE existing folders in the installation directory,"
-printCentered "and you will be asked for the 'sudo' password by the script."
-printCentered ""
+fn_printMessage "-" "-"
+fn_printMessage "-" "-"
+fn_printMessage "This will install SLASS including SteamCMD and startup / update scripts" " "
+fn_printMessage "-" "-"
+fn_printMessage "-" "-"
+fn_printMessage "Install Path: $installPath" ""
+fn_printMessage "Admin-User: $userAdmin" ""
+fn_printMessage "Arma 3 Server executed by: $userLaunch" ""
+fn_printMessage "User Group: $groupServer" ""
+
+fn_printMessage "-" "-"
+fn_printMessage "-" "-"
+fn_printMessage "Modify ./install.cfg to change the above." " "
+fn_printMessage "The script will OVERWRITE existing folders in the installation directory," " "
+fn_printMessage "and you will be asked for the 'sudo' password by the script." " "
+fn_printMessage "-" "-"
+fn_printMessage "-" "-"
+fn_printMessage ""
 
 read -p "Do you want to continue? (y/n): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
 
 # scripted user management
-printCentered "Do you want the users named above to be created?"
-printCentered "!" "!"
-printCentered "WARNING, if they already exist, they will be DELETED, including their home folders!"
-printCentered "!" "!"
-printCentered ""
+fn_printMessage "Do you want the users named above to be created?"
+fn_printMessage "!" "!"
+fn_printMessage "WARNING, if they already exist, they will be DELETED, including their home folders!" " "
+fn_printMessage "!" "!"
+fn_printMessage ""
 
 read -p "Create Users? (y/n): " confirm
 
 if [[ $confirm && ($confirm == [yY] || $confirm == [yY][eE][sS]) ]]; then
-	printCentered "Creating Users" "-"
-	deleteAndCreateUser
+	fn_printMessage "Creating Users" ""
+	fn_deleteAndCreateUser
 fi
 
 # build basic folder structure
@@ -58,10 +71,10 @@ if [[ $confirm && ($confirm == [yY] || $confirm == [yY][eE][sS]) ]]; then
 
 	for folder in "${list[@]}"; do
 		if [[ -d ${installPath}/${folder} ]]; then
-			debugMessage "Delete Folder : $folder" " " "RED"
+			fn_debugMessage "Delete Folder : $folder" ""
 			sudo -u $userAdmin rm -rf $installPath/$folder
 		fi
-			debugMessage "Create Folder : $folder" " " "RED"
+			fn_debugMessage "Create Folder : $folder" ""
 			sudo -u $userAdmin mkdir $installPath/$folder --mode=775
 	done
 
@@ -110,14 +123,14 @@ fi
 read -p "Download and install Steam? (y/n): " confirm
 
 if [[ $confirm && ($confirm == [yY] || $confirm == [yY][eE][sS]) ]]; then
-	debugMessage "Download and install Steam" " " "RED"
+	fn_debugMessage "Download and install Steam" ""
 	sudo apt install lib32gcc-s1 lib32stdc++6 rename
 	cd $installPath/steamcmd
 	sudo -u $userAdmin wget -nv http://media.steampowered.com/installer/steamcmd_linux.tar.gz
 	sudo -u $userAdmin tar -xvzf steamcmd_linux.tar.gz
 	sudo -iu $userAdmin ${installPath}/steamcmd/steamcmd.sh +runscript ${installerPath}/rsc/update.steam
 	sudo -u $userAdmin rm -f ${installPath}/steamcmd/steamcmd_linux.tar.gz
-	printCentered "SteamCMD was installed and is up to date!" "-"
+	fn_printMessage "SteamCMD was installed and is up to date!" ""
 
 	# set file permissions of ~/Steam folder
 	sudo -u $userAdmin find -L /home/${userAdmin}/Steam -type d -exec chmod 775 {} \;
@@ -141,7 +154,12 @@ if [[ $confirm && ($confirm == [yY] || $confirm == [yY][eE][sS]) ]]; then
 	app_update 233780 validate
 	quit" >> $tempScript
 
-	read -p "Please run steam once with your provided login data and add your SteamGUARD code! Ready (y/n): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1	
+	read -p "Please run steam once with your provided login data and add your SteamGUARD code! Do you want to start SteamCMD (y/n): " confirm	
+	
+	if [[  $confirm && ($confirm == [yY] || $confirm == [yY][eE][sS]) ]]; then
+		 sudo -u $userAdmin ${installPath}/steamcmd/steamcmd.sh
+	fi
+
 	sudo -u $userAdmin $installPath/steamcmd/steamcmd.sh +runscript $tempScript
 	sudo -u $userAdmin rm -f $tempScript
 fi
