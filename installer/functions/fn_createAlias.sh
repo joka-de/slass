@@ -1,3 +1,18 @@
+#
+# SLASS - fn_ceateAlias
+# 
+# Author: PhilipJFry
+# 
+# Description:
+# Creates a alias for slass.sh
+# 
+# Parameter(s):
+# None <Any>
+# 
+# Return Value:
+# None <Any>
+#  
+
 fn_createAlias () {
 	# create alias for slass.sh ($userAdmin)
 	file="/home/$userAdmin/.bash_aliases"

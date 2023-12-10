@@ -1,5 +1,18 @@
+# SLASS - fn_deleteAndCreateUser
+# 
+# Author: PhilipJFry
+# 
+# Description:
+# Delete and create givin user(s) defined in install.cfg
+# 
+# Parameter(s):
+# 1: Mode <String> - Mode: delete, create | Default: all
+# 
+# Return Value:
+# None <Any>
+#
+
 fn_deleteAndCreateUser () {
-	# delete user
 	local option
 	option="all"
 
@@ -7,6 +20,7 @@ fn_deleteAndCreateUser () {
 		option=$1
 	fi
 
+	# delete user
 	if [[ $option != "create" ]]; then
 			if [[ -d /home/${userAdmin} ]]; then
 				fn_debugMessage "User $userAdmin wird gelöscht" ""

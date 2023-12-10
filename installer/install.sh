@@ -10,9 +10,8 @@ NC='\033[0m' # No Color
 installerPath=$(dirname "$(readlink -f "$0")")
 installPath="$(dirname "$installerPath")"
 
-for var in $installerPath/functions/*.sh
-	do
-    	. "$var"
+for var in $installerPath/functions/*.sh; do
+    . "$var"
 done
 
 . $installerPath/install.cfg
@@ -64,9 +63,9 @@ read -p "Create Folders? (y/n): " confirm
 
 if [[ $confirm && ($confirm == [yY] || $confirm == [yY][eE][sS]) ]]; then
 	if [[ $debug == "y"  ]]; then
-		list=("scripts" "a3master" "steamcmd" "functions")		
+		list=("scripts" "a3master" "a3instance" "steamcmd" "functions")		
 	else		
-		list=("scripts" "a3master" "steamcmd" "functions")
+		list=("scripts" "a3master" "a3instance" "steamcmd" "functions")
 	fi
 
 	for folder in "${list[@]}"; do

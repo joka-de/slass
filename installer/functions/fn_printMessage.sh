@@ -1,3 +1,25 @@
+# SLASS - fn_printMessage
+# 
+# Author: PhilipJFry
+# 
+# Description:
+# Print a message in givin color with givin filler, centered or left allign  
+# 
+# Parameter(s):
+# 1: Message <String>
+# 2: Filler <String> 
+# 3: Color <String>
+#
+# Return Value:
+# None <Any>
+#
+# Example:
+# fn_printMessage "Hello" - message centered 
+# fn_printMessage "Hello" "" - message left allign
+# fn_printMessage "Hello" " " - message centered without filler
+# fn_printMessage "Hello" "-" "$RED" - message centered, red and filler "-" left and right from the message
+# 
+
 fn_printMessage () {
      [[ $# == 0 ]] && return 1    
 

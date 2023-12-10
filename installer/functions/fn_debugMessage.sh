@@ -1,5 +1,19 @@
+#
+# SLASS - fn_debugMessage
+# 
+# Author: PhilipJFry
+# 
+# Description:
+# Print a debug message in red if debug mode is on
+# 
+# Parameter(s):
+# Message <String>
+# 
+# Return Value:
+# None <Any>
+#
+
 fn_debugMessage () {
-	# displays every argument
 	if [[ $# != 0 && $debug == "y" ]]; then
 			case $# in
 				1)
