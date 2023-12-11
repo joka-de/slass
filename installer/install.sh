@@ -10,7 +10,11 @@ NC='\033[0m' # No Color
 installerPath=$(dirname "$(readlink -f "$0")")
 installPath="$(dirname "$installerPath")"
 
-for var in $installerPath/functions/*.sh; do
+for var in $installerPath/function/common/*.sh; do
+    . "$var"
+done
+
+for var in $installerPath/function/installer/*.sh; do
     . "$var"
 done
 
@@ -63,9 +67,9 @@ read -p "Create Folders? (y/n): " confirm
 
 if [[ $confirm && ($confirm == [yY] || $confirm == [yY][eE][sS]) ]]; then
 	if [[ $debug == "y"  ]]; then
-		list=("scripts" "a3master" "a3instance" "steamcmd" "functions")		
+		list=("log" "temp" "a3master" "a3instance" "steamcmd" "function")		
 	else		
-		list=("scripts" "a3master" "a3instance" "steamcmd" "functions")
+		list=("log" "temp" "a3master" "a3instance" "steamcmd" "function")
 	fi
 
 	for folder in "${list[@]}"; do
@@ -85,15 +89,21 @@ if [[ $confirm && ($confirm == [yY] || $confirm == [yY][eE][sS]) ]]; then
 		sudo -u $userAdmin rm -rf ${installPath}/a3master/userconfig/
 	fi
 
-	sudo -u $userAdmin mkdir ${installPath}/scripts/service --mode=754
 	sudo -u $userAdmin mkdir ${installPath}/a3master/_mods --mode=775
 	sudo -u $userAdmin mkdir ${installPath}/a3master/cfg --mode=775
 	sudo -u $userAdmin mkdir ${installPath}/a3master/log --mode=775
-	sudo -u $userAdmin mkdir ${installPath}/scripts/logs --mode=775
-	sudo -u $userAdmin mkdir ${installPath}/scripts/tmp --mode=775
 	sudo -u $userAdmin mkdir ${installPath}/a3master/userconfig/ --mode=775
 
 	# copy files
+	sudo -u $userAdmin cp ${installerPath}/rsc/slass.sh ${installPath}/
+	sudo -u $userAdmin chmod 754 ${installPath}/slass.sh
+	sudo -u $userAdmin cp -r ${installerPath}/function/common ${installPath}/function/common
+	sudo -u $userAdmin chmod 664 ${installPath}/function/common/*.*
+	sudo -u $userAdmin cp -r ${installerPath}/function/slass ${installPath}/function/slass
+	sudo -u $userAdmin chmod 664 ${installPath}/function/slass/*.*	
+	sudo -u $userAdmin touch $installPath/slass.cfg
+	sudo -u $userAdmin chmod 664 ${installPath}/slass.cfg	
+
 	: '
 	sudo -u $userAdmin cp ${installerPath}/rsc/servervars.cfg ${installPath}/scripts/service/
 	sudo -u $userAdmin chmod 644 ${installPath}/scripts/service/servervars.cfg
@@ -143,7 +153,7 @@ if [[ $confirm && ($confirm == [yY] || $confirm == [yY][eE][sS]) ]]; then
 	read -p "Please enter the username of the Steam-User used for the A3-Update: " user 
 	read -p "Please enter the Steam-Password for $user: " -s pw
 
-	tempScript=$(sudo -u ${userAdmin} mktemp --tmpdir=${installPath}/scripts/tmp/ file.XXXXX)
+	tempScript=$(sudo -u ${userAdmin} mktemp --tmpdir=${installPath}/temp/ file.XXXXX)
 	sudo -u $userAdmin chmod 700 $tempScript
 
 	sudo -u $userAdmin echo "@ShutdownOnFailedCommand 1
@@ -153,6 +163,7 @@ if [[ $confirm && ($confirm == [yY] || $confirm == [yY][eE][sS]) ]]; then
 	app_update 233780 validate
 	quit" >> $tempScript
 
+	fn_printMessage ""
 	read -p "Please run steam once with your provided login data and add your SteamGUARD code! Do you want to start SteamCMD (y/n): " confirm	
 	
 	if [[  $confirm && ($confirm == [yY] || $confirm == [yY][eE][sS]) ]]; then
@@ -162,3 +173,13 @@ if [[ $confirm && ($confirm == [yY] || $confirm == [yY][eE][sS]) ]]; then
 	sudo -u $userAdmin $installPath/steamcmd/steamcmd.sh +runscript $tempScript
 	sudo -u $userAdmin rm -f $tempScript
 fi
+
+# create alias for defined users
+fn_createAlias
+
+# content of slass.cfg
+echo "userAdmin=$userAdmin
+userLaunch=$userLaunch
+installPath=$installPath" >> $installPath/slass.cfg
+
+fn_printMessage "SLASS wurde installiert" ""

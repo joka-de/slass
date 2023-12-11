@@ -11,7 +11,7 @@
 # 
 # Return Value:
 # None <Any>
-#  
+#
 
 fn_createAlias () {
 	# create alias for slass.sh ($userAdmin)
@@ -22,8 +22,10 @@ fn_createAlias () {
 	fi
 
 	if ! grep -q 'alias for slass' "$file"; then
-			fn_debugMessage "Eintrag für Alias nicht gefunden, Alias wird eingetragen" " "
-			#echo "#alias for slass" >> $file
-			#echo 'alias slass="$installDir/slass/slass.sh"' >> $file
+		fn_debugMessage "Eintrag für Alias nicht gefunden, Alias wird eingetragen" ""
+		echo "#alias for slass" >> $file
+		printf 'alias slass="%s/slass.sh"' $installPath >> $file
+	else
+		fn_debugMessage "Eintrag für alias bereits vorhanden" ""
 	fi
 }

@@ -20,8 +20,10 @@ fn_deleteAndCreateUser () {
 		option=$1
 	fi
 
+	fn_debugMessage "$option" ""
+
 	# delete user
-	if [[ $option != "create" ]]; then
+	if [[ $option == "delete" || $option == "all" ]]; then
 			if [[ -d /home/${userAdmin} ]]; then
 				fn_debugMessage "User $userAdmin wird gelöscht" ""
 				sudo deluser --remove-home $userAdmin
@@ -37,7 +39,7 @@ fn_deleteAndCreateUser () {
 	fi
 
 	# create user
-	if [[ $option != "delete" ]]; then
+	if [[ $option == "create" || $option == "all" ]]; then
 			sudo addgroup $groupServer
 			fn_debugMessage "User $userAdmin wird erstellt" ""
 			sudo adduser $userAdmin --gecos "" --ingroup $groupServer
