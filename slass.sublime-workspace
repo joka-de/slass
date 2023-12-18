@@ -1,0 +1,471 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"key",
+				"keyvaluecontent"
+			],
+			[
+				"server",
+				"server2"
+			],
+			[
+				"inst",
+				"installPath"
+			],
+			[
+				"instal",
+				"installPath"
+			],
+			[
+				"insta",
+				"installerPath"
+			],
+			[
+				"install",
+				"installerPath"
+			],
+			[
+				"_all",
+				"_allGroups"
+			],
+			[
+				"_sele",
+				"_selectedPositionOld"
+			],
+			[
+				"ColorB",
+				"ColorBlue"
+			],
+			[
+				"isq",
+				"isEqualTo"
+			],
+			[
+				"_a",
+				"_allPositionsInside"
+			],
+			[
+				"setMarkerT",
+				"setMarkerText"
+			],
+			[
+				"setMarker",
+				"setMarkerColor"
+			],
+			[
+				"setMar",
+				"setMarkerShape"
+			],
+			[
+				"iom",
+				"iom_insurgencyZone"
+			],
+			[
+				"setMarkerSh",
+				"setMarkerShape"
+			],
+			[
+				"set",
+				"setMarkerSize"
+			],
+			[
+				"nerae",
+				"nearestLocations"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "slass-data/function/installer/fn_deleteAndCreateUser.sh",
+			"settings":
+			{
+				"buffer_size": 1239,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			},
+			"undo_stack":
+			[
+			]
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ins ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/PhilipJFry/Documents/GitHub/slass",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/slass-data",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/slass-data/function",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/slass-data/function/installer"
+	],
+	"file_history":
+	[
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/slass.sublime-project",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/installer_old/adddelusr.sh",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/slass-data/install.sh",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/installer/function/slass/fn_createServer.sh",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/installer/rsc/server.cfg",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/installer/rsc/slass.sh",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/installer/function/installer/fn_createAlias.sh",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/installer/install.sh",
+		"/?192.168.188.33/christian/slass/installer/rsc/server.cfg",
+		"/?192.168.181.152/christian/slass/installer/test.cfg",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/installer/rsc/test2.cfg",
+		"/C/Users/PhilipJFry/Documents/MobaXterm/sshKey121223_public",
+		"/?192.168.187.43/christian/slass/installer/function/slass/fn_createServer.sh",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/installer/function/slass/fn_restartServer.sh",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/installer/function/slass/fn_startServer.sh",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/installer/function/slass/fn_stopServer.sh",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/installer/function/installer/fn_deleteAndCreateUser.sh",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/installer/install.cfg",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/installer/rsc/update.steam",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/installer/functions/fn_createAlias.sh",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/installer/functions/fn_restartServer.sh",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/installer/functions/fn_stopServer.sh",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/installer/functions/fn_startServer.sh",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/installer/functions/fn_createServer.sh",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/installer/functions/fn_debugMessage.sh",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/installer/functions/fn_deleteAndCreateUser.sh",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/installer/functions/fn_printMessage.sh",
+		"/C/Users/PhilipJFry/Desktop/kodiAddSourceLog.txt",
+		"/C/Users/PhilipJFry/Documents/GitHub/mission/OurAltis_Mission.Altis/scripts/functions/resistance/fn_createResistance.sqf",
+		"/?172.18.239.8/christian/slass/installer/functions/fn_printMessage.sh",
+		"/?172.18.239.8/christian/slass/installer/functions/fn_createAlias.sh",
+		"/?172.18.239.8/christian/slass/installer/install.sh",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/installer_old/a3install.sh",
+		"/C/Users/PhilipJFry/Documents/GitHub/mission/OurAltis_Mission.Altis/scripts/functions/spy/fn_askSpy.sqf",
+		"/C/Users/PhilipJFry/Documents/GitHub/mission/OurAltis_Mission.Altis/scripts/functions/init/fn_configureTFAR.sqf",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/installer/functions/functionlist.sh",
+		"/?172.18.236.86/christian/slass/installer/install.sh",
+		"/?172.18.236.86/christian/slass/installer/functions/functionlist.sh",
+		"/?172.18.236.86/christian/slass/installer/functions/fn_createAlias.sh",
+		"/?172.18.236.86/christian/slass/installer/functions/fn_deleteAndCreateUser.sh",
+		"/?172.18.236.86/christian/slass/installer/functions/fn_debugMessage.sh",
+		"/?172.18.236.86/christian/slass/installer/functions/fn_printMessage.sh",
+		"/D/Server/arma3server/CONFIG_server.cfg",
+		"/Y/Bearbeiten/gesuchte_filme.txt",
+		"/Y/Bearbeiten/#nicht_komplett.txt",
+		"/Y/Bearbeiten/#Zu den Filmen zufügen/qualität.txt",
+		"/?172.18.238.76/christian/slass/installer/install.sh",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/installer/rsc/a3update.sh",
+		"/?172.18.231.162/christian/slass/installer/install.sh",
+		"/?172.18.231.162/christian/slass/installer/functions/functionlist.sh",
+		"/?172.18.231.162/christian/slass/installer/install.cfg",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/installer/a3install.sh",
+		"/?172.18.231.162/christian/slass/installer/scripts/arma3.steam",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/installer/rsc/modlist.inp",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/installer/rsc/a3update_game.sh",
+		"/D/Games/Steam/steamapps/workshop/appworkshop_107410.acf",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/installer/rsc/runupdate.sh",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/installer/rsc/a3update_finish.sh",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/installer/rsc/a3update_header.sh",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/installer/rsc/a3update_works.sh",
+		"/C/Users/PhilipJFry/Documents/GitHub/slass/installer/adddelusr.sh",
+		"/?172.18.230.123/christian/slass/installer/install.cfg",
+		"/C/Users/PhilipJFry/Desktop/sperren.ps1",
+		"/C/Users/PhilipJFry/Documents/Arma 3/mpmissions/iom_test_insurgency.Altis/functions/insurgency/fn_init.sqf",
+		"/C/Users/PhilipJFry/Documents/Arma 3/mpmissions/iom_test_insurgency.Altis/config/cfgFunctions.cpp",
+		"/C/Users/PhilipJFry/Documents/Arma 3/mpmissions/iom_test_insurgency.Altis/description.ext",
+		"/C/Users/PhilipJFry/Documents/Projekte/Powershell/kodi/kodiAddSourceLog.txt",
+		"/E/share/laptop/Neues Textdokument.txt",
+		"/E/share/laptop/EGSRegal.txt",
+		"/C/Users/PhilipJFry/Downloads/filme_1698166542487.txt",
+		"/F/sicherungSSDWIn10/desktop/Neues Textdokument.txt",
+		"/F/sicherungSSDWIn10/desktop/test.sqf",
+		"/F/sicherungSSDWIn10/desktop/sonyexp.txt",
+		"/F/sicherungSSDWIn10/desktop/format.sqf",
+		"/F/sicherungSSDWIn10/desktop/fuerjonny.sqf",
+		"/F/sicherungSSDWIn10/desktop/dialogmedic.txt",
+		"/F/Sortieren/b/2005-10-25 - Alexa & Afrodite/dxva_sig.txt",
+		"/F/Sortieren/Harumi Asano Bukkake Debut by pornostube.to/Images and comment/comment.txt",
+		"/F/Sortieren/MCN - Gabrielle - Lilac/sockets.log",
+		"/F/Sortieren/Rough Japanese Deepthroat & puke/For all the porn you need.txt",
+		"/F/Sortieren/Young flexible girl almoste licks her own pussy/details.txt",
+		"/F/Sortieren/wpalist/wpalist.txt",
+		"/G/readme.txt",
+		"/F/Sortieren/betten___beds/Readme.txt",
+		"/G/autorun.inf",
+		"/G/autorun.dat",
+		"/F/PTHC/Raumschiff Osiris  (Preteen Sex Vergewaltigung Missbrauch Kinderporno lsm pthc).txt",
+		"/F/PTHC/a/[ PTHC 2012] 2800 DIRECT PTHC-PTSC DOWNLOADS [11yo,preteen,kids,lolita,12yo,9yo,10yo,bibcam,kleuterkutje].TXT",
+		"/F/PTHC/a/(PTHC) Lolita Encyclopedia 10yr Fuck.txt",
+		"/F/PTHC/a/- Pedo Pthc Sites.txt",
+		"/C/Users/PhilipJFry/AppData/Local/Temp/7a3be3e6-6cb9-4f33-bff0-1f41feb51238_daslump-eineher-2019.zip.238/» p a s s w o r d  [readme].txt",
+		"/C/Users/PhilipJFry/AppData/Local/eMule/config/AC_ServerMetURLs.dat",
+		"/C/Users/PhilipJFry/AppData/Local/eMule/config/AC_BootstrapIPs.dat",
+		"/C/Users/PhilipJFry/AppData/Local/eMule/config/AC_SearchStrings.dat",
+		"/C/Users/PhilipJFry/AppData/Local/eMule/config/clients.met",
+		"/C/Users/PhilipJFry/AppData/Local/eMule/config/preferences.ini",
+		"/C/Users/PhilipJFry/AppData/Local/eMule/config/statistics.ini",
+		"/C/Users/PhilipJFry/AppData/Local/eMule/config/key_index.dat",
+		"/C/Users/PhilipJFry/AppData/Local/eMule/config/StoredSearches.met",
+		"/C/Users/PhilipJFry/AppData/Local/eMule/config/sharedfiles.dat",
+		"/C/Users/PhilipJFry/AppData/Local/eMule/config/SearchSpam.met",
+		"/C/Users/PhilipJFry/AppData/Local/eMule/config/downloads.txt",
+		"/E/dods_maps/test/emule0.50a-Xtreme8.1/config/nodes.dat",
+		"/C/Users/PhilipJFry/AppData/Local/eMule/config/Category.ini",
+		"/E/dods_maps/BitLocker-Wiederherstellungsschlüssel 33502BF6-0CD5-4013-9F1E-1731CBCACE0A.TXT",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/C/Users/PhilipJFry/AppData/Local/Arma 3/Arma3_x64_2023-08-20_12-27-25.rpt",
+		"/C/Users/PhilipJFry/Downloads/wg_config.conf",
+		"/F/wg_config.conf",
+		"/C/Users/PhilipJFry/Downloads/wg_config (1).conf",
+		"/C/Users/PhilipJFry/AppData/Local/Arma 3/Arma3_x64_2023-08-16_17-31-01.rpt",
+		"/C/Users/PhilipJFry/AppData/Local/Arma 3/Arma3_x64_2023-06-16_08-08-53.rpt",
+		"/C/Users/PhilipJFry/AppData/Local/Arma 3/Arma3_x64_2023-08-11_13-20-52.rpt",
+		"/C/Users/PhilipJFry/AppData/Local/Arma 3/Arma3_x64_2023-06-16_07-17-16.rpt",
+		"/C/Users/PhilipJFry/AppData/Local/Arma 3/Arma3_x64_2023-08-07_13-10-07.rpt",
+		"/C/Users/PhilipJFry/Documents/Arma 3/mpmissions/testZombies.VR/testCode.sqf",
+		"/C/Users/PhilipJFry/Documents/Arma 3/mpmissions/testZombies.VR/fn_zombieSpawn.sqf",
+		"/C/Users/PhilipJFry/AppData/Roaming/Kodi/kodi.log",
+		"/D/Musik/bearbeiten/Rammstein/2017 - Paris [Universal Music, 5744890, 2CD, Germany]/accurip.txt",
+		"/D/Musik/bearbeiten/Rammstein/2017 - Paris [Universal Music, 5744890, 2CD, Germany]/Rammstein - CD1 - Paris.cue",
+		"/D/Musik/bearbeiten/Rammstein/2017 - Paris [Universal Music, 5744890, 2CD, Germany]/Rammstein - CD2 - Paris.cue",
+		"/Y/Musik/Kuenstler/r/Rammstein/2017 - Paris [Universal Music, 5744890, 2CD, Germany]/Rammstein - CD2 - Paris.cue",
+		"/C/Users/PhilipJFry/AppData/Roaming/Kodi/userdata/sources.xml",
+		"/D/Musik/bearbeiten/Rammstein/2017 - Paris [Universal Music, 5744890, 2CD, Germany]/Rammstein - CD2 - Paris.log",
+		"/Y/Musik/Kuenstler/r/Rammstein/2017 - Paris [Universal Music, 5744890, 2CD, Germany]/Rammstein - CD1 - Paris.cue",
+		"/C/Users/PhilipJFry/Downloads/AnnenMayKantereit - 12 (2020)/AnnenMayKantereit - 12 (2020)/Get Password.txt",
+		"/C/Users/PhilipJFry/AppData/Local/Microsoft/Windows/INetCache/IE/K06IPQ6F/advancedsettings[1].xml",
+		"/Y/Musik/Kuenstler/r/Rammstein/2019 - Rammstein [Universal Music, Deluxe Edition, Unofficial]/Rammstein - Rammstein (Deluxe Edition).log"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 101.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"fn_createAlias",
+			"stringTest",
+			"debugMessage",
+			"printCentered",
+			"deleteAndCreateUser",
+			"printCentered",
+			"debugMessage",
+			"serverid",
+			"mktemp",
+			"grpserver",
+			"userlnch",
+			"grpserver",
+			"userlnch",
+			"useradm",
+			"a3instdir",
+			"useradm",
+			"a3instdir",
+			"useradm",
+			"a3instdir",
+			"useradm",
+			"a3instdir",
+			"useradm",
+			"steamcmd"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"fn_debugMessage",
+			"fn_printMessage",
+			"fn_deleteAndCreateUser",
+			"fn_printMessage",
+			"fn_debugMessage",
+			"groupServer",
+			"userLaunch",
+			"groupServer",
+			"userLaunch",
+			"userAdmin",
+			"installPath",
+			"userAdmin",
+			"installPath",
+			"userAdmin",
+			"installPath",
+			"userAdmin",
+			"installPath",
+			"userAdmin"
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "slass-data/function/installer/fn_deleteAndCreateUser.sh",
+					"selected": true,
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 1239,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								59,
+								59
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/ShellScript/Bash.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"stack_multiselect": false,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "slass.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 299.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

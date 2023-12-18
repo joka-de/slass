@@ -11,14 +11,14 @@ installerPath=$(dirname "$(readlink -f "$0")")
 installPath="$(dirname "$installerPath")"
 
 for var in $installerPath/function/common/*.sh; do
-    . "$var"
+    source "$var"
 done
 
 for var in $installerPath/function/installer/*.sh; do
-    . "$var"
+    source "$var"
 done
 
-. $installerPath/install.cfg
+source $installerPath/install.cfg
 
 fn_debugMessage "Debug mode is ON" ""
 fn_debugMessage "Path to Installer: $installerPath" ""
@@ -67,9 +67,9 @@ read -p "Create Folders? (y/n): " confirm
 
 if [[ $confirm && ($confirm == [yY] || $confirm == [yY][eE][sS]) ]]; then
 	if [[ $debug == "y"  ]]; then
-		list=("log" "temp" "a3master" "a3instance" "steamcmd" "function")		
+		list=("log" "temp" "a3" "config" "steamcmd")		
 	else		
-		list=("log" "temp" "a3master" "a3instance" "steamcmd" "function")
+		list=("log" "temp" "a3" "config" "steamcmd")
 	fi
 
 	for folder in "${list[@]}"; do
@@ -77,32 +77,25 @@ if [[ $confirm && ($confirm == [yY] || $confirm == [yY][eE][sS]) ]]; then
 			fn_debugMessage "Delete Folder : $folder" ""
 			sudo -u $userAdmin rm -rf $installPath/$folder
 		fi
-			fn_debugMessage "Create Folder : $folder" ""
-			sudo -u $userAdmin mkdir $installPath/$folder --mode=775
+
+		fn_debugMessage "Create Folder : $folder" ""
+		sudo -u $userAdmin mkdir $installPath/$folder --mode=775
 	done
 
-	# debug lines to clear a3master, but not downloaded content
-	if [[ $debug == "y"  ]]; then
-		sudo -u $userAdmin rm -rf ${installPath}/a3master/_mods
-		sudo -u $userAdmin rm -rf ${installPath}/a3master/cfg
-		sudo -u $userAdmin rm -rf ${installPath}/a3master/log
-		sudo -u $userAdmin rm -rf ${installPath}/a3master/userconfig/
-	fi
-
-	sudo -u $userAdmin mkdir ${installPath}/a3master/_mods --mode=775
-	sudo -u $userAdmin mkdir ${installPath}/a3master/cfg --mode=775
-	sudo -u $userAdmin mkdir ${installPath}/a3master/log --mode=775
-	sudo -u $userAdmin mkdir ${installPath}/a3master/userconfig/ --mode=775
+	sudo -u $userAdmin mkdir ${installPath}/a3master --mode=775
+	sudo -u $userAdmin mkdir ${installPath}/a3/a3master/_mods --mode=775
+	sudo -u $userAdmin mkdir ${installPath}/a3/a3master/cfg --mode=775	
+	sudo -u $userAdmin mkdir ${installPath}/a3/a3master/userconfig/ --mode=775
 
 	# copy files
 	sudo -u $userAdmin cp ${installerPath}/rsc/slass.sh ${installPath}/
 	sudo -u $userAdmin chmod 754 ${installPath}/slass.sh
-	sudo -u $userAdmin cp -r ${installerPath}/function/common ${installPath}/function/common
-	sudo -u $userAdmin chmod 664 ${installPath}/function/common/*.*
-	sudo -u $userAdmin cp -r ${installerPath}/function/slass ${installPath}/function/slass
-	sudo -u $userAdmin chmod 664 ${installPath}/function/slass/*.*	
+	#sudo -u $userAdmin cp -r ${installerPath}/function/common ${installPath}/function/common
+	#sudo -u $userAdmin chmod 664 ${installPath}/function/common/*.*
+	#sudo -u $userAdmin cp -r ${installerPath}/function/slass ${installPath}/function/slass
+	#sudo -u $userAdmin chmod 664 ${installPath}/function/slass/*.*	
 	sudo -u $userAdmin touch $installPath/slass.cfg
-	sudo -u $userAdmin chmod 664 ${installPath}/slass.cfg	
+	sudo -u $userAdmin chmod 664 ${installPath}/config/slass.cfg	
 
 	: '
 	sudo -u $userAdmin cp ${installerPath}/rsc/servervars.cfg ${installPath}/scripts/service/
@@ -180,6 +173,6 @@ fn_createAlias
 # content of slass.cfg
 echo "userAdmin=$userAdmin
 userLaunch=$userLaunch
-installPath=$installPath" >> $installPath/slass.cfg
+installPath=$installPath" >> $installPath/slass-data/slass.cfg
 
 fn_printMessage "SLASS wurde installiert" ""
