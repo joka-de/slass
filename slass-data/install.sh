@@ -82,20 +82,20 @@ if [[ $confirm && ($confirm == [yY] || $confirm == [yY][eE][sS]) ]]; then
 		sudo -u $userAdmin mkdir $installPath/$folder --mode=775
 	done
 
-	sudo -u $userAdmin mkdir ${installPath}/a3master --mode=775
+	sudo -u $userAdmin mkdir ${installPath}/a3/a3master --mode=775
 	sudo -u $userAdmin mkdir ${installPath}/a3/a3master/_mods --mode=775
 	sudo -u $userAdmin mkdir ${installPath}/a3/a3master/cfg --mode=775	
 	sudo -u $userAdmin mkdir ${installPath}/a3/a3master/userconfig/ --mode=775
 
 	# copy files
 	sudo -u $userAdmin cp ${installerPath}/rsc/slass.sh ${installPath}/
-	sudo -u $userAdmin chmod 754 ${installPath}/slass.sh
+	sudo -u $userAdmin chmod 775 ${installPath}/slass.sh
 	#sudo -u $userAdmin cp -r ${installerPath}/function/common ${installPath}/function/common
 	#sudo -u $userAdmin chmod 664 ${installPath}/function/common/*.*
 	#sudo -u $userAdmin cp -r ${installerPath}/function/slass ${installPath}/function/slass
 	#sudo -u $userAdmin chmod 664 ${installPath}/function/slass/*.*	
-	sudo -u $userAdmin touch $installPath/slass.cfg
-	sudo -u $userAdmin chmod 664 ${installPath}/config/slass.cfg	
+	sudo -u $userAdmin touch $installPath/config/slass.cfg
+	sudo -u $userAdmin chmod 775 ${installPath}/config/slass.cfg	
 
 	: '
 	sudo -u $userAdmin cp ${installerPath}/rsc/servervars.cfg ${installPath}/scripts/service/
@@ -113,9 +113,10 @@ if [[ $confirm && ($confirm == [yY] || $confirm == [yY][eE][sS]) ]]; then
 	'
 	# build Arma3Profile
 	if [[ -d "/home/"${userLaunch}'/.local/share/Arma 3 - Other Profiles/'"${groupServer}" ]]; then
-	        sudo -u $userLaunch rm -rf /home/${userLaunch}"/.local/share/Arma 3 - Other Profiles/"${groupServer}
+		sudo -u $userLaunch rm -rf /home/${userLaunch}"/.local/share/Arma 3 - Other Profiles/"${groupServer}
 	fi
-	sudo chmod 755 /home/${userLaunch}
+
+	sudo chmod 775 /home/${userLaunch}
 	sudo -u $userLaunch mkdir -p /home/${userLaunch}"/.local/share/Arma 3 - Other Profiles/"${groupServer} --mode=775
 	sudo -u $userLaunch cp ${installerPath}/rsc/profile.Arma3Profile /home/${userLaunch}"/.local/share/Arma 3 - Other Profiles/"${groupServer}/${groupServer}.Arma3Profile
 	sudo -u $userLaunch chmod 464 /home/${userLaunch}'/.local/share/Arma 3 - Other Profiles/'${groupServer}/*.Arma3Profile
@@ -136,7 +137,7 @@ if [[ $confirm && ($confirm == [yY] || $confirm == [yY][eE][sS]) ]]; then
 
 	# set file permissions of ~/Steam folder
 	sudo -u $userAdmin find -L /home/${userAdmin}/Steam -type d -exec chmod 775 {} \;
-	sudo -u $userAdmin find -L /home/${userAdmin}/Steam -type f -exec chmod 664 {} \;
+	sudo -u $userAdmin find -L /home/${userAdmin}/Steam -type f -exec chmod 775 {} \;
 fi
 
 read -p "Install ARMA 3 Masterserver? (y/n): " confirm
@@ -151,17 +152,18 @@ if [[ $confirm && ($confirm == [yY] || $confirm == [yY][eE][sS]) ]]; then
 
 	sudo -u $userAdmin echo "@ShutdownOnFailedCommand 1
 	@NoPromptForPassword 1
-	force_install_dir ${installPath}/a3master
-	login $user $pw
-	app_update 233780 validate
-	quit" >> $tempScript
+	force_install_dir ${installPath}/a3/a3master
+	login $user $pw" >> $tempScript
 
 	fn_printMessage ""
 	read -p "Please run steam once with your provided login data and add your SteamGUARD code! Do you want to start SteamCMD (y/n): " confirm	
 	
 	if [[  $confirm && ($confirm == [yY] || $confirm == [yY][eE][sS]) ]]; then
-		 sudo -u $userAdmin ${installPath}/steamcmd/steamcmd.sh
+		 sudo -u $userAdmin $installPath/steamcmd/steamcmd.sh +runscript $tempScript
 	fi
+
+	sudo -u $userAdmin echo "app_update 233780 validate
+	quit" >> $tempScript
 
 	sudo -u $userAdmin $installPath/steamcmd/steamcmd.sh +runscript $tempScript
 	sudo -u $userAdmin rm -f $tempScript
@@ -173,6 +175,6 @@ fn_createAlias
 # content of slass.cfg
 echo "userAdmin=$userAdmin
 userLaunch=$userLaunch
-installPath=$installPath" >> $installPath/slass-data/slass.cfg
+installPath=$installPath" >> $installPath/config/slass.cfg
 
 fn_printMessage "SLASS wurde installiert" ""
