@@ -11,6 +11,6 @@
 *License:* GNU GPLv3
 
 ## General
-This script will greatly ease the installation and management of three Arma3 servers including mods from the Steam workshop.</br></br>This is not a one-click-get-a-server script. Its usage is simple, but do yourself a favor and read this manual BEFORE you begin. Really. Basic knowledge of the linux command line usage is assumed.
+seelenlos Arma3 Server Script (SLASS) will greatly ease the installation and management of multiple Arma3 servers including mods from the Steam workshop.</br>
 
 ## The Master-Branch is WIP, use the stable-branch
