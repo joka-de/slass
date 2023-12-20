@@ -1,3 +1,4 @@
+#
 # SLASS - fn_printMessage
 # 
 # Author: PhilipJFry

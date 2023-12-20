@@ -7,15 +7,17 @@ YELLOW='\033[0;33m'
 NC='\033[0m' # No Color
 
 installPath=$(dirname "$(readlink -f "$0")")
-. $installPath/slass.cfg
+. $installPath/config/slass.cfg
 
-for var in $installPath/function/common/*.sh; do
+for var in $installPath/slass-data/function/common/*.sh; do
     . "$var"
 done
 
-for var in $installPath/function/slass/*.sh; do
+for var in $installPath/slass-data/function/slass/*.sh; do
     . "$var"
 done
+
+cp $installPath/slass-data/rsc/server.cfg $installPath/config/server.cfg
 
 fn_debugMessage "Path of slass: $installPath" ""
 

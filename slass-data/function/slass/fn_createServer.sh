@@ -1,26 +1,19 @@
 fn_createServer () {
-	fn_debugMessage "fn_createServer: start" ""
-		
+	fn_debugMessage "fn_createServer: start" ""	
+
 	while read line; do
-	    if [[ $line =~ ^"["(.+)"]"$ ]]; then
-	    	arrname=${BASH_REMATCH[1]}
-	        fn_debugMessage "Array: $arrname"
-	    elif [[ $line =~ ^([_[:alpha:]][_[:alnum:]]*)"="(.*) ]]; then
-	    	keyvalue=${BASH_REMATCH[1]}
-	    	keyvaluecontent="${BASH_REMATCH[2]}"
-	
-	    	fn_debugMessage "key: $keyvalue"
-	    	fn_debugMessage "content: $keyvaluecontent"
-	
-			declare ${arrname}[${keyvalue}]="${keyvaluecontent}"
-	    fi
-	done < /srv/slass/server.cfg
-	
-	echo ${server1[servername]}
-	echo ${server1[mission]}
+	    if [[ $line =~ [^[:space:]] ]]; then	
+		    if [[ $line =~ ^"["(.+)"]"$ ]]; then 
+		        arrname=${BASH_REMATCH[1]}
+		        declare -A $arrname
+		    elif [[ $line =~ ^([_[:alpha:]][_[:alnum:]]*)"="(.*) ]]; then 
+		        declare ${arrname}[${BASH_REMATCH[1]}]="${BASH_REMATCH[2]}"
+		    fi
+		else
+			echo ${arrname[serverName]}
+			echo ${arrname[serverPassword]}
+		fi
+	done < $installPath/config/server.cfg
 	 
-	echo ${server2[servername]}
-	echo ${server2[mission]}
- 
 	fn_debugMessage "fn_createServer: end" ""
 }
