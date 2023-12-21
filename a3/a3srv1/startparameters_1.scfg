@@ -1,0 +1,11 @@
+ishc=false
+config=/srv/arma3/a3srv1/cfg/a3srv1.cfg
+cfg=/srv/arma3/a3srv1/cfg/basic.cfg
+port=2302
+name=seelenlos
+mod=_mods/@cba_a3;_mods/@em;_mods/@zen;gm;
+servermod=_mods/@advtowing;_mods/@slmd;_mods/@slz;
+nosound
+nosplash
+world=empty
+filepatching
