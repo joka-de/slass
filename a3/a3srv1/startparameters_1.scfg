@@ -1,4 +1,10 @@
+serverid=1
+processid=1
+
 ishc=false
+arma_dir=/srv/arma3
+ip=5.189.150.110
+
 config=/srv/arma3/a3srv1/cfg/a3srv1.cfg
 cfg=/srv/arma3/a3srv1/cfg/basic.cfg
 port=2302
