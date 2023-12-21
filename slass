@@ -1,0 +1,25 @@
+#!/bin/bash
+#
+#
+#
+# SLASS - seelenlos Arma3 Server Script
+# 
+# Author: seelenlos
+# 
+# Description:
+# manages Arma3 servers
+# 
+# Parameter(s): { start | stop | install | update | wsupdate} {i | all}
+# Message <string>
+# 
+# Return Value:
+# None <Any>
+#
+#
+#
+# detect path to slass
+basepath=$(dirname "$(readlink -f "$0")")
+fn_debugMessage "Path to slass: $basepath"
+#
+# load function
+source $basepath/slass-data/function/m_fnloader.sh
