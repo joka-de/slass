@@ -15,7 +15,12 @@
 #
 # load arbitrary variables
 serverid=$2
-source $3
+if [ -f $3} ]; then
+	source $3
+else
+	echo "SLASS:    There is no scfg-file ($3), maybe the server has been stopped before or was never up."
+	exit 0
+fi
 #
 # load function
 source $basepathsource/slass-data/module/m_fnloader.sh
@@ -63,7 +68,7 @@ stop)
 	if [ -f ${runfile} ]; then
 		# ask watcher process to exit by deleting its runfile...
 		rm -f ${runfile}
-		else
+	else
 		fn_printMessage "there is no runfile (${runfile}), server shouldn't be up, will shut it down if it is up!"
 	fi
 	# and terminate arma 3 server process
