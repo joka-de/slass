@@ -11,4 +11,8 @@
 # Return Value:
 # None <Any>
 #
-find $basepath/slass-data/function/fn_*.sh -type f -exec source {} \;
+for file in $(find $basepath/slass-data/function/ -name 'fn_*.sh' -print)
+do
+	source $file
+	echo "SLASS: loaded $file"
+done

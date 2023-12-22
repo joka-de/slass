@@ -19,7 +19,8 @@
 #
 # detect path to slass
 basepath=$(dirname "$(readlink -f "$0")")
-fn_debugMessage "Path to slass: $basepath"
 #
 # load function
-source $basepath/slass-data/function/m_fnloader.sh
+source $basepath/slass-data/module/m_fnloader.sh
+#
+fn_debugMessage "Path to slass: $basepath"

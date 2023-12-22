@@ -12,7 +12,7 @@
 # Return Value:
 # None <Any>
 #
-
+fn_printMessage "Building folder structure for  server ${serverid}"
 if [ -d "${basepath}/a3/a3srv${serverid}" ]; then
 		rm -rf $basepath/a3/a3srv${serverid}
 fi

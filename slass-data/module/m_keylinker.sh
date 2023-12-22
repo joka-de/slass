@@ -12,17 +12,23 @@
 # Return Value:
 # None <Any>
 #
-
 # a3 basegame key
 ln -s ${basepath}/a3/a3master/keys/a3.bikey ${basepath}/a3/a3srv${serverid}/keys/
 # mod keys
 while read line; do
 		appname=$(echo $line | awk '{ printf "%s", $1 }')
 		apptype=$(echo $line | awk '{ printf "%s", $3 }')
-		appkey=$(echo $line | awk -v var=$(( $serverid + 3 )) '{ printf "%s", $var }' )
-		fn_debugMessage "appkey = ${appkey} for ${appname}"
-        if [ "${apptype}" != "smod" ] && [ "${appkey}" = "1" ]; then
-				fn_debugMessage " ... ${appname}-key on server #${serverid}"
+		appkey=$(echo $line | awk -v var=$(( $serverid + 4 )) '{ printf "%s", $var }' )
+		if [[ -z "$appkey" ]]; then
+			fn_printMessage "No modlist entry found for server ${serverid}, consider extending modlist"
+			appkey=$(echo $line | awk -v var=$(( 5 )) '{ printf "%s", $var }' )
+			fn_printMessage "... defaulting to entry for server 1 = ${appkey}"
+		fi
+		#
+		fn_debugMessage "appname = ${appname} | apptype = ${apptype} | appkey = ${appkey}"
+        #
+		if [ "${apptype}" != "smod" ] && [ "${appkey}" = "1" ]; then
+				fn_debugMessage " copied ${appname}-key to server ${serverid}"
                 case "$appname" in
                 gm|vn|csla|ws|spe)
                         ln -s ${basepath}/a3/a3master/keys/${appname}.bikey ${basepath}/a3/a3srv${serverid}/keys/
