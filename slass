@@ -4,7 +4,7 @@
 #
 # SLASS - seelenlos Arma3 Server Script
 # 
-# Author: seelenlos
+# Author: joka
 # 
 # Description:
 # manages Arma3 servers
@@ -24,3 +24,23 @@ basepath=$(dirname "$(readlink -f "$0")")
 source $basepath/slass-data/module/m_fnloader.sh
 #
 fn_debugMessage "Path to slass: $basepath"
+#
+#
+case "$1" in
+
+start)
+
+
+
+;;
+#
+#
+#
+#
+#
+*)
+echo "$0 (start|stop|status|log)"
+exit 1
+;;
+
+esac

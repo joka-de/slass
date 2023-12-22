@@ -1,17 +1,20 @@
-serverid=1
 processid=1
 
 ishc=false
-arma_dir=/srv/arma3
+basepath=/home/slad/slasstesting
+
 ip=5.189.150.110
 
-config=/srv/arma3/a3srv1/cfg/a3srv1.cfg
-cfg=/srv/arma3/a3srv1/cfg/basic.cfg
+otherparams=" -nosound -nosplash -world=empty -filepatching"
+
+keeplogfiledays=3
+
+hostname="seelenlos | Dessau"
+
+useradm=slad
+username=slserver
+profile=seelenlos
+
 port=2302
-name=seelenlos
 mod=_mods/@cba_a3;_mods/@em;_mods/@zen;gm;
 servermod=_mods/@advtowing;_mods/@slmd;_mods/@slz;
-nosound
-nosplash
-world=empty
-filepatching
