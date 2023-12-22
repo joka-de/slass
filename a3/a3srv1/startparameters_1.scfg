@@ -1,13 +1,14 @@
-processid=1
+serverid=1
+processid=2
 
-ishc=false
+ishc=true
 basepath=/home/slad/slasstesting
 
 ip=5.189.150.110
 
 otherparams=" -nosound -nosplash -world=empty -filepatching"
 
-keeplogfiledays=3
+logfilelifetime=3
 
 hostname="seelenlos | Dessau"
 
@@ -16,5 +17,5 @@ username=slserver
 profile=seelenlos
 
 port=2302
-mod=_mods/@cba_a3;_mods/@em;_mods/@zen;gm;
-servermod=_mods/@advtowing;_mods/@slmd;_mods/@slz;
+mod="_mods/@cba_a3;_mods/@em;_mods/@zen;gm;"
+servermod="_mods/@advtowing;_mods/@slmd;_mods/@slz;"
