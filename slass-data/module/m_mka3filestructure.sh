@@ -6,19 +6,20 @@
 # Description:
 # resets file permissons for the server instance {i}
 # 
-# Parameter(s): {i}
+# Parameter(s): { i }
 # Message <String>
 # 
 # Return Value:
 # None <Any>
 #
-fn_printMessage "Building folder structure for  server ${serverid}"
-if [ -d "${basepath}/a3/a3srv${serverid}" ]; then
-		rm -rf $basepath/a3/a3srv${serverid}
+fn_printMessage "Building folder structure for server ${1}" ""
+if [ -d "${basepath}/a3/a3srv${1}" ]; then
+		fn_debugMessage "clearing existing instance of server server ${1}" ""
+		rm -rf $basepath/a3/a3srv${1}
 fi
-mkdir $basepath/a3/a3srv${serverid} --mode=775
-ln -s ${a3instdir}/a3/a3master/* $basepath/a3/a3srv${serverid}/
-rm -f $basepath/a3/a3srv${serverid}/keys
-mkdir $basepath/a3/a3srv${serverid}/keys --mode=775
-rm -f $basepath/a3/a3srv${serverid}/cfg
-mkdir $basepath/a3/a3srv${serverid}/cfg --mode=775
+mkdir $basepath/a3/a3srv${1} --mode=775
+ln -s $basepath/a3/a3master/* $basepath/a3/a3srv${1}/
+rm -f $basepath/a3/a3srv${1}/keys
+mkdir $basepath/a3/a3srv${1}/keys --mode=775
+#rm -f $basepath/a3/a3srv${1}/cfg
+#mkdir $basepath/a3/a3srv${1}/cfg --mode=775

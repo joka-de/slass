@@ -1,0 +1,17 @@
+nhc=1
+
+basepath=/home/slad/slasstesting
+
+ip=5.189.150.110
+
+otherparams=" -nosound -nosplash -world=empty -filepatching"
+
+logfilelifetime=3
+
+hostname="seelenlos | Dessau"
+
+useradm=slad
+username=slserver
+profile=seelenlos
+
+port=2302

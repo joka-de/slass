@@ -1,7 +1,5 @@
 #!/bin/bash
 #
-#
-#
 # SLASS - seelenlos Arma3 Server Script
 # 
 # Author: joka
@@ -16,6 +14,7 @@
 # None <Any>
 #
 #
+debug="y"
 #
 # detect path to slass
 basepath=$(dirname "$(readlink -f "$0")")
@@ -26,21 +25,46 @@ source $basepath/slass-data/module/m_fnloader.sh
 fn_debugMessage "Path to slass: $basepath"
 #
 #
-case "$1" in
-
-start)
-
-
+opt1="$1"
+serverid="$2"
+#
+# test input variable { i }
+re='^[0-9]+$'
+if ! [[ $serverid =~ $re ]] ; then
+	fn_printMessage " wrong argument 2" ""
+	fn_printMessage " expected arguments ( integer number )" ""
+	exit 1
+fi
+#
+#
+case "$opt1" in
+#
+#
+start|stop|restart|status|log)
+fn_printMessage "$opt1 of Server $serverid ..." ""
+source $basepath/slass-data/module/m_runa3server.sh $opt1 $serverid
+;;
+#
+#
+install)
 
 ;;
 #
 #
+update)
+
+;;
 #
+#
+wsupdate)
+
+;;
 #
 #
 *)
-echo "$0 (start|stop|status|log)"
-exit 1
+	fn_printMessage " wrong argument 1" ""
+	fn_printMessage " expected arguments ( start | stop | install | update | wsupdate)" ""
+	exit 1
 ;;
 
 esac

@@ -1,24 +1,50 @@
 #
-# SLASS - mka3filestructure
+# SLASS - m_runa3server
 # 
 # Author: joka
 # 
 # Description:
-# resets file permissons for the server instance {i}
+# laucher / manager for server instance {i}
 # 
-# Parameter(s): {i}
+# Parameter(s): { start | stop | restart | status | log } {i}
 # Message <String>
 # 
 # Return Value:
 # None <Any>
 #
-fn_printMessage "Building folder structure for  server ${serverid}"
-if [ -d "${basepath}/a3/a3srv${serverid}" ]; then
-		rm -rf $basepath/a3/a3srv${serverid}
-fi
-mkdir $basepath/a3/a3srv${serverid} --mode=775
-ln -s ${a3instdir}/a3/a3master/* $basepath/a3/a3srv${serverid}/
-rm -f $basepath/a3/a3srv${serverid}/keys
-mkdir $basepath/a3/a3srv${serverid}/keys --mode=775
-rm -f $basepath/a3/a3srv${serverid}/cfg
-mkdir $basepath/a3/a3srv${serverid}/cfg --mode=775
+
+case "$1" in
+
+start)
+source $basepath/slass-data/module/m_mka3filestructure.sh $2
+source $basepath/slass-data/module/m_keylinker.sh $2
+source $basepath/slass-data/module/m_mkstartupconfig.sh $2
+#preparations needed
+#/bin/bash $basepath/slass-data/p_a3server.sh start $basepath/a3/a3srv${serverid}/startparameters_1.scfg
+;;
+#
+#
+stop)
+
+;;
+#
+#
+restart)
+
+;;
+#
+#
+status)
+/bin/bash $basepath/slass-data/p_a3server.sh $1 $basepath/a3/a3srv${2}/startparameters_1.scfg
+;;
+##
+log)
+/bin/bash $basepath/slass-data/p_a3server.sh $1 $basepath/a3/a3srv${2}/startparameters_1.scfg
+;;
+*)
+	fn_printMessage " wrong argument 1" ""
+	fn_printMessage " expected arguments ( start | stop | restart | status | log )" ""
+	exit 1
+;;
+
+esac

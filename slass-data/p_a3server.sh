@@ -7,7 +7,7 @@
 # Description:
 # starts and stops a server instance with config file
 # 
-# Parameter(s): { start | stop | status | log} {i} {startparameters_{j}.scfg}
+# Parameter(s): { start | stop | status | log} {startparameters_{j}.scfg}
 # Message <string>
 # 
 # Return Value:
@@ -36,20 +36,14 @@ if [ "$ishc" = true ]; then
 else
 	name=a3srv${serverid}
 fi
-echo $ishc
-echo $name
-port=$((2302 + 10 * ( ${serverid} - 1 )))
+#port=$((2302 + 10 * ( ${serverid} - 1 )))
 pidfile="${serverdir}/${port}.pid"
 runfile="${serverdir}/${port}.run"
-echo $pidfile
-echo $runfile
 cfg_dir=${serverdir}/cfg
 config=${cfg_dir}/${name}.cfg
 cfg=${cfg_dir}/basic.cfg
 logdir=${basepath}/log
-logfile=${logdir}/${name}_$(date +%Y-%m-%d_%H:%M:%S).log
-echo $logdir
-echo $logfile
+logfile=${logdir}/${name}_$(date +%Y-%m-%d_%H-%M-%S).log
 #=======================================================================
 #
 case "$1" in
@@ -60,33 +54,30 @@ start)
 	echo >>${logfile} "start commmand"
 	ps ax | grep ${server} | grep ${port}  > /dev/null
 	if [ $? -eq 0 ]; then
-		fn_printMessage "there is a server already running (${server} at port ${port})"
-		fn_printMessage "it can happen, when you started a server and stopped it to fast!"
-		fn_printMessage "just stop the server again and it should be good to start!"
+		fn_printMessage "there is a server already running (${server} at port ${port})" ""
+		fn_printMessage "it can happen, when you started a server and stopped it to fast!" ""
+		fn_printMessage "just stop the server again and it should be good to start!" ""
 		echo $output | ps ax | grep ${server} | grep ${port}
 	else
-		fn_printMessage "starting a3 server @port ${port}..."
+		fn_printMessage "starting a3 server @port ${port}..." ""
 		# file to mark we want server running...
 		echo "go" > ${runfile}
 		# launch the background watchdog process to run the server
-		#nohup "$0" watchdog > /dev/null 2>&1 &
-		#nohup < /dev/null >/dev/null $0 watchdog &
 		nohup $0 watchdog $scfg >${logfile} 2>&1 </dev/null &
-		#sleep 60
 	fi
 ;;
 #
 stop)
-	fn_printMessage "stopping a3 server if there is one (port=${port})..."
+	fn_printMessage "stopping a3 server if there is one (port=${port})..." ""
 	if [ -e ${runfile} ]; then
 		# ask watchdog to exit by deleting its runfile...
 		rm -f ${runfile}
 	else
-		fn_printMessage "There is no runfile (${runfile}), server shouldn't be up, will shut it down if it is up!"
+		fn_printMessage "There is no runfile (${runfile}), server shouldn't be up, will shut it down if it is up!" ""
 	fi
 	# and terminate server process
 	if [ -e ${pidfile} ]; then
-		fn_printMessage "sending sigterm to process $(cat ${pidfile})..."
+		fn_printMessage "sending sigterm to process $(cat ${pidfile})..." ""
 		kill $(cat ${pidfile})
 		if [ $?==0 ]; then
 			rm -f ${pidfile}
@@ -105,9 +96,9 @@ status)
 	#
 	if [ -e ${pidfile} ]; then
 		pid=$(< ${pidfile})
-		fn_printMessage "pid file exists (pid=${pid})..."
+		fn_printMessage "pid file exists (pid=${pid})..." ""
 		if [ -f /proc/${pid}/cmdline ]; then
-			fn_printMessage "server process seems to be running..."
+			fn_printMessage "server process seems to be running..." ""
 			#echo $output |
 			ps ax | grep ${server} | grep ${port}
 		fi
@@ -118,26 +109,24 @@ watchdog)
 	# this is a background watchdog process. do not start directly
 	# delete old logs when older then ${logfilelifetime} days
 	echo >>${logfile} "watchdog ($$): [$(date)] deleting all logfiles in ${logdir} when older then ${logfilelifetime} days."
-	fn_printMessage "watchdog ($$): [$(date)] deleting all logfiles in ${logdir} when older then ${logfilelifetime} days."
+	fn_printMessage "watchdog ($$): [$(date)] deleting all logfiles in ${logdir} when older then ${logfilelifetime} days." ""
 	find -L ${logdir} -iname "*.log" -mtime "${logfilelifetime}" -delete
 
 	while [ -e ${runfile} ]; do
 		# launch the server...
 		cd ${serverdir}
 		echo >>${logfile} "watchdog ($$): [$(date)] starting server (port ${port})..."
-		fn_printMessage "watchdog ($$): [$(date)] starting server (port ${port})..."
+		fn_printMessage "watchdog ($$): [$(date)] starting server (port ${port})..." ""
 		#
 		if [ "$ishc" = true ]; then
-			#sudo -u ${username} ${server} >>${logfile} 2>&1 -filepatching -config=${config} -cfg=${cfg} -port=${port} -client -connect=127.0.0.1 -name=${profile} ${otherparams} -mod=${mods}&
-			ls -l &
+			sudo -u ${username} ${server} >>${logfile} 2>&1 -filepatching -config=${config} -cfg=${cfg} -port=${port} -client -connect=127.0.0.1 -name=${profile} ${otherparams} -mod=${mods}&
 			pid=$!
 			echo $pid > $pidfile
 			chmod 664 $logfile
 			chown ${useradm}:${profile} $logfile
 			wait $pid
 		else
-			#sudo -u ${username} ${server} >>${logfile} 2>&1 -filepatching -config=${config} -cfg=${cfg} -port=${port} -name=${profile} ${otherparams} -mod=${mods} -servermod=${servermods} &
-			sleep 30 &
+			sudo -u ${username} ${server} >>${logfile} 2>&1 -filepatching -config=${config} -cfg=${cfg} -port=${port} -name=${profile} ${otherparams} -mod=${mods} -servermod=${servermods} &
 			pid=$!
 			echo $pid > $pidfile
 			chmod 664 $logfile
@@ -157,8 +146,8 @@ watchdog)
 log)
 # you can see the logfile in realtime, no more need for screen or something else
 clear
-echo "printing server log of ${name}"
-echo "- to stop, press ctrl+c -"
+fn_printMessage  "printing server log of ${name}" ""
+fn_printMessage  "- to stop, press ctrl+c -" ""
 echo "========================================"
 #sleep 1
 tail -fn5 ${logdir}/$(ls -t ${logdir} | grep ${name} | head -1)
