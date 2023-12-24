@@ -18,3 +18,11 @@ port=2302
 mods=_mods/@cba_a3;_mods/@em;gm;
 
 servermods=_mods/@advtowing;_mods/@slmd;_mods/@slz;
+
+serverid=1
+
+processid=2
+
+hostname_mods= slt, GlobalMobilization
+
+ishc=true

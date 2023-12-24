@@ -1,7 +1,7 @@
 #
 # SLASS - mkstartupconfig
 # 
-# Author: seelenlos
+# Author: joka
 # 
 # Description:
 # creates the startup config startparameters_{ j }.scfg for server instance { i }
@@ -16,7 +16,6 @@
 scfg="${basepath}/config/a3srv${1}.scfg"
 if [ -e $scfg ]; then
 	source $scfg
-	cat $scfg >> $filecont
 else
 	echo "SLASS:    File not found: $scfg"
 	exit 1
@@ -64,13 +63,20 @@ while read line; do
 		fi
 	fi
 done < ${basepath}/config/modlist.inp
-
-
-# create the startparameter files for each instance
+#
+# write the startparameter files for each instance
 imax=$(($nhc+1))
 for index in $(seq 1 $imax);
 do
 	cat $scfg > "${basepath}/a3/a3srv${1}/startparameters_${index}.scfg"
 	printf "\nmods=$mods\n" >> "${basepath}/a3/a3srv${1}/startparameters_${index}.scfg"
 	printf "\nservermods=$servermods\n" >> "${basepath}/a3/a3srv${1}/startparameters_${index}.scfg"
+	printf "\nserverid=$1\n" >> "${basepath}/a3/a3srv${1}/startparameters_${index}.scfg"
+	printf "\nprocessid=$index\n" >> "${basepath}/a3/a3srv${1}/startparameters_${index}.scfg"
+	printf "\nhostname_mods=${hostname_mods}\n" >> "${basepath}/a3/a3srv${1}/startparameters_${index}.scfg"
+	if [ $index = "1" ]; then
+		printf "\nishc=false\n" >> "${basepath}/a3/a3srv${1}/startparameters_${index}.scfg"
+	else
+		printf "\nishc=true\n" >> "${basepath}/a3/a3srv${1}/startparameters_${index}.scfg"
+	fi
 done
