@@ -22,7 +22,7 @@ basepath=$(dirname "$(readlink -f "$0")")
 # load function
 source $basepath/slass-data/module/m_fnloader.sh
 #
-fn_debugMessage "Path to slass: $basepath"
+fn_debugMessage " slass: Path to slass: $basepath"
 #
 #
 opt1="$1"

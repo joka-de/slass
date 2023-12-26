@@ -1,7 +1,7 @@
 serverid=1
-processid=1
+processid=4
 hostname="seelenlos | Dessau slt, GlobalMobilization"
-ishc=false
+ishc=true
 basepath=/home/slad/slasstesting
 ip=5.189.150.110
 port=2302

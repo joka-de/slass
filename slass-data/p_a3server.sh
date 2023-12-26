@@ -16,7 +16,7 @@
 # load arbitrary variables
 scfg=$2
 if [ -e $scfg ]; then
-	source $2
+	source "$2"
 else
 	echo "SLASS:    File not found: $2"
 	echo "SLASS:    Maybe the server has been stopped before or was never up."
@@ -25,7 +25,7 @@ fi
 #
 # load function
 source $basepath/slass-data/module/m_fnloader.sh
-fn_debugMessage "scfg-File $2"
+fn_debugMessage "p_a3server: scfg-File $2"
 #
 # set generic variables
 serverdir="${basepath}/a3/a3srv${serverid}"
@@ -78,10 +78,9 @@ stop)
 	# and terminate server process
 	if [ -e ${pidfile} ]; then
 		fn_printMessage "sending sigterm to process $(cat ${pidfile})..." ""
-		kill $(cat ${pidfile})
-		if [ $?==0 ]; then
-			rm -f ${pidfile}
-		fi
+		kill -15 $(cat ${pidfile}) || true
+		rm -f ${pidfile}
+
 	fi
 ;;
 #

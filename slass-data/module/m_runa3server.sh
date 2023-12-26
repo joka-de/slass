@@ -16,15 +16,31 @@
 case "$1" in
 
 start)
+# execute pre-start modules
 source $basepath/slass-data/module/m_mka3filestructure.sh $2
 source $basepath/slass-data/module/m_keylinker.sh $2
 source $basepath/slass-data/module/m_mkstartupconfig.sh $2
-#preparations needed
-#/bin/bash $basepath/slass-data/p_a3server.sh start $basepath/a3/a3srv${serverid}/startparameters_1.scfg
+#
+# starting the servers
+source <(sed '/^nhc/!d' $sourcescfg)
+for index in $(seq 1 $(( $nhc + 1 )));
+do
+	fn_debugMessage "m_runa3server: Starting process $index of server instance ${2}"
+	fn_debugMessage "m_runa3server: /bin/bash $basepath/slass-data/p_a3server.sh start $basepath/a3/a3srv${2}/startparameters_$index.scfg"
+	/bin/bash $basepath/slass-data/p_a3server.sh start $basepath/a3/a3srv${2}/startparameters_$index.scfg
+done
 ;;
 #
 #
 stop)
+# stopping the servers
+source <(sed '/^nhc/!d' ${basepath}/config/a3srv${2}.scfg)
+for index in $(seq 1 $(( $nhc + 1 )));
+do
+	fn_debugMessage "m_runa3server: Stopping process $index of server instance ${2}" ""
+	fn_debugMessage "m_runa3server: /bin/bash $basepath/slass-data/p_a3server.sh stop $basepath/a3/a3srv${2}/startparameters_$index.scfg" ""
+	/bin/bash $basepath/slass-data/p_a3server.sh stop $basepath/a3/a3srv${2}/startparameters_$index.scfg
+done
 
 ;;
 #
@@ -42,8 +58,8 @@ log)
 /bin/bash $basepath/slass-data/p_a3server.sh $1 $basepath/a3/a3srv${2}/startparameters_1.scfg
 ;;
 *)
-	fn_printMessage " wrong argument 1" ""
-	fn_printMessage " expected arguments ( start | stop | restart | status | log )" ""
+	fn_debugMessageMessage "m_runa3server: wrong argument 1" ""
+	fn_debugMessage "m_runa3server: expected arguments ( start | stop | restart | status | log )" ""
 	exit 1
 ;;
 
