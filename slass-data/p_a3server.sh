@@ -7,8 +7,9 @@
 # Description:
 # starts and stops a server instance with config file
 # 
-# Parameter(s): { start | stop | status | log} {startparameters_{j}.scfg}
-# Message <string>
+# Parameter(s):
+# 1. option { start | stop | status | log} <string>
+# 2. scfg file {startparameters_{j}.scfg} <string>
 # 
 # Return Value:
 # None <Any>
@@ -67,6 +68,7 @@ start)
 	fi
 ;;
 #
+#
 stop)
 	fn_printMessage "stopping a3 server if there is one (port=${port})..." ""
 	if [ -e ${runfile} ]; then
@@ -80,9 +82,9 @@ stop)
 		fn_printMessage "sending sigterm to process $(cat ${pidfile})..." ""
 		kill -15 $(cat ${pidfile}) || true
 		rm -f ${pidfile}
-
 	fi
 ;;
+#
 #
 status)
 	if [ -e ${runfile} ]; then
@@ -103,6 +105,7 @@ status)
 		fi
 	fi
 ;;
+#
 #
 watchdog)
 	# this is a background watchdog process. do not start directly
@@ -142,20 +145,21 @@ watchdog)
 	done
 ;;
 #
+#
 log)
-# you can see the logfile in realtime, no more need for screen or something else
-clear
-fn_printMessage  "printing server log of ${name}" ""
-fn_printMessage  "- to stop, press ctrl+c -" ""
-echo "========================================"
-#sleep 1
-tail -fn5 ${logdir}/$(ls -t ${logdir} | grep ${name} | head -1)
+	# you can see the logfile in realtime, no more need for screen or something else
+	clear
+	fn_printMessage  "printing server log of ${name}" ""
+	fn_printMessage  "- to stop, press ctrl+c -" ""
+	echo "========================================"
+	#sleep 1
+	tail -fn5 ${logdir}/$(ls -t ${logdir} | grep ${name} | head -1)
 ;;
 #
 #
 *)
-echo "$0 (start|stop|status|log)"
-exit 1
+	fn_printMessage "$0 (start|stop|status|log)" ""
+	return 1
 ;;
 
 esac

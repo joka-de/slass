@@ -18,7 +18,7 @@ sourcescfg="${basepath}/config/a3srv${1}.scfg"
 if [ -e $sourcescfg ]; then
 	source $sourcescfg
 else
-	echo "SLASS:    File not found: $scfg"
+	fn_debugMessage "mk_startupconfig: File not found: $sourcescfg. Aborting."
 	exit 1
 fi
 #
@@ -51,7 +51,6 @@ while read line; do
 			esac
 	fi
 	#
-	
 	if [ "${apptype}" = "smod" ] && [ "${appkey}" = "1" ]; then
 			servermods=${servermods}"_mods/@"${appname}";"
 	fi
@@ -68,6 +67,9 @@ done < ${basepath}/config/modlist.inp
 # extract hostname from source
 source <(sed '/^hostname/!d' $sourcescfg)
 #
+# extract port from source
+source <(sed '/^port/!d' $sourcescfg)
+#
 # append the modnames to the hostname
 if [ "${hostname_mods}" = "" ]; then
 	hostname_mods=${hostname_mods}" Vanilla"
@@ -82,6 +84,7 @@ do
 	printf "\nserverid=$1\n" > "${basepath}/a3/a3srv${1}/startparameters_${index}.scfg"
 	printf "\nprocessid=$index\n" >> "${basepath}/a3/a3srv${1}/startparameters_${index}.scfg"
 	printf "\nhostname=\"$hostname\"\n" >> "${basepath}/a3/a3srv${1}/startparameters_${index}.scfg"
+	printf "\nport=$(($port + ($index - 1 )))\n" >> "${basepath}/a3/a3srv${1}/startparameters_${index}.scfg"
 	#
 	if [ $index = "1" ]; then
 		printf "\nishc=false\n" >> "${basepath}/a3/a3srv${1}/startparameters_${index}.scfg"
@@ -89,12 +92,11 @@ do
 		printf "\nishc=true\n" >> "${basepath}/a3/a3srv${1}/startparameters_${index}.scfg"
 	fi
 	#
-	cat $sourcescfg | sed '/^hostname/d' >> "${basepath}/a3/a3srv${1}/startparameters_${index}.scfg"
+	#
+	# import source while omiting some lines
+	cat $sourcescfg | sed '/^hostname/d' | sed '/^nhc/d' | sed '/^port/d' >> "${basepath}/a3/a3srv${1}/startparameters_${index}.scfg"
 	printf "\nmods=\"$mods\"\n" >> "${basepath}/a3/a3srv${1}/startparameters_${index}.scfg"
 	printf "\nservermods=\"$servermods\"\n" >> "${basepath}/a3/a3srv${1}/startparameters_${index}.scfg"
-	#
-	#delete 'nhc' line
-	sed -i '/^nhc/d' ${basepath}/a3/a3srv${1}/startparameters_${index}.scfg
 	#
 	#delete empty lines
 	sed -i '/^[[:space:]]*$/d' ${basepath}/a3/a3srv${1}/startparameters_${index}.scfg
