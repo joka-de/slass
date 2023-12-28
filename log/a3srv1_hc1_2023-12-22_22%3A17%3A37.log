@@ -1,3 +1,0 @@
-watchdog (3813200): [Fri Dec 22 10:17:37 PM CET 2023] deleting all logfiles in /home/slad/slasstesting/log when older then  days.
-watchdog (3813200): [Fri Dec 22 10:17:37 PM CET 2023] starting server (port 2302)...
-sudo: a password is required
