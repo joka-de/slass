@@ -415,7 +415,7 @@ a3master<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:M
     <node id="n34">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.document">
-          <y:Geometry height="94.0" width="164.0" x="-434.310391780425" y="-934.2996347888857"/>
+          <y:Geometry height="94.0" width="164.0" x="-443.0844549383197" y="-943.7996347888859"/>
           <y:Fill color="#00FFFF" color2="#FFFFFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="48.103515625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="62.681640625" x="50.6591796875" xml:space="preserve" y="4.0">server.scfg
