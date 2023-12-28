@@ -13,11 +13,11 @@
 # Return Value:
 # None <Any>
 #
-# checking for config file
-if [ ! -e "$sourcescfg" ]; then
-	fn_printMessage "m_a3server: $sourcescfg not found. Aborting." ""
-	exit 1
-fi
+## checking for config file
+#if [ ! -e "$sourcescfg" ]; then
+#	fn_printMessage "m_a3server: $sourcescfg not found. Aborting." ""
+#	exit 1
+#fi
 #
 case "$1" in
 
@@ -40,13 +40,19 @@ done
 #
 stop)
 # stopping the servers
-source <(sed '/^nhc/!d' ${basepath}/config/a3srv${2}.scfg)
-for index in $(seq 1 $(( $nhc + 1 )));
-do
-	fn_debugMessage "m_a3server: Stopping process $index of server instance ${2}" ""
-	fn_debugMessage "m_a3server: /bin/bash $basepath/slass-data/p_a3server.sh stop $basepath/a3/a3srv${2}/startparameters_$index.scfg" ""
-	/bin/bash $basepath/slass-data/p_a3server.sh stop $basepath/a3/a3srv${2}/startparameters_$index.scfg
-done
+if [ -e "${basepath}/config/a3srv${2}.scfg" ]; then
+	source <(sed '/^nhc/!d' ${basepath}/config/a3srv${2}.scfg)
+	fn_debugMessage "m_a3server: loaded scfg for server instance ${2}" ""
+	#
+	for index in $(seq 1 $(( $nhc + 1 )));
+	do
+		fn_debugMessage "m_a3server: Stopping process $index of server instance ${2}" ""
+		fn_debugMessage "m_a3server: /bin/bash $basepath/slass-data/p_a3server.sh stop $basepath/a3/a3srv${2}/startparameters_$index.scfg" ""
+		/bin/bash $basepath/slass-data/p_a3server.sh stop $basepath/a3/a3srv${2}/startparameters_$index.scfg
+	done
+else
+	fn_debugMessage "m_a3server: scfg for server instance ${2} not found, omiting to stop the prozess" ""
+fi
 #
 # remove server dir
 fn_rmserverdir "${basepath}/a3/a3srv${2}"
@@ -54,16 +60,18 @@ fn_rmserverdir "${basepath}/a3/a3srv${2}"
 #
 #
 restart)
-
+$0 stop ${2}
+sleep 5s
+$0 start ${2}
 ;;
 #
 #
 status)
-/bin/bash $basepath/slass-data/p_a3server.sh $1 $basepath/a3/a3srv${2}/startparameters_1.scfg
+/bin/bash $basepath/slass-data/p_a3server.sh status $basepath/a3/a3srv${2}/startparameters_1.scfg
 ;;
 ##
 log)
-/bin/bash $basepath/slass-data/p_a3server.sh $1 $basepath/a3/a3srv${2}/startparameters_1.scfg
+/bin/bash $basepath/slass-data/p_a3server.sh log $basepath/a3/a3srv${2}/startparameters_1.scfg
 ;;
 *)
 	fn_debugMessage "m_a3server: wrong argument 1" ""

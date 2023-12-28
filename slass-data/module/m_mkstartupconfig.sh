@@ -6,8 +6,8 @@
 # Description:
 # creates the startup config startparameters_{ j }.scfg for server instance { i }
 # 
-# Parameter(s): {i}
-# Message <String>
+# Parameter(s):
+# 2. server id {i} <integer>
 # 
 # Return Value:
 # None <Any>
@@ -39,7 +39,7 @@ while read line; do
 		fn_printMessage "... defaulting to entry for server 1 = ${appkey}"
 	fi
 	#
-	fn_debugMessage "appname = ${appname} | applistname = ${applistname} | apptype = ${apptype} | appkey = ${appkey}"
+	fn_debugMessage "mk_startupconfig: appname = ${appname} | applistname = ${applistname} | apptype = ${apptype} | appkey = ${appkey}"
 	#
 	if [ "${apptype}" = "mod" ] && [ "${appkey}" = "1" ]; then
 		case "$appname" in
@@ -75,7 +75,7 @@ if [ "${hostname_mods}" = "" ]; then
 	hostname_mods=${hostname_mods}" Vanilla"
 fi
 hostname="${hostname}${hostname_mods}"
-fn_debugMessage "$hostname"
+fn_debugMessage "mkstartupconfig: hostname $hostname"
 #
 # write the startparameter files for each instance
 imax=$(($nhc+1))
@@ -84,7 +84,7 @@ do
 	printf "\nserverid=$1\n" > "${basepath}/a3/a3srv${1}/startparameters_${index}.scfg"
 	printf "\nprocessid=$index\n" >> "${basepath}/a3/a3srv${1}/startparameters_${index}.scfg"
 	printf "\nhostname=\"$hostname\"\n" >> "${basepath}/a3/a3srv${1}/startparameters_${index}.scfg"
-	printf "\nport=$(($port + ($index - 1 )))\n" >> "${basepath}/a3/a3srv${1}/startparameters_${index}.scfg"
+	printf "\nport=$(($port + (($index - 1 )*10)))\n" >> "${basepath}/a3/a3srv${1}/startparameters_${index}.scfg"
 	#
 	if [ $index = "1" ]; then
 		printf "\nishc=false\n" >> "${basepath}/a3/a3srv${1}/startparameters_${index}.scfg"

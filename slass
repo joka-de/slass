@@ -14,9 +14,16 @@
 # Return Value:
 # None <Any>
 #
-#
+# enable debugging if needed
 debug=""
 debug="y"
+#
+# enable REALLY verbose debugging if needed
+verbose="n"
+if [[ $verbose == "y" ]] ; then
+	export PS4="\$LINENO: "
+	set -xv
+fi
 #
 # detect path to slass
 basepath=$(dirname "$(readlink -f "$0")")

@@ -121,14 +121,14 @@ watchdog)
 		fn_printMessage "watchdog ($$): [$(date)] starting server (port ${port})..." ""
 		#
 		if [ "$ishc" = true ]; then
-			sudo -u ${username} ${server} >>${logfile} 2>&1 -filepatching -config=${config} -cfg=${cfg} -port=${port} -client -connect=127.0.0.1 -name=${profile} ${otherparams} -mod=${mods}&
+			sudo -u ${username} ${server} >>${logfile} 2>&1 -config=${config} -cfg=${cfg} -port=${port} -client -connect=127.0.0.1 -name=${profile} ${otherparams} -mod=${mods}&
 			pid=$!
 			echo $pid > $pidfile
 			chmod 664 $logfile
 			chown ${useradm}:${profile} $logfile
 			wait $pid
 		else
-			sudo -u ${username} ${server} >>${logfile} 2>&1 -filepatching -config=${config} -cfg=${cfg} -port=${port} -name=${profile} ${otherparams} -mod=${mods} -servermod=${servermods} &
+			sudo -u ${username} ${server} >>${logfile} 2>&1 -config=${config} -cfg=${cfg} -port=${port} -name=${profile} ${otherparams} -mod=${mods} -servermod=${servermods} &
 			pid=$!
 			echo $pid > $pidfile
 			chmod 664 $logfile

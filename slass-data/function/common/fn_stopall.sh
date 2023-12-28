@@ -15,9 +15,7 @@
 fn_stopall () {
 	#
 	# detect existing server instance directories and interate over them
-	echo "######"
 	ls ${1}/a3/ | sed 's/a3//g' | sed 's/[^0-9]//g' | sed '/^[[:space:]]*$/d' | while read id; do
-		echo $id
 		fn_printMessage "found server directory a3srv${id}, stopping Server $id now..." ""
 		source ${1}/slass-data/module/m_a3server.sh stop $id
 	done
