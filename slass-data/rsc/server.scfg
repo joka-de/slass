@@ -1,13 +1,22 @@
+[global]
+ip=5.189.150.110
+otherparams=-nosound -nosplash -world=empty -filepatching
+logfilelifetime=3
+useradm=slad
+username=slserver
+profile=seelenlos
+
 [server1]
-serverName=rosslau an der elbe
+port=2302
+serverName=seelenlos | Dessau
 serverPassword=test
-adminPassword=admin
-mission=mission1.altis
-hc=2
+adminPassword=thwdessau
+headlessClient=2
 
 [server2]
-serverName=dessau
+port=2322
+serverName=seeelenlos | Rosslau
 serverPassword=test
-adminPassword=root
+adminPassword=thwdessau
 mission=mission2.tanoa
-hc=1
+headlessClient=1

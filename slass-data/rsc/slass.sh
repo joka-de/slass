@@ -38,6 +38,10 @@ case $1 in
 		fn_debugMessage "Restart Server" ""
 		fn_restartServer
 	;;
+	config)
+		fn_debugMessage "Create Config" ""
+		fn_mkaconfig $2
+	;;
 	*)
 		fn_printMessage "Wrong option! Please use create, start, stop or restart"
 	;;
