@@ -13,11 +13,6 @@
 # Return Value:
 # None <Any>
 #
-## checking for config file
-#if [ ! -e "$sourcescfg" ]; then
-#	fn_printMessage "m_a3server: $sourcescfg not found. Aborting." ""
-#	exit 1
-#fi
 #
 case "$1" in
 

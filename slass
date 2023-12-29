@@ -63,7 +63,8 @@ fn_stopall $basepath
 #
 #
 install)
-
+fn_printMessage "beginning $opt1 ..." ""
+source $basepath/slass-data/module/m_install.sh
 ;;
 #
 #
