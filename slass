@@ -31,57 +31,80 @@ basepath=$(dirname "$(readlink -f "$0")")
 # load function
 source $basepath/slass-data/module/m_fnloader.sh
 #
-fn_debugMessage " slass: Path to slass: $basepath"
+fn_debugMessage "slass: Path to slass: $basepath"
 #
+# check for root execution
+fn_checkroot
 #
+# options to var
 opt1="$1"
 serverid="$2"
 #
 #
 case "$opt1" in
 #
-#
 start|stop|restart|status|log)
-#
-# test input variable { i }
-re='^[0-9]+$'
-if ! [[ $serverid =~ $re ]] ; then
-	fn_printMessage "wrong argument 2" ""
-	fn_printMessage "expected arguments ( integer number )" ""
-	exit 1
-fi
-#
-fn_printMessage "$opt1 of Server $serverid ..." ""
-source $basepath/slass-data/module/m_a3server.sh $opt1 $serverid
+	#
+	# test input variable { i }
+	re='^[0-9]+$'
+	if ! [[ $serverid =~ $re ]] ; then
+		fn_printMessage "wrong argument 2" ""
+		fn_printMessage "expected arguments ( integer number )" ""
+		exit 1
+	fi
+	#
+	fn_printMessage "$opt1 of Server $serverid ..." ""
+	source $basepath/slass-data/module/m_a3server.sh $opt1 $serverid
 ;;
 #
 #
 stopall)
-fn_printMessage "stoppping all servers" ""
-fn_stopall $basepath
+	fn_printMessage "stoppping all servers" ""
+	fn_stopall $basepath
 ;;
 #
 #
-install)
-fn_printMessage "beginning $opt1 ..." ""
-source $basepath/slass-data/module/m_install.sh
+install-steamcmd)
+	fn_printMessage "beginning $opt1 ..." ""
+	source $basepath/slass-data/module/m_installsteamcmd.sh
 ;;
 #
 #
+install-arma3)
+	fn_printMessage "beginning $opt1 ..." ""
+	#
+	# make a3 dir
+	fn_mka3masterdir
+	source $basepath/slass-data/module/m_updategame.sh
+;;
+#
+#
+update-game)
+	fn_printMessage "beginning $opt1 ..." ""
+	$0 stopall
+	source $basepath/slass-data/module/m_updategame.sh
+;;
+#
+#
+update-ws)
+	fn_printMessage "beginning $opt1 ..." ""
+	$0 stopall
+	source $basepath/slass-data/module/m_updatews.sh
+;;
 update)
-
-;;
-#
-#
-wsupdate)
-
+	$0 stopall
+	sleep 1s
+	$0 update-game
+	sleep 1s
+	$0 update-ws
 ;;
 #
 #
 *)
-	fn_printMessage " wrong argument 1" ""
-	fn_printMessage " expected arguments ( start | stop | install | update | wsupdate)" ""
+	fn_printMessage "wrong argument 1" ""
+	fn_printMessage "expected arguments ( start | stop | restart | status | log | install-steamcmd | install-arma3 | update | update-game | update-ws)" ""
 	exit 1
 ;;
 
 esac
+exit 0

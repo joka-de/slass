@@ -88,9 +88,9 @@ stop)
 #
 status)
 	if [ -e ${runfile} ]; then
-		echo "runfile exist, server should be up or is starting..."
-		echo "if the server is not done with its start, you will not get a pid file info in the next rows."
-		echo "if the server is done with its start, you will get a pid file and process info in the next rows."
+		fn_printMessage "runfile exist, server should be up or is starting..." ""
+		fn_printMessage "if the server is not done with its start, you will not get a pid file info in the next rows." ""
+		fn_printMessage "if the server is done with its start, you will get a pid file and process info in the next rows." ""
 	else
 		echo "runfile doesn't exist, server should be down or is going down..."
 	fi
@@ -110,25 +110,25 @@ status)
 watchdog)
 	# this is a background watchdog process. do not start directly
 	# delete old logs when older then ${logfilelifetime} days
-	echo >>${logfile} "watchdog ($$): [$(date)] deleting all logfiles in ${logdir} when older then ${logfilelifetime} days."
+	#echo >>${logfile} "watchdog ($$): [$(date)] deleting all logfiles in ${logdir} when older then ${logfilelifetime} days."
 	fn_printMessage "watchdog ($$): [$(date)] deleting all logfiles in ${logdir} when older then ${logfilelifetime} days." ""
 	find -L ${logdir} -iname "*.log" -mtime "${logfilelifetime}" -delete
 
 	while [ -e ${runfile} ]; do
 		# launch the server...
 		cd ${serverdir}
-		echo >>${logfile} "watchdog ($$): [$(date)] starting server (port ${port})..."
+		#echo >>${logfile} "watchdog ($$): [$(date)] starting server (port ${port})..."
 		fn_printMessage "watchdog ($$): [$(date)] starting server (port ${port})..." ""
 		#
 		if [ "$ishc" = true ]; then
-			sudo -u ${username} ${server} >>${logfile} 2>&1 -config=${config} -cfg=${cfg} -port=${port} -client -connect=127.0.0.1 -name=${profile} ${otherparams} -mod=${mods}&
+			sudo -u ${userlnch} ${server} >>${logfile} 2>&1 -config=${config} -cfg=${cfg} -port=${port} -client -connect=127.0.0.1 -name=${profile} ${otherparams} -mod=${mods}&
 			pid=$!
 			echo $pid > $pidfile
 			chmod 664 $logfile
 			chown ${useradm}:${profile} $logfile
 			wait $pid
 		else
-			sudo -u ${username} ${server} >>${logfile} 2>&1 -config=${config} -cfg=${cfg} -port=${port} -name=${profile} ${otherparams} -mod=${mods} -servermod=${servermods} &
+			sudo -u ${userlnch} ${server} >>${logfile} 2>&1 -config=${config} -cfg=${cfg} -port=${port} -name=${profile} ${otherparams} -mod=${mods} -servermod=${servermods} &
 			pid=$!
 			echo $pid > $pidfile
 			chmod 664 $logfile

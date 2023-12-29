@@ -13,7 +13,7 @@
 # None <Any>
 #
 # read data
-sourcescfg="${basepath}/config/a3srv${1}.scfg"
+sourcescfg="${basepath}/a3/a3master/cfg/a3srv${1}.scfg"
 #
 if [ -e $sourcescfg ]; then
 	source $sourcescfg

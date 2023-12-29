@@ -14,6 +14,10 @@
 #
 fn_mka3masterdir () {
 	fn_debugMessage "$FUNCNAME: start" ""
+	#
+	# load slass.scfg
+	fn_readuser $basepath/config/server.scfg
+	#
 	# set permissions on basepath
 	sudo chown ${useradm}:${grpserver} $basepath
 	sudo -u $useradm chmod 775 $basepath
@@ -21,11 +25,9 @@ fn_mka3masterdir () {
 	sudo -u $useradm chmod 775 $basepath/slass
 	fn_debugMessage "$FUNCNAME: permissions set on $basepath" ""
 	#
-	sudo -u $useradm rm -rf $basepath/a3/a3master
-	sudo -u $useradm rm -rf $basepath/steamcmd
 	#
+	sudo -u $useradm rm -rf $basepath/a3/a3master
 	sudo -u $useradm mkdir $basepath/a3/a3master --mode=775
-	sudo -u $useradm mkdir $basepath/steamcmd --mode=775
 	#
 	#
 	sudo -u $useradm mkdir ${basepath}/a3/a3master/_mods --mode=775

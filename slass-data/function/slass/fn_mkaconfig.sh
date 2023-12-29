@@ -1,8 +1,22 @@
+#
+# SLASS - fn_mkaconfig
+# 
+# Author: Fry
+# 
+# Description:
+# create configs for server instance a3srv{i}
+# 
+# Parameter(s):
+# 1. server id {i} <integer>
+#
+# Return Value:
+# None <Any>
+#
 fn_mkaconfig () {
 	fn_debugMessage "$FUNCNAME: start" ""	
 
 	if [[ $# -eq 0 ]]; then 
-		fn_printMessage "$FUNCNAME: Servernumber is $#" ""
+		fn_debugMessage "$FUNCNAME: Servernumber not provided" ""
 	else
 		counter=0
 
@@ -14,7 +28,7 @@ fn_mkaconfig () {
 		    elif [[ $line =~ ^([_[:alpha:]][_[:alnum:]]*)"="(.*) ]]; then 
 		        declare ${arrname}[${BASH_REMATCH[1]}]="${BASH_REMATCH[2]}"	       
 		    fi	  	
-		done < $installPath/config/server.scfg
+		done < $basepath/config/server.scfg
 		
 		serverCount=$(expr $counter - 1)
 
@@ -22,30 +36,39 @@ fn_mkaconfig () {
 			declare -n serverArrayGlobal="global"
 
 			i=$1
-				
-			declare -n serverArray="server${i}"
-
-			if [[ -f "$installPath/config/a3srv${i}.scfg" ]]; then
-				rm "$installPath/config/a3srv${i}.scfg"
-			fi
-
-			if [[ -f "$installPath/a3/a3master/cfg/a3srv${i}.cfg" ]]; then
-				rm "$installPath/a3/a3master/cfg/a3srv${i}.cfg"
-			fi
-
-			touch "$installPath/config/a3srv${i}.scfg"
-			cp "$installPath/slass-data/rsc/a3master.cfg" "$installPath/a3/a3master/cfg/a3srv${i}.cfg"
+			scfgi="${basepath}/a3/a3master/cfg/a3srv${1}.scfg"
+			fn_debugMessage "$FUNCNAME: scfg file $scfgi" ""
 			
-			echo "nhc=${serverArray[headlessClient]}" >> "$installPath/config/a3srv${i}.scfg"
-			echo "basepath=$installPath" >> "$installPath/config/a3srv${i}.scfg"
-			echo "ip=${serverArrayGlobal[ip]}" >> "$installPath/config/a3srv${i}.scfg"
-			echo "port=${serverArray[port]}" >> "$installPath/config/a3srv${i}.scfg"
-			echo "otherparams='${serverArrayGlobal[otherparams]}'" >> "$installPath/config/a3srv${i}.scfg"
-			echo "logfilelifetime=${serverArrayGlobal[logfilelifetime]}" >> "$installPath/config/a3srv${i}.scfg"
-			echo "hostname=${serverArray[serverName]}" >> "$installPath/config/a3srv${i}.scfg"
-			echo "useradm=${serverArrayGlobal[useradm]}" >> "$installPath/config/a3srv${i}.scfg"
-			echo "username=${serverArrayGlobal[username]}" >> "$installPath/config/a3srv${i}.scfg"
-			echo "profile=${serverArrayGlobal[profile]}" >> "$installPath/config/a3srv${i}.scfg"		
+			cfgi="${basepath}/a3/a3master/cfg/a3srv${1}.cfg"
+			fn_debugMessage "$FUNCNAME: cfg file $cfgi" ""
+			
+			declare -n serverArray="server${1}"
+
+			if [[ -f $scfgi ]]; then
+				rm $scfgi
+			fi
+
+			if [[ -f $cfgi ]]; then
+				rm $cfgi
+			fi
+
+			if [[ -f "${basepath}/a3/a3master/cfg/basic.cfg" ]]; then
+				rm "${basepath}/a3/a3master/cfg/basic.cfg"
+			fi
+
+			cp "${basepath}/config/a3master.cfg" $cfgi
+			cp "${basepath}/config/basic.cfg" "${basepath}/a3/a3master/cfg/basic.cfg"
+			
+			printf "\nnhc=${serverArray[headlessClient]}" > $scfgi
+			printf "\nbasepath=$basepath" >> $scfgi
+			printf "\nip=${serverArrayGlobal[ip]}" >> $scfgi
+			printf "\nport=${serverArray[port]}" >> $scfgi
+			printf "\notherparams=\"${serverArrayGlobal[otherparams]}\"" >> $scfgi
+			printf "\nlogfilelifetime=${serverArrayGlobal[logfilelifetime]}" >> $scfgi
+			printf "\nhostname=\"${serverArray[serverName]}\"" >> $scfgi
+			printf "\nuseradm=${serverArrayGlobal[useradm]}" >> $scfgi
+			printf "\nuserlnch=${serverArrayGlobal[userlnch]}" >> $scfgi
+			printf "\nprofile=${serverArrayGlobal[profile]}" >> $scfgi
 		fi
 	fi
 	fn_debugMessage "$FUNCNAME: end" ""

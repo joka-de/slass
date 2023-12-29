@@ -14,6 +14,10 @@
 #
 fn_installsteamcmd () {
 	fn_debugMessage "$FUNCNAME: start" ""
+	sudo -u $useradm rm -rf $basepath/steamcmd
+	sudo -u $useradm mkdir $basepath/steamcmd --mode=775
+	fn_debugMessage "$FUNCNAME: cleared steamdir" ""
+	#
 	sudo apt install lib32gcc-s1 lib32stdc++6 rename
 	cd ${basepath}/steamcmd
 	sudo -u $useradm wget -nv http://media.steampowered.com/installer/steamcmd_linux.tar.gz

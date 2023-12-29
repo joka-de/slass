@@ -10,13 +10,13 @@ profile=seelenlos
 port=2302
 serverName=seelenlos | Dessau
 serverPassword=test
-adminPassword=thwdessau
+adminPassword=admin
 headlessClient=2
 
 [server2]
 port=2322
 serverName=seeelenlos | Rosslau
 serverPassword=test
-adminPassword=thwdessau
+adminPassword=admin
 mission=mission2.tanoa
 headlessClient=1
