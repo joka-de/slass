@@ -1,11 +1,5 @@
-cba_a3		xx					450814997		mod		1 1 1
-em			xx					333310405		mod		1 1 1
-advtowing	xx					639837898		smod	1 1 1
-slmd		xx					506841608		smod	1 1 0
-slt			slt					503315867		cmod	1 1 1
-slz			xx					647452409		smod	1 1 1
-gm			GlobalMobilization	local			mod		1 0 0
-vn			PrairieFire			local			mod		0 0 0
-csla		CSLA				local			mod		0 0 0
-ws			WesternSahara		local			mod		0 0 0
-spe			Spearhead_1944		local			mod		0 0 1
+cba_a3		450814997	mod	1 1 1 xx
+gm		local		mod	0 1 1 GM
+vn		local		mod     0 0 0 VN
+csla		local		mod     0 0 0 CSLA
+ws		local		mod     0 0 0 WS
