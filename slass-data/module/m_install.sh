@@ -39,18 +39,19 @@ if [ $goinst != "y" ]; then
 	exit 0
 fi
 #
-# scripted user management
-fn_printMessage "
-Do you want the users named above to be created?
-! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !
-WARNING, if they already exist, they will be DELETED, including their home folders!
-! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !
-
-Create Users? (y/n)"
-read mkuser
-if [ $mkuser == "y" ]; then
-	fn_deleteAndCreateUser
-fi
+## scripted user management - OMITTED FOR NOW
+#fn_printMessage "
+#Do you want the users named above to be created?
+#! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !
+#WARNING, if they already exist, they will be DELETED, including their home folders!
+#! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !
+#
+#Create Users? (y/n)"
+#read mkuser
+#if [ $mkuser == "y" ]; then
+#	fn_deleteAndCreateUser
+#fi
 #
 # create folder a3master, copy profile file
 fn_mka3masterdir
+fn_installsteamcmd
