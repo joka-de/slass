@@ -1,0 +1,142 @@
+SLASS: loaded /home/slad/slasstesting/slass-data/function/slass/fn_stopServer.sh
+SLASS: loaded /home/slad/slasstesting/slass-data/function/slass/fn_restartServer.sh
+SLASS: loaded /home/slad/slasstesting/slass-data/function/slass/fn_startServer.sh
+SLASS: loaded /home/slad/slasstesting/slass-data/function/slass/fn_createServer.sh
+SLASS: loaded /home/slad/slasstesting/slass-data/function/installer/fn_deleteAndCreateUser.sh
+SLASS: loaded /home/slad/slasstesting/slass-data/function/installer/fn_createAlias.sh
+SLASS: loaded /home/slad/slasstesting/slass-data/function/common/fn_debugMessage.sh
+SLASS: loaded /home/slad/slasstesting/slass-data/function/common/fn_printMessage.sh
+true
+a3srv1_hc1
+/home/slad/slasstesting/a3/a3srv1/2302.pid
+/home/slad/slasstesting/a3/a3srv1/2302.run
+/home/slad/slasstesting/log
+/home/slad/slasstesting/log/a3srv1_hc1_2023-12-22_23:09:00.log
+watchdog (3819773): [Fri Dec 22 11:09:00 PM CET 2023] deleting all logfiles in /home/slad/slasstesting/log when older then 3 days.
+watchdog (3819773): [Fri Dec 22 11:09:00 PM CET 2023] starting server (port 2302)...
+total 20
+-rw-r--r-- 1 slad seelenlos    8 Dec 22 23:09 2302.pid
+-rw-r--r-- 1 slad seelenlos    3 Dec 22 23:09 2302.run
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 cfg
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 keys
+-rw-r--r-- 1 slad seelenlos  355 Dec 22 22:59 startparameters_1.scfg
+watchdog (3819773): [Fri Dec 22 11:09:05 PM CET 2023] starting server (port 2302)...
+total 20
+-rw-r--r-- 1 slad seelenlos    8 Dec 22 23:09 2302.pid
+-rw-r--r-- 1 slad seelenlos    3 Dec 22 23:09 2302.run
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 cfg
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 keys
+-rw-r--r-- 1 slad seelenlos  355 Dec 22 22:59 startparameters_1.scfg
+watchdog (3819773): [Fri Dec 22 11:09:10 PM CET 2023] starting server (port 2302)...
+total 20
+-rw-r--r-- 1 slad seelenlos    8 Dec 22 23:09 2302.pid
+-rw-r--r-- 1 slad seelenlos    3 Dec 22 23:09 2302.run
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 cfg
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 keys
+-rw-r--r-- 1 slad seelenlos  355 Dec 22 22:59 startparameters_1.scfg
+watchdog (3819773): [Fri Dec 22 11:09:15 PM CET 2023] starting server (port 2302)...
+total 20
+-rw-r--r-- 1 slad seelenlos    8 Dec 22 23:09 2302.pid
+-rw-r--r-- 1 slad seelenlos    3 Dec 22 23:09 2302.run
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 cfg
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 keys
+-rw-r--r-- 1 slad seelenlos  355 Dec 22 22:59 startparameters_1.scfg
+watchdog (3819773): [Fri Dec 22 11:09:20 PM CET 2023] starting server (port 2302)...
+total 20
+-rw-r--r-- 1 slad seelenlos    8 Dec 22 23:09 2302.pid
+-rw-r--r-- 1 slad seelenlos    3 Dec 22 23:09 2302.run
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 cfg
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 keys
+-rw-r--r-- 1 slad seelenlos  355 Dec 22 22:59 startparameters_1.scfg
+watchdog (3819773): [Fri Dec 22 11:09:25 PM CET 2023] starting server (port 2302)...
+total 20
+-rw-r--r-- 1 slad seelenlos    8 Dec 22 23:09 2302.pid
+-rw-r--r-- 1 slad seelenlos    3 Dec 22 23:09 2302.run
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 cfg
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 keys
+-rw-r--r-- 1 slad seelenlos  355 Dec 22 22:59 startparameters_1.scfg
+watchdog (3819773): [Fri Dec 22 11:09:30 PM CET 2023] starting server (port 2302)...
+total 20
+-rw-r--r-- 1 slad seelenlos    8 Dec 22 23:09 2302.pid
+-rw-r--r-- 1 slad seelenlos    3 Dec 22 23:09 2302.run
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 cfg
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 keys
+-rw-r--r-- 1 slad seelenlos  355 Dec 22 22:59 startparameters_1.scfg
+watchdog (3819773): [Fri Dec 22 11:09:35 PM CET 2023] starting server (port 2302)...
+total 20
+-rw-r--r-- 1 slad seelenlos    8 Dec 22 23:09 2302.pid
+-rw-r--r-- 1 slad seelenlos    3 Dec 22 23:09 2302.run
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 cfg
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 keys
+-rw-r--r-- 1 slad seelenlos  355 Dec 22 22:59 startparameters_1.scfg
+watchdog (3819773): [Fri Dec 22 11:09:40 PM CET 2023] starting server (port 2302)...
+total 20
+-rw-r--r-- 1 slad seelenlos    8 Dec 22 23:09 2302.pid
+-rw-r--r-- 1 slad seelenlos    3 Dec 22 23:09 2302.run
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 cfg
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 keys
+-rw-r--r-- 1 slad seelenlos  355 Dec 22 22:59 startparameters_1.scfg
+watchdog (3819773): [Fri Dec 22 11:09:45 PM CET 2023] starting server (port 2302)...
+total 20
+-rw-r--r-- 1 slad seelenlos    8 Dec 22 23:09 2302.pid
+-rw-r--r-- 1 slad seelenlos    3 Dec 22 23:09 2302.run
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 cfg
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 keys
+-rw-r--r-- 1 slad seelenlos  355 Dec 22 22:59 startparameters_1.scfg
+watchdog (3819773): [Fri Dec 22 11:09:50 PM CET 2023] starting server (port 2302)...
+total 20
+-rw-r--r-- 1 slad seelenlos    8 Dec 22 23:09 2302.pid
+-rw-r--r-- 1 slad seelenlos    3 Dec 22 23:09 2302.run
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 cfg
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 keys
+-rw-r--r-- 1 slad seelenlos  355 Dec 22 22:59 startparameters_1.scfg
+watchdog (3819773): [Fri Dec 22 11:09:55 PM CET 2023] starting server (port 2302)...
+total 20
+-rw-r--r-- 1 slad seelenlos    8 Dec 22 23:09 2302.pid
+-rw-r--r-- 1 slad seelenlos    3 Dec 22 23:09 2302.run
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 cfg
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 keys
+-rw-r--r-- 1 slad seelenlos  355 Dec 22 22:59 startparameters_1.scfg
+watchdog (3819773): [Fri Dec 22 11:10:00 PM CET 2023] starting server (port 2302)...
+total 20
+-rw-r--r-- 1 slad seelenlos    8 Dec 22 23:10 2302.pid
+-rw-r--r-- 1 slad seelenlos    3 Dec 22 23:09 2302.run
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 cfg
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 keys
+-rw-r--r-- 1 slad seelenlos  355 Dec 22 22:59 startparameters_1.scfg
+watchdog (3819773): [Fri Dec 22 11:10:05 PM CET 2023] starting server (port 2302)...
+total 20
+-rw-r--r-- 1 slad seelenlos    8 Dec 22 23:10 2302.pid
+-rw-r--r-- 1 slad seelenlos    3 Dec 22 23:09 2302.run
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 cfg
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 keys
+-rw-r--r-- 1 slad seelenlos  355 Dec 22 22:59 startparameters_1.scfg
+watchdog (3819773): [Fri Dec 22 11:10:10 PM CET 2023] starting server (port 2302)...
+total 20
+-rw-r--r-- 1 slad seelenlos    8 Dec 22 23:10 2302.pid
+-rw-r--r-- 1 slad seelenlos    3 Dec 22 23:09 2302.run
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 cfg
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 keys
+-rw-r--r-- 1 slad seelenlos  355 Dec 22 22:59 startparameters_1.scfg
+watchdog (3819773): [Fri Dec 22 11:10:15 PM CET 2023] starting server (port 2302)...
+total 20
+-rw-r--r-- 1 slad seelenlos    8 Dec 22 23:10 2302.pid
+-rw-r--r-- 1 slad seelenlos    3 Dec 22 23:09 2302.run
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 cfg
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 keys
+-rw-r--r-- 1 slad seelenlos  355 Dec 22 22:59 startparameters_1.scfg
+watchdog (3819773): [Fri Dec 22 11:10:20 PM CET 2023] starting server (port 2302)...
+total 20
+-rw-r--r-- 1 slad seelenlos    8 Dec 22 23:10 2302.pid
+-rw-r--r-- 1 slad seelenlos    3 Dec 22 23:09 2302.run
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 cfg
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 keys
+-rw-r--r-- 1 slad seelenlos  355 Dec 22 22:59 startparameters_1.scfg
+watchdog (3819773): [Fri Dec 22 11:10:25 PM CET 2023] starting server (port 2302)...
+total 20
+-rw-r--r-- 1 slad seelenlos    8 Dec 22 23:10 2302.pid
+-rw-r--r-- 1 slad seelenlos    3 Dec 22 23:09 2302.run
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 cfg
+drwxr-xr-x 2 slad seelenlos 4096 Dec 22 21:25 keys
+-rw-r--r-- 1 slad seelenlos  355 Dec 22 22:59 startparameters_1.scfg
+watchdog (3819773): [Fri Dec 22 11:10:25 PM CET 2023] server died, waiting to restart...

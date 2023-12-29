@@ -1,0 +1,10 @@
+SLASS: loaded /home/slad/slasstesting/slass-data/function/slass/fn_stopServer.sh
+SLASS: loaded /home/slad/slasstesting/slass-data/function/slass/fn_restartServer.sh
+SLASS: loaded /home/slad/slasstesting/slass-data/function/slass/fn_startServer.sh
+SLASS: loaded /home/slad/slasstesting/slass-data/function/slass/fn_createServer.sh
+SLASS: loaded /home/slad/slasstesting/slass-data/function/installer/fn_deleteAndCreateUser.sh
+SLASS: loaded /home/slad/slasstesting/slass-data/function/installer/fn_createAlias.sh
+SLASS: loaded /home/slad/slasstesting/slass-data/function/common/fn_debugMessage.sh
+SLASS: loaded /home/slad/slasstesting/slass-data/function/common/fn_printMessage.sh
+SLASS: loaded /home/slad/slasstesting/slass-data/function/common/fn_rmserverdir.sh
+SLASS: watchdog (619416): [Thu Dec 28 12:23:25 PM CET 2023] deleting all logfiles in /home/slad/slasstesting/log when older then 3 days.
