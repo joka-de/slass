@@ -50,9 +50,52 @@ fn_mkaconfig () {
 				rm "${basepath}/a3/a3master/cfg/basic.cfg"
 			fi
 
-			cp "${basepath}/config/a3master.cfg" $cfgi
+			cp "${basepath}/config/a3srv${1}.cfg" $cfgi
 			cp "${basepath}/config/basic.cfg" "${basepath}/a3/a3master/cfg/basic.cfg"
 			
+			# make modlist
+			mods=""
+			servermods=""
+			hostname_mods=""
+			#
+			while read line; do
+				applistname=$(echo $line | awk '{ printf "%s", $2 }')
+				appkey=$(echo $line | awk -v var=$(( $1 + 4 )) '{ printf "%s", $var }' )
+				#
+				if [[ -z "$appkey" ]]; then
+					fn_printMessage "No modlist entry found for server ${1}, consider extending modlist"
+					appkey=$(echo $line | awk -v var=$(( 5 )) '{ printf "%s", $var }' )
+					fn_printMessage "... defaulting to entry for server 1 = ${appkey}"
+				fi
+				#
+				fn_debugMessage "$FUNCNAME: applistname = ${applistname} | appkey = ${appkey}"
+				#
+				#
+				if [ "${applistname}" != "xx" ] && [ "${appkey}" = "1" ]; then
+					if [ "${hostname_mods}" = "" ]; then
+						hostname_mods=${hostname_mods}" ${applistname}"
+					else
+						hostname_mods=${hostname_mods}", ${applistname}"
+					fi
+				fi
+			done < ${basepath}/config/modlist.inp
+			#
+			# remove spaces in cfgi
+			sed -i 's/ = /=/g' $cfgi
+			#
+			# extract hostname from source
+			source <(sed '/^hostname/!d' $cfgi | sed 's/;//')
+			#sed '/^hostname/!d' $cfgi | sed 's/;//'
+			#
+			# append the modnames to the hostname
+			if [ "${hostname_mods}" = "" ]; then
+				hostname_mods=${hostname_mods}" Vanilla"
+			fi
+			hostname="${hostname}${hostname_mods}"
+			fn_debugMessage "$FUNCNAME: hostname $hostname"
+			#
+			# change hostname in file
+			sed -i "/^hostname/c\hostname=\"$hostname\"" $cfgi
 		fi
 	fi
 	fn_debugMessage "$FUNCNAME: end" ""
