@@ -1,10 +1,10 @@
 #
-# SLASS - fn_mkaconfig
+# SLASS - fn_mksconfig
 # 
 # Author: Fry
 # 
 # Description:
-# create configs for server instance a3srv{i}
+# create scfg for server instance a3srv{i}
 # 
 # Parameter(s):
 # 1. server id {i} <integer>
@@ -12,7 +12,7 @@
 # Return Value:
 # None <Any>
 #
-fn_mkaconfig () {
+fn_mksconfig () {
 	fn_debugMessage "$FUNCNAME: start" ""	
 
 	if [[ $# -eq 0 ]]; then 
@@ -36,23 +36,25 @@ fn_mkaconfig () {
 			declare -n serverArrayGlobal="global"
 
 			i=$1
-			
-			cfgi="${basepath}/a3/a3master/cfg/a3srv${1}.cfg"
-			fn_debugMessage "$FUNCNAME: cfg file $cfgi" ""
+			scfgi="${basepath}/a3/a3master/cfg/a3srv${1}.scfg"
+			fn_debugMessage "$FUNCNAME: scfg file $scfgi" ""
 			
 			declare -n serverArray="server${1}"
 
-			if [[ -f $cfgi ]]; then
-				rm $cfgi
+			if [[ -f $scfgi ]]; then
+				rm $scfgi
 			fi
-
-			if [[ -f "${basepath}/a3/a3master/cfg/basic.cfg" ]]; then
-				rm "${basepath}/a3/a3master/cfg/basic.cfg"
-			fi
-
-			cp "${basepath}/config/a3master.cfg" $cfgi
-			cp "${basepath}/config/basic.cfg" "${basepath}/a3/a3master/cfg/basic.cfg"
 			
+			printf "\nnhc=${serverArray[headlessClient]}" > $scfgi
+			printf "\nbasepath=$basepath" >> $scfgi
+			printf "\nip=${serverArrayGlobal[ip]}" >> $scfgi
+			printf "\nport=${serverArray[port]}" >> $scfgi
+			printf "\notherparams=\"${serverArrayGlobal[otherparams]}\"" >> $scfgi
+			printf "\nlogfilelifetime=${serverArrayGlobal[logfilelifetime]}" >> $scfgi
+			printf "\nhostname=\"${serverArray[serverName]}\"" >> $scfgi
+			printf "\nuseradm=${serverArrayGlobal[useradm]}" >> $scfgi
+			printf "\nuserlnch=${serverArrayGlobal[userlnch]}" >> $scfgi
+			printf "\nprofile=${serverArrayGlobal[profile]}" >> $scfgi
 		fi
 	fi
 	fn_debugMessage "$FUNCNAME: end" ""

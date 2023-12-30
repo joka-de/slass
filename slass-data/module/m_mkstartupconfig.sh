@@ -7,7 +7,7 @@
 # creates the startup config startparameters_{ j }.scfg for server instance { i }
 # 
 # Parameter(s):
-# 2. server id {i} <integer>
+# 1. server id {i} <integer>
 # 
 # Return Value:
 # None <Any>

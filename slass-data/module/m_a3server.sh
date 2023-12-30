@@ -22,6 +22,7 @@ start)
 	#
 	# create server configs
 	fn_mkaconfig $2
+	fn_mksconfig $2
 	fn_a3filepermissions
 	#
 	source $basepath/slass-data/module/m_keylinker.sh $2
