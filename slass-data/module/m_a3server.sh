@@ -40,8 +40,8 @@ start)
 #
 stop)
 	# stopping the servers
-	if [ -e "${basepath}/config/a3srv${2}.scfg" ]; then
-		source <(sed '/^nhc/!d' ${basepath}/config/a3srv${2}.scfg)
+	if [ -e "${basepath}/a3/a3master/cfg/a3srv${2}.scfg" ]; then
+		source <(sed '/^nhc/!d' ${basepath}/a3/a3master/cfg/a3srv${2}.scfg)
 		fn_debugMessage "m_a3server: loaded scfg for server instance ${2}" ""
 		#
 		for index in $(seq 1 $(( $nhc + 1 )));

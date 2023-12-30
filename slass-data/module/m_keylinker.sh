@@ -26,15 +26,15 @@ while read line; do
 		fi
 		#
 		fn_debugMessage "m_keylinker: appname = ${appname} | apptype = ${apptype} | appkey = ${appkey}"
-        #
+		#
 		if [ "${apptype}" != "smod" ] && [ "${appkey}" = "1" ]; then
 				fn_debugMessage "m_keylinker: copied ${appname}-key to server ${1}"
-                case "$appname" in
-                gm|vn|csla|ws|spe)
-                        ln -s ${basepath}/a3/a3master/keys/${appname}.bikey ${basepath}/a3/a3srv${1}/keys/
-                ;;
-                *)
-                        find ${basepath}/a3/a3master/_mods/@${appname}/ -type f -name "*.bikey" -exec ln -sf {} ${basepath}/a3/a3srv${1}/keys/ \;
-                esac
-        fi
+				case "$appname" in
+				gm|vn|csla|ws|spe)
+						ln -s ${basepath}/a3/a3master/keys/${appname}.bikey ${basepath}/a3/a3srv${1}/keys/
+				;;
+				*)
+						find ${basepath}/a3/a3master/_mods/@${appname}/ -type f -name "*.bikey" -exec ln -sf {} ${basepath}/a3/a3srv${1}/keys/ \;
+				esac
+		fi
 done < ${basepath}/config/modlist.inp

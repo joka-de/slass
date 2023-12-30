@@ -43,7 +43,7 @@ while read line; do
 	#
 	if [ "${apptype}" = "mod" ] && [ "${appkey}" = "1" ]; then
 		case "$appname" in
-			gm|vn|csla|ws)
+			gm|vn|csla|ws|spe)
 				mods=${mods}${appname}";"
 			;;
 			*)

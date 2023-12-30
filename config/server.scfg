@@ -12,7 +12,7 @@ port=2302
 serverName=seelenlos | Dessau
 serverPassword=test
 adminPassword=admin
-headlessClient=2
+headlessClient=1
 
 [server2]
 port=2322
