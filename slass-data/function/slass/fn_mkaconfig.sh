@@ -50,7 +50,7 @@ fn_mkaconfig () {
 				rm "${basepath}/a3/a3master/cfg/basic.cfg"
 			fi
 
-			cp "${basepath}/config/a3srv${1}.cfg" $cfgi
+			cp "${basepath}/config/a3master.cfg" $cfgi
 			cp "${basepath}/config/basic.cfg" "${basepath}/a3/a3master/cfg/basic.cfg"
 			
 			# make modlist
@@ -81,21 +81,50 @@ fn_mkaconfig () {
 			done < ${basepath}/config/modlist.inp
 			#
 			# remove spaces in cfgi
-			sed -i 's/ = /=/g' $cfgi
+			#sed -i 's/ = /=/g' $cfgi
 			#
 			# extract hostname from source
-			source <(sed '/^hostname/!d' $cfgi | sed 's/;//')
+			#source <(sed '/^hostname/!d' $cfgi | sed 's/;//')
 			#sed '/^hostname/!d' $cfgi | sed 's/;//'
 			#
 			# append the modnames to the hostname
 			if [ "${hostname_mods}" = "" ]; then
-				hostname_mods=${hostname_mods}" Vanilla"
+				hostname_mods=" Vanilla"
 			fi
-			hostname="${hostname}${hostname_mods}"
-			fn_debugMessage "$FUNCNAME: hostname $hostname"
+
+			fn_debugMessage "$FUNCNAME: hostname_mods $hostname_mods" ""
+
+			hostname=${serverArray[serverName]}$hostname_mods
+			fn_debugMessage "$FUNCNAME: $hostname" ""
 			#
 			# change hostname in file
-			sed -i "/^hostname/c\hostname=\"$hostname\"" $cfgi
+
+			echo "${serverArray[serverPassword]}"
+			sed -i "/^hostname/c\hostname =\"$hostname\"\;" $cfgi
+			sed -i "/^password =/c\password =\"${serverArray[serverPassword]}\"\;" $cfgi
+			sed -i "/^passwordAdmin =/c\passwordAdmin =\"${serverArray[adminPassword]}\"\;" $cfgi
+
+			arrayAdmins=()
+			adminString=""
+
+			for i in ${serverArray[admins]}; do
+				arrayAdmins+=($i)
+			done
+
+			arrayCount=1 
+
+			for admin in ${arrayAdmins[@]}; do
+				if [[ $arrayCount -eq ${#arrayAdmins[@]} ]]; then
+					adminString+=" \"$admin\""
+				else
+					adminString+=" \"$admin\","
+				fi
+
+				((arrayCount++))
+			done
+
+			sed -i "/^admins\[\] =/c\admins\[\] = \{$adminString \}\;" $cfgi
+			sed -i "/template =/c\template = ${serverArray[mission]}\;" $cfgi
 		fi
 	fi
 	fn_debugMessage "$FUNCNAME: end" ""
