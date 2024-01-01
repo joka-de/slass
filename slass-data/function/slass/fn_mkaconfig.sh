@@ -122,7 +122,7 @@ fn_mkaconfig () {
 
 				((arrayCount++))
 			done
-
+			
 			sed -i "/^admins\[\] =/c\admins\[\] = \{$adminString \}\;" $cfgi
 			sed -i "/template =/c\template = ${serverArray[mission]}\;" $cfgi
 		fi
