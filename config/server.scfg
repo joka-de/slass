@@ -13,11 +13,14 @@ serverName=seelenlos | Dessau
 serverPassword=test
 adminPassword=admin
 headlessClient=1
+mission=KP_Liberation_Altis.Altis
+admins=1234 5678
 
 [server2]
 port=2322
 serverName=seeelenlos | Rosslau
 serverPassword=test
 adminPassword=admin
-mission=mission2.tanoa
+mission=KP_Liberation_Altis.Altis
 headlessClient=1
+admins=1234 5678
