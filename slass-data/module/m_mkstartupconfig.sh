@@ -84,8 +84,9 @@ do
 	printf "\nserverid=$1\n" > "${basepath}/a3/a3srv${1}/startparameters_${index}.scfg"
 	printf "\nprocessid=$index\n" >> "${basepath}/a3/a3srv${1}/startparameters_${index}.scfg"
 	printf "\nhostname=\"$hostname\"\n" >> "${basepath}/a3/a3srv${1}/startparameters_${index}.scfg"
-	printf "\nport=$(($port + (($index - 1 )*10)))\n" >> "${basepath}/a3/a3srv${1}/startparameters_${index}.scfg"
-	#
+	#printf "\nport=$(($port + (($index - 1 )*10)))\n" >> "${basepath}/a3/a3srv${1}/startparameters_${index}.scfg"
+	printf "\nport=$port\n" >> "${basepath}/a3/a3srv${1}/startparameters_${index}.scfg"
+#
 	if [ $index = "1" ]; then
 		printf "\nishc=false\n" >> "${basepath}/a3/a3srv${1}/startparameters_${index}.scfg"
 	else

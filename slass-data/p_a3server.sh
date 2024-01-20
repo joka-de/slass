@@ -30,7 +30,7 @@ fn_debugMessage "p_a3server: scfg-File $2"
 #
 # set generic variables
 serverdir="${basepath}/a3/a3srv${serverid}"
-server="${serverdir}/arma3server"
+server="${serverdir}/arma3server_x64"
 #
 if [ "$ishc" = true ]; then
 	name="a3srv${serverid}_hc$((${processid}-1))"
@@ -38,8 +38,8 @@ else
 	name=a3srv${serverid}
 fi
 #port=$((2302 + 10 * ( ${serverid} - 1 )))
-pidfile="${serverdir}/${port}.pid"
-runfile="${serverdir}/${port}.run"
+pidfile="${serverdir}/${port}_${processid}.pid"
+runfile="${serverdir}/${port}_${processid}.run"
 cfg_dir=${serverdir}/cfg
 config=${cfg_dir}/${name}.cfg
 cfg=${cfg_dir}/basic.cfg
@@ -53,12 +53,12 @@ case "$1" in
 start)
 	# check if there is a server running or not
 	echo >>${logfile} "start commmand"
-	ps ax | grep ${server} | grep ${port}  > /dev/null
+	ps ax | grep ${server} | grep ${config}  > /dev/null
 	if [ $? -eq 0 ]; then
 		fn_printMessage "there is a server already running (${server} at port ${port})" ""
 		fn_printMessage "it can happen, when you started a server and stopped it to fast!" ""
 		fn_printMessage "just stop the server again and it should be good to start!" ""
-		echo $output | ps ax | grep ${server} | grep ${port}
+		echo $output | ps ax | grep ${server} | grep ${config}
 	else
 		fn_printMessage "starting a3 server @port ${port}..." ""
 		# file to mark we want server running...
@@ -122,7 +122,7 @@ watchdog)
 		#
 		if [ "$ishc" = true ]; then
 			#sudo -u ${userlnch} ${server} >>${logfile} 2>&1 -config=${config} -cfg=${cfg} -port=${port} -client -connect=127.0.0.1 -name=${profile} ${otherparams} -mod=${mods}&
-			sudo -u ${userlnch} ${server} >>${logfile} 2>&1 -cfg=${cfg} -client -connect=127.0.0.1 ${otherparams} -mod=${mods}&
+			sudo -u ${userlnch} ${server} >>${logfile} 2>&1 -cfg=${cfg} -client -connect=127.0.0.1 -port=${port} ${otherparams} -mod=${mods}&
 			pid=$!
 			echo $pid > $pidfile
 			chmod 664 $logfile

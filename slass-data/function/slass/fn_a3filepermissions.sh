@@ -17,6 +17,7 @@ fn_a3filepermissions () {
 	find -L ${basepath}/a3/a3master -type d -exec chmod 775 {} \;
 	find -L ${basepath}/a3/a3master -type f -exec chmod 664 {} \;
 	chmod 774 ${basepath}/a3/a3master/arma3server
+	chmod 774 ${basepath}/a3/a3master/arma3server_x64
 	find ${basepath}/a3/a3master -iname '*.so' -exec chmod 775 {} \;
 	chmod 774 ${basepath}/slass-data/p_a3server.sh
 	fn_printMessage " - DONE" ""
