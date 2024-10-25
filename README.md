@@ -34,8 +34,30 @@ sudo su - a3server
 ```
 
 6. Install the Server
+
+Steamcmd
 ```
 ./slass/slass install-steamcmd
+```
+Arma3
+```
+./slass/slass install-arma3
+```
+
+If prompted
+```
+This computer has not been authenticated for your account using Steam Guard.
+Please check your email for the message from Steam, and enter the Steam Guard
+ code from that message.
+You can also enter this code at any time using 'set_steam_guard_code'
+ at the console.
+```
+enter the steam guard code by issuing
+```
+./slass/steamcmd/steamcmd.sh
+```
+and then `login  steamuser`, follow instuctions, then restart installation by
+```
 ./slass/slass install-arma3
 ```
 
