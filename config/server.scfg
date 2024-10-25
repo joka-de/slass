@@ -1,5 +1,5 @@
 [global]
-ip=5.189.150.110
+ip=45.130.104.195
 otherparams=-nosound -nosplash -world=empty -filepatching
 logfilelifetime=3
 useradm=slad

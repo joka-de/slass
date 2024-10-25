@@ -19,9 +19,13 @@ fn_readuser () {
 	#source <(sed '/^userlnch/!d' $1)
 	#source <(sed '/^grpserver/!d' $1)
 	
-	useradm = $(whoami)
-	userlnch = useradm
-	grpserver = useradm
-	
+	useradm=$(whoami)
+	userlnch=$useradm
+	grpserver=$useradm
+
+	fn_debugMessage "$FUNCNAME: userlnch $userlnch"
+	fn_debugMessage "$FUNCNAME: useradm $useradm"
+	fn_debugMessage "$FUNCNAME: grpserver $grpserver"
+
 	fn_debugMessage "$FUNCNAME: stop"
 }

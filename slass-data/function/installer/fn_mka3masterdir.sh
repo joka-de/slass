@@ -19,13 +19,14 @@ fn_mka3masterdir () {
 	fn_readuser $basepath/config/server.scfg
 	#
 	# set permissions on basepath
-	chmod 775 $basepath
-	chmod 775 $basepath/slass
+	chmod 775 ${basepath}
+	chmod 775 ${basepath}/slass
+	chmod 775 ${basepath}/slass-data/p_a3server.sh
 	fn_debugMessage "$FUNCNAME: permissions set on $basepath" ""
 	#
 	#
-	rm -rf $basepath/a3/a3master
-	mkdir $basepath/a3/a3master --mode=775
+	rm -rf ${basepath}/a3/a3master
+	mkdir ${basepath}/a3/a3master --mode=775
 	#
 	#
 	mkdir ${basepath}/a3/a3master/_mods --mode=775

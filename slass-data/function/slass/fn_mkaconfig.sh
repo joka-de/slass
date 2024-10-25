@@ -99,7 +99,7 @@ fn_mkaconfig () {
 			#
 			# change hostname in file
 
-			echo "${serverArray[serverPassword]}"
+			#echo "${serverArray[serverPassword]}"
 			sed -i "/^hostname/c\hostname =\"$hostname\"\;" $cfgi
 			sed -i "/^password =/c\password =\"${serverArray[serverPassword]}\"\;" $cfgi
 			sed -i "/^passwordAdmin =/c\passwordAdmin =\"${serverArray[adminPassword]}\"\;" $cfgi

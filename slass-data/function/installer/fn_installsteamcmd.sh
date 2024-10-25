@@ -14,6 +14,10 @@
 #
 fn_installsteamcmd () {
 	fn_debugMessage "$FUNCNAME: start" ""
+	
+	# read usernames
+	fn_readuser $basepath/config/server.scfg
+	
 	rm -rf $basepath/steamcmd
 	mkdir $basepath/steamcmd --mode=775
 	fn_debugMessage "$FUNCNAME: cleared steamdir" ""

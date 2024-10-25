@@ -20,15 +20,15 @@ while read line; do
 		apptype=$(echo $line | awk '{ printf "%s", $3 }')
 		appkey=$(echo $line | awk -v var=$(( $1 + 4 )) '{ printf "%s", $var }' )
 		if [[ -z "$appkey" ]]; then
-			fn_printMessage "No modlist entry found for server ${1}, consider extending modlist"
+			fn_printMessage "No modlist entry found for server ${1}, consider extending modlist"  ""
 			appkey=$(echo $line | awk -v var=$(( 5 )) '{ printf "%s", $var }' )
-			fn_printMessage "... defaulting to entry for server 1 = ${appkey}"
+			fn_printMessage "... defaulting to ${appname} = ${appkey}" ""
 		fi
 		#
 		fn_debugMessage "m_keylinker: appname = ${appname} | apptype = ${apptype} | appkey = ${appkey}"
 		#
 		if [ "${apptype}" != "smod" ] && [ "${appkey}" = "1" ]; then
-				fn_debugMessage "m_keylinker: copied ${appname}-key to server ${1}"
+				fn_debugMessage "m_keylinker: copied ${appname}-key to server ${1}" ""
 				case "$appname" in
 				gm|vn|csla|ws|spe)
 						ln -s ${basepath}/a3/a3master/keys/${appname}.bikey ${basepath}/a3/a3srv${1}/keys/

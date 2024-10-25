@@ -45,16 +45,16 @@ fn_mksconfig () {
 				rm $scfgi
 			fi
 			
-			printf "\nnhc=${serverArray[headlessClient]}" > $scfgi
+			printf "nhc=${serverArray[headlessClient]}" > $scfgi
 			printf "\nbasepath=$basepath" >> $scfgi
 			printf "\nip=${serverArrayGlobal[ip]}" >> $scfgi
 			printf "\nport=${serverArray[port]}" >> $scfgi
 			printf "\notherparams=\"${serverArrayGlobal[otherparams]}\"" >> $scfgi
 			printf "\nlogfilelifetime=${serverArrayGlobal[logfilelifetime]}" >> $scfgi
 			printf "\nhostname=\"${serverArray[serverName]}\"" >> $scfgi
-			printf "\nuseradm=${serverArrayGlobal[useradm]}" >> $scfgi
-			printf "\nuserlnch=${serverArrayGlobal[userlnch]}" >> $scfgi
-			printf "\nprofile=${serverArrayGlobal[profile]}" >> $scfgi
+			#printf "\nuseradm=${serverArrayGlobal[useradm]}" >> $scfgi
+			#printf "\nuserlnch=${serverArrayGlobal[userlnch]}" >> $scfgi
+			#printf "\nprofile=${serverArrayGlobal[profile]}" >> $scfgi
 		fi
 	fi
 	fn_debugMessage "$FUNCNAME: end" ""

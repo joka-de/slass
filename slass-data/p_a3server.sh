@@ -108,9 +108,7 @@ status)
 #
 #
 watchdog)
-	# this is a background watchdog process. do not start directly
 	# delete old logs when older then ${logfilelifetime} days
-	#echo >>${logfile} "watchdog ($$): [$(date)] deleting all logfiles in ${logdir} when older then ${logfilelifetime} days."
 	fn_printMessage "watchdog ($$): [$(date)] deleting all logfiles in ${logdir} when older then ${logfilelifetime} days." ""
 	find -L ${logdir} -iname "*.log" -mtime "${logfilelifetime}" -delete
 
