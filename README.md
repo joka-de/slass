@@ -17,14 +17,15 @@ seelenlos Arma3 Server Script (SLASS) will greatly ease the installation and man
 
 ## Install
 1. Open a shell.
-2. Create User for the server. For Security, leave the password disabled, so only root can log in.
-```
-adduser a3server --gecos "" --disabled-password
-```
 
-3. Install prerequisites
+2. Install prerequisites
 ```
 sudo apt install lib32gcc-s1 lib32stdc++6 rename
+```
+
+3. Create User for the server. For Security, leave the password disabled. You can still login to this user using ssh with a keypair or from root using su.
+```
+adduser a3server --gecos "" --disabled-password
 ```
 
 4. Switch to the user
