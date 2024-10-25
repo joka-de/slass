@@ -14,3 +14,16 @@
 seelenlos Arma3 Server Script (SLASS) will greatly ease the installation and management of multiple Arma3 servers including mods from the Steam workshop.</br>
 
 ## The Master-Branch is WIP, use the stable-branch
+
+## Install
+Open a shell.
+Create User for the server
+adduser username --gecos "" --disabled-password
+For Security, leave the password disabled, so only root can log in.
+
+Switch to the user
+sudo su - username
+
+Install the Server
+./slass/slass install-steamcmd
+./slass/slass install-arma3
