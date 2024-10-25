@@ -34,7 +34,7 @@ source $basepath/slass-data/module/m_fnloader.sh
 fn_debugMessage "slass: Path to slass: $basepath"
 #
 # check for root execution
-fn_checkroot
+# fn_checkroot
 #
 # options to var
 opt1="$1"

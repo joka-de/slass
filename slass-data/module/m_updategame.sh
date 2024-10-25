@@ -16,27 +16,27 @@
 exec &> >(tee ${basepath}/log/a3gameupdate_$(date +%Y-%m-%d_%H-%M-%S).log)
 find -L ${basepath}/log -iname "*.log" -mtime 7 -delete
 #
-# load slass.scfg
-fn_readuser $basepath/config/server.scfg
+# load Steam Credentials
+fn_readuserSteam $basepath/config/server.scfg
 #
-fn_printMessage " Preparing to download Arma3.
-Please enter the username of the Steam-User used for the A3-Update:"
-read user
-echo "Please enter the Steam-Password for $user:"
-read -s pw
+#fn_printMessage " Preparing to download Arma3.
+#Please enter the username of the Steam-User used for the A3-Update:"
+#read user
+#echo "Please enter the Steam-Password for $user:"
+#read -s pw
 #
 # build steam script file - game
-tmpfile=$(sudo -u $useradm mktemp --tmpdir=$basepath file.XXXXX)
+tmpfile=$(mktemp --tmpdir=$basepath file.XXXXX)
 chmod 700 $tmpfile
 echo "@ShutdownOnFailedCommand 1
 @NoPromptForPassword 1
 force_install_dir ${basepath}/a3/a3master
-login $user $pw" >> $tmpfile
+login $usersteam $steampassword" >> $tmpfile
 echo 'app_update 233780 -beta creatordlc " validate' >> $tmpfile
 echo "quit" >> $tmpfile
 #
 # update game
-sudo -u $useradm ${basepath}/steamcmd/steamcmd.sh +runscript $tmpfile | sed -u "s/${pw}/----/g" &
+${basepath}/steamcmd/steamcmd.sh +runscript $tmpfile | sed -u "s/${steampassword}/----/g" &
 steampid=$!
 wait $steampid
 rm $tmpfile

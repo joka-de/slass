@@ -5,7 +5,8 @@ logfilelifetime=3
 useradm=slad
 userlnch=slserver
 grpserver=seelenlos
-profile=seelenlos
+usersteam=gruppe_seelenlos
+steampassword=geheim1!
 
 [server1]
 port=2302

@@ -35,7 +35,7 @@ while read line; do
 	appid=$(echo $line | awk '{ printf "%s", $3 }')
 	#
 	if [ "${appid}" != "local" ]; then
-		tmpfile=$(sudo -u $useradm mktemp --tmpdir=$basepath file.XXXXX)
+		tmpfile=$(mktemp --tmpdir=$basepath file.XXXXX)
 		chmod 700 $tmpfile
 		echo "@ShutdownOnFailedCommand 1
 		@NoPromptForPassword 1
@@ -47,7 +47,7 @@ while read line; do
 		counter=1
 		until [ "${download_status}" == "0" ]; do
 			echo "--- Attempt ${counter} downloading app ${appid} - ${appname} ---"
-			sudo -u $useradm ${basepath}/steamcmd/steamcmd.sh +runscript $tmpfile | sed -u "s/${pw}/----/g" | awk 'BEGIN{s=0} /ERROR/{s=1} 1; END{exit(s)}' &
+			${basepath}/steamcmd/steamcmd.sh +runscript $tmpfile | sed -u "s/${pw}/----/g" | awk 'BEGIN{s=0} /ERROR/{s=1} 1; END{exit(s)}' &
 			steampid=$!
 			wait $steampid
 			download_status=$?
