@@ -17,16 +17,22 @@ seelenlos Arma3 Server Script (SLASS) will greatly ease the installation and man
 
 ## Install
 1. Open a shell.
-2. Create User for the server
-`adduser a3server --gecos "" --disabled-password`
-For Security, leave the password disabled, so only root can log in.
+2. Create User for the server. For Security, leave the password disabled, so only root can log in.
+```
+adduser a3server --gecos "" --disabled-password
+```
+
 3. Install prerequisites
-`sudo apt install lib32gcc-s1 lib32stdc++6 rename`
+```
+sudo apt install lib32gcc-s1 lib32stdc++6 rename
+```
 
 4. Switch to the user
-`sudo su - a3server`
+```
+sudo su - a3server
+```
 
-5. Install the Server
+6. Install the Server
 ```
 ./slass/slass install-steamcmd
 ./slass/slass install-arma3
@@ -35,4 +41,6 @@ For Security, leave the password disabled, so only root can log in.
 ## Uninstall
 1. Open a shell.
 2. Remove the user and its home
-   `deluser --remove-home a3server`
+   ```
+   deluser --remove-home a3server
+   ```
