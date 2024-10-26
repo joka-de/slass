@@ -28,6 +28,10 @@ fi
 source $basepath/slass-data/module/m_fnloader.sh
 fn_debugMessage "p_a3server: scfg-File $2"
 #
+# read usernames, $grpserver needed for Profile
+fn_readuser $basepath/config/server.scfg
+#
+#
 # set generic variables
 serverdir="${basepath}/a3/a3srv${serverid}"
 server="${serverdir}/arma3server_x64"
@@ -37,9 +41,11 @@ if [ "$ishc" = true ]; then
 else
 	name=a3srv${serverid}
 fi
+#
 #port=$((2302 + 10 * ( ${serverid} - 1 )))
 pidfile="${serverdir}/${port}_${processid}.pid"
 runfile="${serverdir}/${port}_${processid}.run"
+profile=${grpserver}
 cfg_dir=${serverdir}/cfg
 config=${cfg_dir}/${name}.cfg
 cfg=${cfg_dir}/basic.cfg

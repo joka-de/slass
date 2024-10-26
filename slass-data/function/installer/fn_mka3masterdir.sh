@@ -41,7 +41,7 @@ fn_mka3masterdir () {
 	fi
 	chmod 755 /home/${userlnch}
 	mkdir -p /home/${userlnch}"/.local/share/Arma 3 - Other Profiles/"${grpserver} --mode=775
-	cp ${basepath}/slass-data/rsc/profile.Arma3Profile /home/${userlnch}"/.local/share/Arma 3 - Other Profiles/"${grpserver}/${grpserver}.Arma3Profile
+	cp ${basepath}/slass-data/rsc/profile.Arma3Profile /home/${userlnch}"/.local/share/Arma 3/"${grpserver}.Arma3Profile
 	chmod 464 /home/${userlnch}'/.local/share/Arma 3 - Other Profiles/'${grpserver}/*.Arma3Profile
 	fn_debugMessage "$FUNCNAME: profile file copied" ""
 	fn_debugMessage "$FUNCNAME: end" ""

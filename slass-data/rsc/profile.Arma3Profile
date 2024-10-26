@@ -8,49 +8,47 @@ maxSamplesPlayed=96;
 class DifficultyPresets {
 	class CustomDifficulty {
 		class Options {
-			/* Simulation */
- 
+/* Simulation */
+
 			reducedDamage = 0;		// Reduced damage
- 
+
 			/* Situational awareness */
- 
 			groupIndicators = 0;	// Group indicators (0 = never, 1 = limited distance, 2 = always)
 			friendlyTags = 0;		// Friendly name tags (0 = never, 1 = limited distance, 2 = always)
 			enemyTags = 0;			// Enemy name tags (0 = never, 1 = limited distance, 2 = always)
 			detectedMines = 0;		// Detected mines (0 = never, 1 = limited distance, 2 = always)
 			commands = 1;			// Commands (0 = never, 1 = fade out, 2 = always)
 			waypoints = 1;			// Waypoints (0 = never, 1 = fade out, 2 = always)
- 
+			tacticalPing = 1;		// Tactical ping (0 = disable, 1 = enable)
+
 			/* Personal awareness */
- 
-			weaponInfo = 1;			// Weapon info (0 = never, 1 = fade out, 2 = always)
+			weaponInfo = 2;			// Weapon info (0 = never, 1 = fade out, 2 = always)
 			stanceIndicator = 1;	// Stance indicator (0 = never, 1 = fade out, 2 = always)
 			staminaBar = 1;			// Stamina bar
 			weaponCrosshair = 0;	// Weapon crosshair
 			visionAid = 0;			// Vision aid
-			squadRadar = 1;			// Squad radar
- 
+
 			/* View */
- 
-			thirdPersonView = 0;	// 3rd person view
+			thirdPersonView = 2;	// 3rd person view (0 = disabled, 1 = enabled, 2 = enabled for vehicles only (Since  Arma 3 v1.99))
 			cameraShake = 1;		// Camera shake
- 
+
 			/* Multiplayer */
- 
 			scoreTable = 1;			// Score table
 			deathMessages = 1;		// Killed by
 			vonID = 1;				// VoN ID
- 
+
 			/* Misc */
- 
-			mapContent = 0;			// Extended map content
-			autoReport = 0;			// (former autoSpot) Automatic reporting of spotted enemied by players only. This doesn't have any effect on AIs.
-			multipleSaves = 0;		// Multiple saves
+			mapContent = 1;			// Extended map content (0 = disabled, 1 = enabled) // before Arma 3 v1.68
+			mapContentFriendly = 1;	// Map friendlies		(0 = disabled, 1 = enabled) // since  Arma 3 v1.68
+			mapContentEnemy = 1;	// Map Enemies			(0 = disabled, 1 = enabled) // since  Arma 3 v1.68
+			mapContentMines = 1;	// Map Mines			(0 = disabled, 1 = enabled) // since  Arma 3 v1.68
+			autoReport = 0;			// Automatic reporting	(0 = disabled, 1 = enabled)
+			multipleSaves = 0;		// Multiple saves		(0 = disabled, 1 = enabled)
 		};
- 
+		
 		// aiLevelPreset defines AI skill level and is counted from 0 and can have following values: 0 (Low), 1 (Normal), 2 (High), 3 (Custom).
 		// when 3 (Custom) is chosen, values of skill and precision are taken from the class CustomAILevel.
-		aiLevelPreset = 1;
+		aiLevelPreset = 3;
 	};
  
 	class CustomAILevel {
