@@ -10,10 +10,10 @@
 
 *License:* GNU GPLv3
 
+## The Master-Branch is WIP, use the stable-branch
+
 ## General
 seelenlos Arma3 Server Script (SLASS) will greatly ease the installation and management of multiple Arma3 servers including mods from the Steam workshop.</br>
-
-## The Master-Branch is WIP, use the stable-branch
 
 ## Install
 1. Open a shell.
