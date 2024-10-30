@@ -24,6 +24,10 @@
 fn_printMessage () {
      [[ $# == 0 ]] && return 1    
 
+     YELLOW=$(tput setaf 3)
+     NC=$(tput sgr0)
+     RED=$(tput setaf 1)
+
 	local tagAndMessage=$1
 	local slassTag="SLASS: "
 

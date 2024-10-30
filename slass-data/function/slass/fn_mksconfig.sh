@@ -18,40 +18,33 @@ fn_mksconfig () {
 	if [[ $# -eq 0 ]]; then 
 		fn_debugMessage "$FUNCNAME: Servernumber not provided" ""
 	else
-		counter=0
-
-		while read line; do		
-	        if [[ $line =~ ^"["(.+)"]"$ ]]; then
-	        	((counter++))
-		        arrname=${BASH_REMATCH[1]}		        
-		    	declare -A $arrname
-		    elif [[ $line =~ ^([_[:alpha:]][_[:alnum:]]*)"="(.*) ]]; then 
-		        declare ${arrname}[${BASH_REMATCH[1]}]="${BASH_REMATCH[2]}"	       
-		    fi	  	
-		done < $basepath/config/server.scfg
-		
-		serverCount=$(expr $counter - 1)
+		fn_readServerConfig
 
 		if [[ $serverCount -ge $1 ]]; then
-			declare -n serverArrayGlobal="global"
-
 			i=$1
 			scfgi="${basepath}/a3/a3master/cfg/a3srv${1}.scfg"
 			fn_debugMessage "$FUNCNAME: scfg file $scfgi" ""
-			
-			declare -n serverArray="server${1}"
-
+						
 			if [[ -f $scfgi ]]; then
 				rm $scfgi
 			fi
 			
-			printf "nhc=${serverArray[headlessClient]}" > $scfgi
+			serverIP=global[ip]
+			params=global[otherparams]
+			logfilelifetime=global[logfilelifetime]
+
+			serverName=server$1[serverName]
+			headlessClient=server$1[headlessClient]
+			serverPort=server$1[port]
+
+			printf "nhc=${!headlessClient}" > $scfgi
 			printf "\nbasepath=$basepath" >> $scfgi
-			printf "\nip=${serverArrayGlobal[ip]}" >> $scfgi
-			printf "\nport=${serverArray[port]}" >> $scfgi
-			printf "\notherparams=\"${serverArrayGlobal[otherparams]}\"" >> $scfgi
-			printf "\nlogfilelifetime=${serverArrayGlobal[logfilelifetime]}" >> $scfgi
-			printf "\nhostname=\"${serverArray[serverName]}\"" >> $scfgi
+			printf "\nip=${!serverIP}" >> $scfgi
+			printf "\nport=${!serverPort}" >> $scfgi
+			printf "\notherparams=\"${!params}\"" >> $scfgi
+			printf "\nlogfilelifetime=${!logfilelifetime}" >> $scfgi
+			
+			printf "\nhostname=\"${!serverName}\"" >> $scfgi
 			#printf "\nuseradm=${serverArrayGlobal[useradm]}" >> $scfgi
 			#printf "\nuserlnch=${serverArrayGlobal[userlnch]}" >> $scfgi
 			#printf "\nprofile=${serverArrayGlobal[profile]}" >> $scfgi

@@ -15,16 +15,18 @@
 
 fn_debugMessage () {
 	if [[ $# != 0 && $debug == "y" ]]; then
-			case $# in
-				1)
-					fn_printMessage "$1" "" "$RED"
-				;;
-				2)
-					fn_printMessage "$1" "$2" "$RED"
-				;;
-				3)
-					fn_printMessage "$1" "$2" "$RED"
-				;;
-			esac
+		RED=$(tput setaf 1)
+		
+		case $# in
+			1)
+				fn_printMessage "$1" "" "$RED"
+			;;
+			2)
+				fn_printMessage "$1" "$2" "$RED"
+			;;
+			3)
+				fn_printMessage "$1" "$2" "$RED"
+			;;
+		esac
 	fi
 }

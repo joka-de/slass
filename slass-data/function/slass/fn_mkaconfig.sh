@@ -18,30 +18,14 @@ fn_mkaconfig () {
 	if [[ $# -eq 0 ]]; then 
 		fn_debugMessage "$FUNCNAME: Servernumber not provided" ""
 	else
-		counter=0
-
-		while read line; do		
-	        if [[ $line =~ ^"["(.+)"]"$ ]]; then
-	        	((counter++))
-		        arrname=${BASH_REMATCH[1]}		        
-		    	declare -A $arrname
-		    elif [[ $line =~ ^([_[:alpha:]][_[:alnum:]]*)"="(.*) ]]; then 
-		        declare ${arrname}[${BASH_REMATCH[1]}]="${BASH_REMATCH[2]}"	       
-		    fi	  	
-		done < $basepath/config/server.scfg
-		
-		serverCount=$(expr $counter - 1)
+		fn_readServerConfig
 
 		if [[ $serverCount -ge $1 ]]; then
-			declare -n serverArrayGlobal="global"
-
 			i=$1
 			
 			cfgi="${basepath}/a3/a3master/cfg/a3srv${1}.cfg"
 			fn_debugMessage "$FUNCNAME: cfg file $cfgi" ""
 			
-			declare -n serverArray="server${1}"
-
 			if [[ -f $cfgi ]]; then
 				rm $cfgi
 			fi
@@ -92,24 +76,36 @@ fn_mkaconfig () {
 				hostname_mods=" Vanilla"
 			fi
 
-			fn_debugMessage "$FUNCNAME: hostname_mods $hostname_mods" ""
+			fn_debugMessage "$FUNCNAME: hostname_mods $hostname_mods" "" "$RED"
 
-			hostname=${serverArray[serverName]}$hostname_mods
-			fn_debugMessage "$FUNCNAME: $hostname" ""
+			serverName=server$1[serverName]
+			headlessClient=server$1[headlessClient]
+			serverPort=server$1[port]
+			serverPassword=server$1[serverPassword]
+			adminPassword=server$1[adminPassword]
+			adminSteamID=server$1[admins]
+			serverMission=server$1[mission]
+
+			hostname=${!serverName}$hostname_mods
+			fn_debugMessage "$FUNCNAME: $hostname" "" "$RED"
 			#
 			# change hostname in file
 
 			#echo "${serverArray[serverPassword]}"
 			sed -i "/^hostname/c\hostname =\"$hostname\"\;" $cfgi
-			sed -i "/^password =/c\password =\"${serverArray[serverPassword]}\"\;" $cfgi
-			sed -i "/^passwordAdmin =/c\passwordAdmin =\"${serverArray[adminPassword]}\"\;" $cfgi
+			sed -i "/^password =/c\password =\"${!serverPassword}\"\;" $cfgi
+			sed -i "/^passwordAdmin =/c\passwordAdmin =\"${!adminPassword}\"\;" $cfgi
 
 			arrayAdmins=()
 			adminString=""
 
-			for i in ${serverArray[admins]}; do
+			for i in ${!adminSteamID}; do
 				arrayAdmins+=($i)
 			done
+
+			echo "ADMINS: ${arrayAdmins[@]}"
+
+			fn_debugMessage "$FUNCNAME: arrayAdmins ${arrayAdmins[@]}" "" "$RED"
 
 			arrayCount=1 
 
@@ -124,7 +120,7 @@ fn_mkaconfig () {
 			done
 			
 			sed -i "/^admins\[\] =/c\admins\[\] = \{$adminString \}\;" $cfgi
-			sed -i "/template =/c\template = ${serverArray[mission]}\;" $cfgi
+			sed -i "/template =/c\template = ${!serverMission}\;" $cfgi
 		fi
 	fi
 	fn_debugMessage "$FUNCNAME: end" ""
