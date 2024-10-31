@@ -59,20 +59,31 @@ slass [option 1] [opt2]
 
 Option 1
 - install-steamcmd
-		installs steamcmd
-- install-arma3 - installs arma3 unsing steamcmd, existing installations are cleared
-- update-game - updates arma3 using steamcmd
-- update-ws - updates the mods using steamcmd
-- stopall - stops all running server instances
-- update - updates arma3 and the mods using steamcmd
-- start - starts a server
-- stop - stops a server
-- restart - you guess it
-- log - prints the log of a server
-- status - prints the status of the server instance and its HC
+  - installs steamcmd
+- install-arma3
+  - installs arma3 unsing steamcmd, existing installations are cleared
+- update-game
+  - updates arma3 using steamcmd
+- update-ws
+  - updates the mods using steamcmd
+- stopall
+  - stops all running server instances
+- update
+  - updates arma3 and the mods using steamcmd
+- start
+  - starts a server
+- stop
+  - stops a server
+- restart
+  - you guess it
+- log
+  - prints the log of a server
+- status
+  - prints the status of the server instance and its HC
 		
 Option 2 - only with Option 1 = (start | stop | restart | log | status)
-- {i} - id number of your server instance, like 1 or 2
+- {i}
+  - id number of your server instance, like 1 or 2
 </br>
 
 **Configuration**</br>
@@ -80,21 +91,21 @@ Option 2 - only with Option 1 = (start | stop | restart | log | status)
 The configs are located in `./config`
 
 - **server.scfg** - main config file</br>
-	sets variables for all insances and each individual instance
-	You must define each instance you want to start here.
-	(description to be extended)
+  - sets variables for all insances and each individual instance
+    You must define each instance you want to start here.
+    (description to be extended)
 - **a3master.cfg** - master config template with game settings for all server instances
-	sets parameters not defined in server.scfg
+  - sets parameters not defined in server.scfg
 - **modlist.inp** - Mods to load / install</br>
-	The file has several columns:</br>
-	I. shortname of the mod</br>
-	II. name of the mod included in the servername for the server browser; Type "xx" if do not want the mod to appear in the server name for the server browser </br>
-	III. steam-app-id of the mod; if the mod is not in the workshop, insert the word **local**</br>
- 	IV. mod type; use</br>
-		- **mod** if the mod is to be loaded by server and client (key and mod is loaded), e.g. ACE</br>
-		- **cmod** if the mod is only to be loaded client side (only key is loaded on server), e.g. JSRS</br>
-		- **smod** if the mod is only to be loaded by the server (only mod is loaded on server), e.g. ace_server</br>
-	V. and following  contains a binary key 0/1 selecting if the mod is to be loaded on server #1/#2/#3/ ...</br>
+  The file has several columns:</br>
+  1. shortname of the mod for your convenience</br>
+  2. name of the mod included in the servername for the server browser; Type "xx" if do not want the mod to appear in the server name for the server browser </br>
+  3. steam-app-id of the mod; if the mod is not in the workshop, insert the word **local**</br>
+  4. mod type; use</br>
+    - **mod** if the mod is to be loaded by server and client (key and mod is loaded), e.g. ACE</br>
+    - **cmod** if the mod is only to be loaded client side (only key is loaded on server), e.g. JSRS</br>
+    - **smod** if the mod is only to be loaded by the server (only mod is loaded on server), e.g. ace_server</br>
+  5. and following contains a binary key 0/1 selecting if the mod is to be loaded on server #1/#2/#3/ ...</br>
 - **basic.cfg** - loaded as -cfg file by the server process</br>
 
 ## Install
