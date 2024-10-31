@@ -73,9 +73,9 @@ Option 1
 		
 Option 2 - only with Option 1 = (start | stop | restart | log | status)
 - {i} - id number of your server instance, like 1 or 2
-
 </br>
-**Configuration**
+
+**Configuration**</br>
 
 The configs are located in `./config`
 
