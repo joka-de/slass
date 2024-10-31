@@ -73,7 +73,8 @@ Option 1
 		
 Option 2 - only with Option 1 = (start | stop | restart | log | status)
 - {i} - id number of your server instance, like 1 or 2
-	
+
+</br>
 **Configuration**
 
 The configs are located in `./config`
@@ -82,18 +83,17 @@ The configs are located in `./config`
 	sets variables for all insances and each individual instance
 	You must define each instance you want to start here.
 	(description to be extended)
-- ** a3master.cfg ** - master config template with game settings for all server instances
+- **a3master.cfg** - master config template with game settings for all server instances
 	sets parameters not defined in server.scfg
-- ** modlist.inp ** - Mods to load / install</br>
+- **modlist.inp** - Mods to load / install</br>
 	The file has several columns:</br>
 	I. shortname of the mod</br>
-	II. name of the mod included in the servername for the server browser;</br>
-		Type "xx" if do not want the mod to appear in the server name for the server browser;
+	II. name of the mod included in the servername for the server browser; Type "xx" if do not want the mod to appear in the server name for the server browser </br>
 	III. steam-app-id of the mod; if the mod is not in the workshop, insert the word **local**</br>
  	IV. mod type; use</br>
-		**mod** if the mod is to be loaded by server and client (key and mod is loaded), e.g. ACE</br>
-		**cmod** if the mod is only to be loaded client side (only key is loaded on server), e.g. JSRS</br>
-		**smod** if the mod is only to be loaded by the server (only mod is loaded on server), e.g. ace_server</br>
+		- **mod** if the mod is to be loaded by server and client (key and mod is loaded), e.g. ACE</br>
+		- **cmod** if the mod is only to be loaded client side (only key is loaded on server), e.g. JSRS</br>
+		- **smod** if the mod is only to be loaded by the server (only mod is loaded on server), e.g. ace_server</br>
 	V. and following  contains a binary key 0/1 selecting if the mod is to be loaded on server #1/#2/#3/ ...</br>
 - **basic.cfg** - loaded as -cfg file by the server process</br>
 
