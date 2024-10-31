@@ -67,3 +67,28 @@ and then `login  steamuser`, follow instuctions, then restart installation by
    ```
    deluser --remove-home a3server
    ```
+
+## Automated Updates
+The basic idea is to run the command `./slass update` regularly. You can do this by (ana)cron or other mechanics.
+
+### Example with cron
+1. Open a shell and make a script file, i.e. `touch ./updatea3.sh`
+2. Edit the file to something like that:
+```
+#!/bin/bash
+#
+# script file for automated update and startup of a3 servers
+cd /home/a3server/slass/
+./slass update
+
+sleep 5
+
+./slass start 2
+sleep 15
+./slass start 3
+```
+3. make it executable
+4. add the file to cron `crontab -e`
+```
+00 09 * * * /home/a3server/slass/updatea3.sh
+```
