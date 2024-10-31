@@ -35,10 +35,10 @@ slass (seelenlos Arma 3 Server Script)
 - reconfigures the servers upon each restart according to the config files
 - logs all events at a central location
 
-*Release of slass 2.0*
+**Release of slass 2.0**</br>
 Version 2 is a major rework of the older versions of slass, with much of the code rewritten. Most important improvement is the support for Headless Clients. Other major improvements are the ability to run automated updates and the use of a centalized config. Code has been cleaned up and a more meaningful folder and code structure has been established.
 
-** How it works - Basic Structure**
+**How it works - Basic Structure**</br>
 The script will generate a master installation (./a3/a3master), that will never be started. Using symlinks, it will build each server instances out of this master installation. The whole set of server files, including the mission repository (mpmissions folder) and *.Arma3Profile is being shared among the instances, but the instances use individual config files and startup commands. A script will manage the mods and their keys to load for each server instance. The servers will only need about the disc space of one server, because each instance only exists in symlinks. You can run as many instances at once as far as your RAM allows. We tested to up to four simultaneously running server instances, i.e. servers.
 For each server instance you can set individually.
 - (part of) the config file
@@ -53,39 +53,28 @@ All instances will share</br>
 
 ## Using slass
 
-** Commands **
-
+**Commands**</br>
+</br>
 slass [option 1] [opt2]
 
 Option 1
-	install-steamcmd
+- install-steamcmd
 		installs steamcmd
-	install-arma3
-		installs arma3 unsing steamcmd
-		existing installations are cleared
-	update-game
-		updates arma3 using steamcmd
-	update-ws
-		updates the mods using steamcmd
-	stopall
-		stops all running server instances
-	update
-		updates arma3 and the mods using steamcmd
-	start
-		starts a server
-	stop
-		stops a server
-	restart
-		you guess it
-	log
-		prints the log of a server
-	status
-		prints the status of the server instance and its HC
+- install-arma3 - installs arma3 unsing steamcmd, existing installations are cleared
+- update-game - updates arma3 using steamcmd
+- update-ws - updates the mods using steamcmd
+- stopall - stops all running server instances
+- update - updates arma3 and the mods using steamcmd
+- start - starts a server
+- stop - stops a server
+- restart - you guess it
+- log - prints the log of a server
+- status - prints the status of the server instance and its HC
 		
 Option 2 - only with Option 1 = (start | stop | restart | log | status)
-	{i} - id number of your server instance, like 1 or 2
+- {i} - id number of your server instance, like 1 or 2
 	
-** Config **
+**Configuration**
 
 The configs are located in `./config`
 
