@@ -4,7 +4,7 @@
 
 <p align="center">
     <sup><strong>short: slass</br>
-	Tested on Ubuntu 20.04 (Focal)</br>
+	Tested on Ubuntu 22.04 (Jammy JellyFish)</br>
     Visit us on TS3: <a href="ts3server://45.130.104.195?port=9987">Seelenlos TS3</a> | <a href="https://units.arma3.com/unit/seelenlos">seelenlos on Steam</a></br>
 	(c)2017 by seelenlos</strong></sup></p>
 
@@ -36,7 +36,7 @@ slass (seelenlos Arma 3 Server Script)
 - logs all events at a central location
 
 **Release of slass 2.0**</br>
-Version 2 is a major rework of the older versions of slass, with much of the code rewritten. Most important improvement is the support for Headless Clients. Other major improvements are the ability to run automated updates and the use of a centalized config. Code has been cleaned up and a more meaningful folder and code structure has been established.
+Version 2 is a major rework of the older versions of slass, with much of the code rewritten. Most important improvement is the support for Headless Clients. Other major improvements are the ability to run automated updates and the use of a centralized config. Code has been cleaned up and a more meaningful folder and code structure has been established.
 
 **How it works - Basic Structure**</br>
 The script will generate a master installation (./a3/a3master), that will never be started. Using symlinks, it will build each server instances out of this master installation. The whole set of server files, including the mission repository (mpmissions folder) and *.Arma3Profile is being shared among the instances, but the instances use individual config files and startup commands. A script will manage the mods and their keys to load for each server instance. The servers will only need about the disc space of one server, because each instance only exists in symlinks. You can run as many instances at once as far as your RAM allows. We tested to up to four simultaneously running server instances, i.e. servers.
