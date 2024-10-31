@@ -40,7 +40,7 @@ Version 2 is a major rework of the older versions of slass, with much of the cod
 
 **How it works - Basic Structure**</br>
 The script will generate a master installation (./a3/a3master), that will never be started. Using symlinks, it will build each server instances out of this master installation. The whole set of server files, including the mission repository (mpmissions folder) and *.Arma3Profile is being shared among the instances, but the instances use individual config files and startup commands. A script will manage the mods and their keys to load for each server instance. The servers will only need about the disc space of one server, because each instance only exists in symlinks. You can run as many instances at once as far as your RAM allows. We tested to up to four simultaneously running server instances, i.e. servers.
-For each server instance you can set individually.
+For each server instance you can set individually:
 - (part of) the config file
 - the mods to use including their keys
 - the servername</br>
