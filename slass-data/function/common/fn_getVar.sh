@@ -33,9 +33,9 @@ fn_getVar () {
 	local output=""
 
 	if [[ -z $2 ]]; then
-		output=$(jq '.'$1'' $serverFile)
+		output=$(jq '.'"$1"'' $serverFile)
 	else
-		output=$(jq '.'$1'.'$2'' $serverFile)
+		output=$(jq '.'"$1"'.'"$2"'' $serverFile)
 	fi
 
 	echo $output
