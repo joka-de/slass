@@ -11,7 +11,7 @@
 		"usersteam" : "anonymous",
 		"steampassword" : "",
 		
-		"hostname" : "seelenlos | Master",
+		"hostname" : "arma3 | Master",
 		"password" : "",
 		"passwordAdmin" : "test",
 		"serverCommandPassword" : "test",
@@ -92,7 +92,7 @@
 		"motd" : [
 			"",
 			"",  
-			"Willkommen auf dem Seelenlos - Server",
+			"Willkommen auf dem ArmA3 - Server",
 			"Wir sind eine deutsche Spielergemeinschaft, die gern taktisch spielt.",
 			"Wenn du einfach nur etwas abballern und Punkte sammeln willst, bist du hier verkehrt.",
 			"",
@@ -123,8 +123,8 @@
 		"server1" : {
 			"_comment" : "This is  the local section. It is used by one server instance",
 			"port" : 2302,
-			"serverName" : "seelenlos | Dessau",
-			"adminPassword" : "thwdessau",
+			"hostname" : "arma3 | server1",
+			"passwordAdmin" : "test",
 			"headlessClient" : 3,
 			
 			"Missions" : {
@@ -139,24 +139,8 @@
 		"server2" : {
 			"_comment" : "This is  the local section. It is used by one server instance",
 			"port" : 2312,
-			"serverName" : "seelenlos | Rosslau",
-			"adminPassword" : "thwdessau",
-			"headlessClient" : 3,
-			
-			"Missions" : {
-				"MissionRotation1": {
-					"template" : "Antistasi_Enoch.Enoch",
-					"difficulty" : "Custom",
-					"Params" : {}
-				}
-			}
-		},
-
-		"server3" : {
-			"_comment" : "This is  the local section. It is used by one server instance",
-			"port" : 2322,
-			"serverName" : "seelenlos | Meinsdorf",
-			"adminPassword" : "thwdessau",
+			"hostname" : "arma3 | server1",
+			"passwordAdmin" : "test",
 			"headlessClient" : 1,
 			
 			"Missions" : {
