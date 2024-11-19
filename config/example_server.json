@@ -3,7 +3,7 @@
 		"_comment" : "This is  the global section. It is used by every server instance",
 		
 		"ip" : "23.24.25.26",
-		"otherparams" : "-nosound -nosplash -world=empty -filepatching",
+		"otherparams" : "-filepatching",
 		"logfilelifetime" : 3,
 		"useradm" : "arma3user",
 		"userlnch" : "arma3userlaunch",
@@ -139,7 +139,7 @@
 		"server2" : {
 			"_comment" : "This is  the local section. It is used by one server instance",
 			"port" : 2312,
-			"hostname" : "arma3 | server1",
+			"hostname" : "arma3 | server2",
 			"passwordAdmin" : "test",
 			"headlessClient" : 1,
 			
