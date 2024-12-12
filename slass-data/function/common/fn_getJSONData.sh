@@ -25,7 +25,7 @@
 fn_getJSONData () {
     fn_getFunctionStatus $FUNCNAME
 
-    local serverFile="${basepath}/config/serverSml.json"
+    local serverFile="${basepath}/config/server.json"
                 
     if [[ -n "$4" ]]; then
         serverFile="${basepath}/config/$4"
