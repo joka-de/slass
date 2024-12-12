@@ -31,7 +31,7 @@ source $basepath/slass-data/module/m_fnloader.sh
 fn_printMessage "p_a3server: scfg-File $2" "" "debug"
 
 # read usernames, $grpserver needed for Profile
-fn_readuser $basepath/config/server.scfg
+fn_readuser
 
 # set generic variables
 serverdir="${basepath}/a3/a3srv${serverid}"
@@ -43,7 +43,6 @@ else
 	name=a3srv${serverid}
 fi
 
-#port=$((2302 + 10 * ( ${serverid} - 1 )))
 pidfile="${serverdir}/${port}_${processid}.pid"
 runfile="${serverdir}/${port}_${processid}.run"
 profile=${grpserver}
@@ -107,7 +106,6 @@ case "$1" in
 			
 			if [ -f /proc/${pid}/cmdline ]; then
 				fn_printMessage "server process seems to be running..." ""
-				#echo $output |
 				ps ax | grep ${server} | grep ${port}
 			fi
 		fi
@@ -121,23 +119,19 @@ case "$1" in
 		while [[ -f ${runfile} ]]; do
 			# launch the server...
 			cd ${serverdir}
-			#echo >>${logfile} "watchdog ($$): [$(date)] starting server (port ${port})..."
 			fn_printMessage "watchdog ($$): [$(date)] starting server (port ${port})..." ""
 			
 			if [[ "$ishc" = true ]]; then
-				#sudo -u ${userlnch} ${server} >>${logfile} 2>&1 -config=${config} -cfg=${cfg} -port=${port} -client -connect=127.0.0.1 -name=${profile} ${otherparams} -mod=${mods}&
 				${server} >>${logfile} 2>&1 -cfg=${cfg} -client -connect=127.0.0.1 -port=${port} -name=hc ${otherparams} -mod=${mods}&
 				pid=$!
 				echo $pid > $pidfile
-				chmod 664 $logfile
-				#chown ${useradm}:${profile} $logfile
+				chmod 664 $logfile				
 				wait $pid
 			else
 				${server} >>${logfile} 2>&1 -config=${config} -cfg=${cfg} -port=${port} -name=${profile} ${otherparams} -mod=${mods} -servermod=${servermods} &
 				pid=$!
 				echo $pid > $pidfile
 				chmod 664 $logfile
-				#chown ${useradm}:${profile} $logfile
 				wait $pid
 			fi
 			
@@ -155,8 +149,7 @@ case "$1" in
 		clear
 		fn_printMessage  "printing server log of ${name}" ""
 		fn_printMessage  "- to stop, press ctrl+c -" ""
-		echo "========================================"
-		#sleep 1
+		echo "========================================"		
 		tail -fn5 ${logdir}/$(ls -t ${logdir} | grep ${name} | head -1)
 	;;
 

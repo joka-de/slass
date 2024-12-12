@@ -89,7 +89,6 @@ fn_mkaconfig () {
 		hostname+=$hostname_mods
 		fn_printMessage "$FUNCNAME: $hostname" "" "debug"
 		sed -i "1 i\hostname=\"$hostname\";" $cfgi
-		#sed -i "/^hostname/c\hostname =\"$hostname\"\;" $cfgi
 	fi
 	
 	fn_printMessage "$FUNCNAME: end" "" "debug"

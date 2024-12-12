@@ -17,7 +17,7 @@ fn_installsteamcmd () {
 	fn_printMessage "$FUNCNAME: start" "" "debug"
 	
 	# read usernames
-	fn_readuser $basepath/config/server.scfg
+	fn_readuser
 	
 	rm -rf $basepath/steamcmd
 	mkdir $basepath/steamcmd --mode=775

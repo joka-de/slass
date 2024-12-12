@@ -17,7 +17,7 @@ fn_mka3masterdir () {
 	fn_printMessage "$FUNCNAME: start" "" "debug"	
 	
 	# read usernames
-	fn_readuser $basepath/config/server.scfg
+	fn_readuser
 	
 	# set permissions on basepath
 	chmod 775 ${basepath}

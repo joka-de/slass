@@ -1,5 +1,5 @@
 #
-# SLASS - fn_readuser
+# SLASS - fn_readuserSteam
 # 
 # Author: joka
 # 

@@ -18,11 +18,6 @@ find -L ${basepath}/log -iname "*.log" -mtime 7 -delete
 
 # load Steam Credentials
 fn_readuserSteam
-#fn_printMessage " Preparing to download Arma3.
-#Please enter the username of the Steam-User used for the A3-Update:"
-#read user
-#echo "Please enter the Steam-Password for $user:"
-#read -s pw
 
 # build steam script file - game
 tmpfile=$(mktemp --tmpdir=$basepath file.XXXXX)

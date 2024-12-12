@@ -31,9 +31,6 @@ source $basepath/slass-data/module/m_fnloader.sh 1
 
 fn_printMessage "Path to slass: ${basepath}" "" "debug"
 
-# check for root execution
-# fn_checkroot
-
 # options to var
 opt1="$1"
 serverid="$2"

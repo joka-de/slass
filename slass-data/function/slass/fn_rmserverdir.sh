@@ -26,5 +26,6 @@ fn_rmserverdir () {
 	else
 		fn_printMessage "Directory ${1} to remove not found" "" "warning"
 	fi
+	
 	return 0
 }

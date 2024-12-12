@@ -23,5 +23,3 @@ mkdir $basepath/a3/a3srv${1} --mode=775
 ln -s $basepath/a3/a3master/* $basepath/a3/a3srv${1}/
 rm -f $basepath/a3/a3srv${1}/keys
 mkdir $basepath/a3/a3srv${1}/keys --mode=775
-#rm -f $basepath/a3/a3srv${1}/cfg
-#mkdir $basepath/a3/a3srv${1}/cfg --mode=775

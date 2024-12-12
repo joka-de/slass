@@ -17,10 +17,7 @@ fn_readuser () {
 	fn_getFunctionStatus $FUNCNAME
 	
 	fn_printMessage "$FUNCNAME: start" "" "debug"
-	#source <(sed '/^useradm/!d' $1)
-	#source <(sed '/^userlnch/!d' $1)
-	#source <(sed '/^grpserver/!d' $1)
-	
+		
 	useradm=$(whoami)
 	userlnch=$useradm
 	grpserver=$useradm

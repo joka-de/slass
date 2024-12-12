@@ -4,7 +4,7 @@
 # Author: PhilipJFry
 # 
 # Description:
-# Print status of function (is it used and/or deprecated)  
+# Print status of function in debug mode (is it used and/or deprecated)  
 # 
 # Parameter(s):
 # 1: Functionname <String>

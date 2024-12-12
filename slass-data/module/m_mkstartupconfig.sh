@@ -13,8 +13,6 @@
 # Return Value:
 # None <Any>
 #
-# read data
-#sourcescfg="${basepath}/a3/a3master/cfg/a3srv${1}.scfg"
 
 if [[ -f "$scfgi" ]]; then
 	source $scfgi
