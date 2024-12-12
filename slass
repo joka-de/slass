@@ -15,97 +15,85 @@
 # None <Any>
 #
 # enable debugging if needed
-debug=""
-debug="y"
-#
+
 # enable REALLY verbose debugging if needed
 verbose="n"
 if [[ $verbose == "y" ]] ; then
 	export PS4="\$LINENO: "
 	set -xv
 fi
-#
+
 # detect path to slass
 basepath=$(dirname "$(readlink -f "$0")")
-#
+
 # load function
-source $basepath/slass-data/module/m_fnloader.sh
-#
-fn_debugMessage "slass: Path to slass: $basepath"
-#
+source $basepath/slass-data/module/m_fnloader.sh 1
+
+fn_printMessage "Path to slass: ${basepath}" "" "debug"
+
 # check for root execution
 # fn_checkroot
-#
+
 # options to var
 opt1="$1"
 serverid="$2"
-#
-#
-case "$opt1" in
-#
-start|stop|restart|status|log)
-	#
-	# test input variable { i }
-	re='^[0-9]+$'
-	if ! [[ $serverid =~ $re ]] ; then
-		fn_printMessage "wrong argument 2" ""
-		fn_printMessage "expected arguments ( integer number )" ""
-		exit 1
-	fi
-	#
-	fn_printMessage "$opt1 of Server $serverid ..." ""
-	source $basepath/slass-data/module/m_a3server.sh $opt1 $serverid
-;;
-#
-#
-stopall)
-	fn_printMessage "stoppping all servers" ""
-	fn_stopall $basepath
-;;
-#
-#
-install-steamcmd)
-	fn_printMessage "beginning $opt1 ..." ""
-	source $basepath/slass-data/module/m_installsteamcmd.sh
-;;
-#
-#
-install-arma3)
-	fn_printMessage "beginning $opt1 ..." ""
-	#
-	# make a3 dir
-	fn_mka3masterdir
-	source $basepath/slass-data/module/m_updategame.sh
-	source $basepath/slass-data/module/m_updatews.sh
-;;
-#
-#
-update-game)
-	fn_printMessage "beginning $opt1 ..." ""
-	$0 stopall
-	source $basepath/slass-data/module/m_updategame.sh
-;;
-#
-#
-update-ws)
-	fn_printMessage "beginning $opt1 ..." ""
-	$0 stopall
-	source $basepath/slass-data/module/m_updatews.sh
-;;
-update)
-	$0 stopall
-	sleep 1s
-	$0 update-game
-	sleep 1s
-	$0 update-ws
-;;
-#
-#
-*)
-	fn_printMessage "wrong argument 1" ""
-	fn_printMessage "expected arguments ( start | stop | restart | status | log | install-steamcmd | install-arma3 | update | update-game | update-ws)" ""
-	exit 1
-;;
 
+case "$opt1" in
+	start|stop|restart|status|log)		
+		# test input variable { i }
+		re='^[0-9]+$'
+		if ! [[ $serverid =~ $re ]] ; then
+			fn_printMessage "wrong argument 2 (integer number expected)" "" "error"			
+			exit 1
+		fi
+		
+		fn_printMessage "$opt1 of Server $serverid ..." ""
+		source $basepath/slass-data/module/m_a3server.sh $opt1 $serverid
+	;;
+
+	stopall)
+		fn_printMessage "stoppping all servers" ""
+		fn_stopall $basepath
+	;;
+
+	install-steamcmd)
+		fn_printMessage "beginning $opt1 ..." ""
+		source $basepath/slass-data/module/m_installsteamcmd.sh
+	;;
+
+	install-arma3)
+		fn_printMessage "beginning $opt1 ..." ""
+		
+		# make a3 dir
+		fn_mka3masterdir
+		source $basepath/slass-data/module/m_updategame.sh
+		source $basepath/slass-data/module/m_updatews.sh
+	;;
+
+	update-game)
+		fn_printMessage "beginning $opt1 ..." ""
+		$0 stopall
+		source $basepath/slass-data/module/m_updategame.sh
+	;;
+
+	update-ws)
+		fn_printMessage "beginning $opt1 ..." ""
+		$0 stopall
+		source $basepath/slass-data/module/m_updatews.sh
+	;;
+
+	update)
+		$0 stopall
+		sleep 1s
+		$0 update-game
+		sleep 1s
+		$0 update-ws
+	;;
+
+	*)
+		fn_printMessage "wrong argument 1, expected arguments ( start | stop | restart | status | log | install-steamcmd | install-arma3 | update | update-game | update-ws)" "" "warning"
+		exit 1
+	;;
 esac
+
 exit 0

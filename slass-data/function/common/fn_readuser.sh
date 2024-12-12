@@ -14,7 +14,9 @@
 # None <Any>
 #
 fn_readuser () {
-	fn_debugMessage "$FUNCNAME: start"
+	fn_getFunctionStatus $FUNCNAME
+	
+	fn_printMessage "$FUNCNAME: start" "" "debug"
 	#source <(sed '/^useradm/!d' $1)
 	#source <(sed '/^userlnch/!d' $1)
 	#source <(sed '/^grpserver/!d' $1)
@@ -23,9 +25,9 @@ fn_readuser () {
 	userlnch=$useradm
 	grpserver=$useradm
 
-	fn_debugMessage "$FUNCNAME: userlnch $userlnch"
-	fn_debugMessage "$FUNCNAME: useradm $useradm"
-	fn_debugMessage "$FUNCNAME: grpserver $grpserver"
+	fn_printMessage "$FUNCNAME: userlnch $userlnch" "" "debug"
+	fn_printMessage "$FUNCNAME: useradm $useradm" "" "debug"
+	fn_printMessage "$FUNCNAME: grpserver $grpserver" "" "debug"
 
-	fn_debugMessage "$FUNCNAME: stop"
+	fn_printMessage "$FUNCNAME: stop" "" "debug"
 }

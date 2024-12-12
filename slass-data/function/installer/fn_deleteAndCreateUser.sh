@@ -14,6 +14,8 @@
 #
 
 fn_deleteAndCreateUser () {
+	fn_getFunctionStatus $FUNCNAME
+
 	local option
 	option="all"
 
@@ -21,31 +23,31 @@ fn_deleteAndCreateUser () {
 		option=$1
 	fi
 
-	fn_debugMessage "$option" ""
+	fn_printMessage "$FUNCNAME: $option" "" "debug"
 
 	# delete user
 	if [[ $option == "delete" || $option == "all" ]]; then
 			if [[ -d /home/${userAdmin} ]]; then
-				fn_debugMessage "User $userAdmin wird gelöscht" ""
+				fn_printMessage "$FUNCNAME: User $userAdmin wird gelöscht" "" "debug"
 				sudo deluser --remove-home $userAdmin
 			fi
 
 			if [[ -d /home/${userLaunch} ]]; then
-				fn_debugMessage "User $userLaunch wird gelöscht" ""
+				fn_printMessage "$FUNCNAME: User $userLaunch wird gelöscht" "" "debug"
 				sudo deluser --remove-home $userLaunch
 			fi
 
-			fn_debugMessage "Gruppe $groupServer wird gelöscht" ""
+			fn_printMessage "$FUNCNAME: Gruppe $groupServer wird gelöscht" "" "debug"
 			sudo groupdel $groupServer
 	fi
 
 	# create user
 	if [[ $option == "create" || $option == "all" ]]; then
 			sudo addgroup $groupServer
-			fn_debugMessage "User $userAdmin wird erstellt" ""
+			fn_printMessage "$FUNCNAME: User $userAdmin wird erstellt" "" "debug"
 			sudo adduser $userAdmin --gecos "" --ingroup $groupServer
 			sudo usermod -aG sudo $userAdmin
-			fn_debugMessage "User $userLaunch wird erstellt" ""
+			fn_printMessage "$FUNCNAME: User $userLaunch wird erstellt" "" "debug"
 			sudo adduser $userLaunch --gecos "" --ingroup $groupServer --disabled-password --shell /bin/false
 	fi
 }

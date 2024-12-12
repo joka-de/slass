@@ -1,0 +1,134 @@
+{
+	"global" : {
+		"_comment" : "This is  the global object. It is used by every server instance",
+
+		"slass" : {
+			"_comment" : "The keys in this object are used by slass.",
+
+			"debug" : "n",
+			"otherparams" : "-filepatching",
+			"ip" : "45.130.104.195",
+			"hostname" : "seelenlos | Master",
+			"headlessClient" : 0,
+			"port" : 2302,
+			"logfilelifetime" : 3,
+			"usersteam" : "anonymous",
+			"steampassword" : ""
+		},
+
+		"password" : "",
+		"maxPlayers" : 48,
+		"kickDuplicate" : 1,
+		"passwordAdmin" : "test",
+		"serverCommandPassword" : "test",
+		"persistent" : 1,
+		"timeStampFormat" : "short",
+		"headlessClients[]" : [ "127.0.0.1" ],
+		"localClient[]" : [ "127.0.0.1" ],
+		"verifySignatures" : 2,
+		"allowedFilePatching" : 2,
+		"BattlEye" : 1,
+		"allowedVoteCmds[]" : [],
+		"allowedVotedAdminCmds[]" : [],
+		"voteMissionPlayers" : 1,
+		"voteThreshold" : 0.33,
+		"votingTimeOut[]" : [60, 90],
+		"briefingTimeOut[]" : [60, 90],
+		"debriefingTimeOut[]" : [60, 60],
+		"roleTimeOut[]" : [90, 120],
+		"disconnectTimeout" : 90,
+		"armaUnitsTimeout" : 30,
+		"maxdesync" : 150,
+		"maxping" : 200,
+		"maxpacketloss" : 50,
+		"kickClientsOnSlowNetwork[]" : [ 0, 0, 0, 0 ],
+		
+		"kickTimeout[]" : [ 
+			[0, -1],
+			[1, 0],
+			[2, 0],
+			[3, 0]
+		],
+
+		"forceRotorLibSimulation" : 0,
+		"drawingInMap" : 1,
+		"disableVoN" : 0,
+		"vonCodec" : 1,
+		"vonCodecQuality" : 10,
+		"disableChannels[]" : [],
+		"forcedDifficulty" : "Custom",
+		"allowProfileGlasses" : 1,
+		"zeusCompositionScriptLevel" : 1,
+		"onUserConnected" : "",
+		"onUserDisconnected" : "",
+		"doubleIdDetected" : "",
+		"onUserKicked" : "",
+		"regularCheck" : "",
+		"onUnsignedData" : "kick (_this select 0)",
+		"onHackedData" : "kick (_this select 0)",
+		"onDifferentData" : "",
+
+		"class AdvancedOptions" : {
+			"LogObjectNotFound" : true,
+			"SkipDescriptionParsing" : false,
+			"ignoreMissionLoadErrors" : false,
+			"queueSizeLogG" : 1000000
+		},
+
+		"admins[]" : [
+			65561197977140091,
+			77561198140924504,
+			34561198127717713,
+			97561198078678117,
+			23561198064899913,
+			65561198878403548,
+			12332198151501275
+		],
+		
+		"motdInterval" : 5,
+
+		"motd[]" : [
+			"", "", 
+			"Willkommen auf dem Seelenlos - Server",
+			"Wir sind eine deutsche Spielergemeinschaft, die gern taktisch spielt.",
+			"Wenn du einfach nur etwas abballern und Punkte sammeln willst, bist du hier verkehrt.",
+			"", "", 
+			"Jeder Teamspieler ist eingeladen, sich uns anzuschließen.",
+			"Der Server wird zu unpassenden Zeiten neu gestartet werden.",
+			""
+		],
+
+		"autoSelectMission" : true,
+		"missionWhitelist[]" : [],
+
+		"class Missions" : {
+			"class MissionRotation1": {
+				"template" : "KP_Liberation_Altis.Altis",
+				"difficulty" : "Custom",
+				"class Params" : {}
+			}
+		}
+	},
+
+	"server1" : {
+		"_comment" : "This is  the local unit. It is used by one server instance",
+
+		"slass" : {
+			"_comment" : "The keys in this unit are used by slass.",
+
+			"hostname" : "seelenlos | Server 1",
+			"headlessClient" : 0,
+			"port" : 2302
+		},
+
+		"passwordAdmin" : "server1",
+		"serverCommandPassword" : "server1",
+
+		"class Missions" : {
+			"class MissionRotation1": {
+				"template" : "MP_Warlords_official_01_large_ver2.Altis",
+				"difficulty" : "Custom",
+				"class Params" : {}
+			}
+		}
+	},

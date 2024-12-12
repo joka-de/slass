@@ -13,115 +13,84 @@
 # None <Any>
 #
 fn_mkaconfig () {
-	fn_debugMessage "$FUNCNAME: start" ""	
+	fn_getFunctionStatus $FUNCNAME
+	fn_printMessage "$FUNCNAME: start" "" "debug"	
+	
+	local jsonData=$(fn_getJSONData "1")
 
-	if [[ $# -eq 0 ]]; then 
-		fn_debugMessage "$FUNCNAME: Servernumber not provided" ""
-	else
-		fn_readServerConfig
+	if [[ "$jsonData" = "null" ]]; then
+		fn_printMessage "Server ${1} not exist. Please add the server to server.json file" "" "error"
+	else 
+		local cfgi="${basepath}/a3/a3master/cfg/a3srv${1}.cfg"
+		fn_printMessage "$FUNCNAME: cfg file $cfgi" "" "debug"
 
-		if [[ $serverCount -ge $1 ]]; then
-			i=$1
-			
-			cfgi="${basepath}/a3/a3master/cfg/a3srv${1}.cfg"
-			fn_debugMessage "$FUNCNAME: cfg file $cfgi" ""
-			
-			if [[ -f $cfgi ]]; then
-				rm $cfgi
-			fi
-
-			if [[ -f "${basepath}/a3/a3master/cfg/basic.cfg" ]]; then
-				rm "${basepath}/a3/a3master/cfg/basic.cfg"
-			fi
-
-			cp "${basepath}/config/a3master.cfg" $cfgi
-			cp "${basepath}/config/basic.cfg" "${basepath}/a3/a3master/cfg/basic.cfg"
-			
-			# make modlist
-			mods=""
-			servermods=""
-			hostname_mods=""
-			#
-			while read line; do
-				applistname=$(echo $line | awk '{ printf "%s", $2 }')
-				appkey=$(echo $line | awk -v var=$(( $1 + 4 )) '{ printf "%s", $var }' )
-				#
-				if [[ -z "$appkey" ]]; then
-					fn_printMessage "No modlist entry found for server ${1}, consider extending modlist"
-					appkey=$(echo $line | awk -v var=$(( 5 )) '{ printf "%s", $var }' )
-					fn_printMessage "... defaulting to entry for server 1 = ${appkey}"
-				fi
-				#
-				fn_debugMessage "$FUNCNAME: applistname = ${applistname} | appkey = ${appkey}"
-				#
-				#
-				if [ "${applistname}" != "xx" ] && [ "${appkey}" = "1" ]; then
-					if [ "${hostname_mods}" = "" ]; then
-						hostname_mods=${hostname_mods}" ${applistname}"
-					else
-						hostname_mods=${hostname_mods}", ${applistname}"
-					fi
-				fi
-			done < ${basepath}/config/modlist.inp
-			#
-			# remove spaces in cfgi
-			#sed -i 's/ = /=/g' $cfgi
-			#
-			# extract hostname from source
-			#source <(sed '/^hostname/!d' $cfgi | sed 's/;//')
-			#sed '/^hostname/!d' $cfgi | sed 's/;//'
-			#
-			# append the modnames to the hostname
-			if [ "${hostname_mods}" = "" ]; then
-				hostname_mods=" Vanilla"
-			fi
-
-			fn_debugMessage "$FUNCNAME: hostname_mods $hostname_mods" "" "$RED"
-
-			serverName=server$1[serverName]
-			headlessClient=server$1[headlessClient]
-			serverPort=server$1[port]
-			serverPassword=server$1[serverPassword]
-			adminPassword=server$1[adminPassword]
-			adminSteamID=server$1[admins]
-			serverMission=server$1[mission]
-
-			hostname=${!serverName}$hostname_mods
-			fn_debugMessage "$FUNCNAME: $hostname" "" "$RED"
-			#
-			# change hostname in file
-
-			#echo "${serverArray[serverPassword]}"
-			sed -i "/^hostname/c\hostname =\"$hostname\"\;" $cfgi
-			sed -i "/^password =/c\password =\"${!serverPassword}\"\;" $cfgi
-			sed -i "/^passwordAdmin =/c\passwordAdmin =\"${!adminPassword}\"\;" $cfgi
-
-			arrayAdmins=()
-			adminString=""
-
-			for i in ${!adminSteamID}; do
-				arrayAdmins+=($i)
-			done
-
-			echo "ADMINS: ${arrayAdmins[@]}"
-
-			fn_debugMessage "$FUNCNAME: arrayAdmins ${arrayAdmins[@]}" "" "$RED"
-
-			arrayCount=1 
-
-			for admin in ${arrayAdmins[@]}; do
-				if [[ $arrayCount -eq ${#arrayAdmins[@]} ]]; then
-					adminString+=" \"$admin\""
-				else
-					adminString+=" \"$admin\","
-				fi
-
-				((arrayCount++))
-			done
-			
-			sed -i "/^admins\[\] =/c\admins\[\] = \{$adminString \}\;" $cfgi
-			sed -i "/template =/c\template = ${!serverMission}\;" $cfgi
+		if [[ -f "$cfgi" ]]; then
+			rm $cfgi
 		fi
+
+		if [[ -f "${basepath}/a3/a3master/cfg/basic.cfg" ]]; then
+			rm "${basepath}/a3/a3master/cfg/basic.cfg"
+		fi
+
+		cp "${basepath}/config/basic.cfg" "${basepath}/a3/a3master/cfg/basic.cfg"
+
+		jq '.global * .server'"$1"' | del(.slass, ._comment)' ${basepath}/config/serverSml.json | sed \
+			-e 's/^.\{4\}$/  };/g' \
+			-e 's|^[{}]||g' \
+			-e '/"class [a-zA-Z0-9"]*:/,/},/{s/}/};/}' \
+			-e 's/};;/};/g' \
+			-e 's/"*": /=/g' \
+			-e '/"[a-zA-Z0-9 _]*=/{s/"//}' \
+			-e '/"[a-zA-Z0-9_]*\[\]=/{s/"//}' \
+			-e '/[a-zA-Z]=[a-z0-9"]/{s/,/;/}' \
+			-e '/[a-zA-Z]=[a-z0-9"]* *$/s/$/;/' \
+			-e '/\[[a-zA-Z0-9",]*/,/\};/{s/\],/\},/g}' \
+			-e '/\[[a-zA-Z0-9",]*/,/\};/{s/\[/\{/g}' \
+			-e '/\[[a-zA-Z0-9",]*/,/\};/{s/\[/\{/g}' \
+			-e '/{[a-zA-Z0-9",]*/,/\};/{s/\]/\}/g}' \
+			-e '/[a-zA-Z0-9_]*{}=/{s/{}/\[\]/}' \
+			-e 's/{},/{};/g' \
+			-e '/class [a-zA-Z0-9]*=/{s/=/ /}' \
+			-e 's/^..//' \
+        	-e '/^[[:space:]]*$/d' \
+        >> $cfgi
+
+        # make modlist
+		local mods=""
+		local servermods=""
+		local hostname_mods=""
+		
+		while read line; do
+			local applistname=$(echo $line | awk '{ printf "%s", $2 }')
+			local appkey=$(echo $line | awk -v var=$(( $1 + 4 )) '{ printf "%s", $var }' )
+			
+			if [[ -z "$appkey" ]]; then
+				fn_printMessage "$FUNCNAME: No modlist entry found for server ${1}, consider extending modlist" "" "warning"
+				appkey=$(echo $line | awk -v var=$(( 5 )) '{ printf "%s", $var }' )
+				fn_printMessage "$FUNCNAME: ... defaulting to entry for server 1 = ${appkey}" "" "warning"
+			fi
+			
+			fn_printMessage "$FUNCNAME: applistname = ${applistname} | appkey = ${appkey}" "" "debug"
+						
+			if [[ "${applistname}" != "xx" ]] && [[ "${appkey}" = "1" ]]; then
+				if [[ "${hostname_mods}" = "" ]]; then
+					hostname_mods=${hostname_mods}" ${applistname}"
+				else
+					hostname_mods=${hostname_mods}", ${applistname}"
+				fi
+			fi
+		done < ${basepath}/config/modlist.inp
+	
+		if [[ "${hostname_mods}" = "" ]]; then
+			hostname_mods=" Vanilla"
+		fi
+
+		local hostname=$(fn_getJSONData "$1" "slass.hostname" "-r")
+		hostname+=$hostname_mods
+		fn_printMessage "$FUNCNAME: $hostname" "" "debug"
+		sed -i "1 i\hostname=\"$hostname\";" $cfgi
+		#sed -i "/^hostname/c\hostname =\"$hostname\"\;" $cfgi
 	fi
-	fn_debugMessage "$FUNCNAME: end" ""
+	
+	fn_printMessage "$FUNCNAME: end" "" "debug"
 }

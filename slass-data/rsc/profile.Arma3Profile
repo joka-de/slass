@@ -8,8 +8,7 @@ maxSamplesPlayed=96;
 class DifficultyPresets {
 	class CustomDifficulty {
 		class Options {
-/* Simulation */
-
+			/* Simulation */
 			reducedDamage = 0;		// Reduced damage
 
 			/* Situational awareness */

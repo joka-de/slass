@@ -10,45 +10,39 @@
 # 1. server id {i} <integer>
 #
 # Return Value:
-# None <Any>
+# scfgi path <String>
 #
 fn_mksconfig () {
-	fn_debugMessage "$FUNCNAME: start" ""	
+	fn_getFunctionStatus $FUNCNAME
+	
+	local scfgi=""
 
-	if [[ $# -eq 0 ]]; then 
-		fn_debugMessage "$FUNCNAME: Servernumber not provided" ""
-	else
-		fn_readServerConfig
-
-		if [[ $serverCount -ge $1 ]]; then
-			i=$1
-			scfgi="${basepath}/a3/a3master/cfg/a3srv${1}.scfg"
-			fn_debugMessage "$FUNCNAME: scfg file $scfgi" ""
-						
-			if [[ -f $scfgi ]]; then
-				rm $scfgi
-			fi
-			
-			serverIP=global[ip]
-			params=global[otherparams]
-			logfilelifetime=global[logfilelifetime]
-
-			serverName=server$1[serverName]
-			headlessClient=server$1[headlessClient]
-			serverPort=server$1[port]
-
-			printf "nhc=${!headlessClient}" > $scfgi
-			printf "\nbasepath=$basepath" >> $scfgi
-			printf "\nip=${!serverIP}" >> $scfgi
-			printf "\nport=${!serverPort}" >> $scfgi
-			printf "\notherparams=\"${!params}\"" >> $scfgi
-			printf "\nlogfilelifetime=${!logfilelifetime}" >> $scfgi
-			
-			printf "\nhostname=\"${!serverName}\"" >> $scfgi
-			#printf "\nuseradm=${serverArrayGlobal[useradm]}" >> $scfgi
-			#printf "\nuserlnch=${serverArrayGlobal[userlnch]}" >> $scfgi
-			#printf "\nprofile=${serverArrayGlobal[profile]}" >> $scfgi
-		fi
+	if [[ -z "$1" ]]; then
+		fn_printMessage "$FUNCNAME: servernumber not provided!" "" "error"
+		exit 1
 	fi
-	fn_debugMessage "$FUNCNAME: end" ""
+
+	scfgi="${basepath}/a3/a3master/cfg/a3srv${1}.scfg"
+
+	if [[ -f $scfgi ]]; then
+		rm $scfgi
+	fi
+
+	local ip=$(fn_getJSONData "$1" "slass.ip" "-r")
+	local otherparams=$(fn_getJSONData "$1" "slass.otherparams")
+	local logfilelifetime=$(fn_getJSONData "$1" "slass.logfilelifetime" "-r")
+
+	local hostname=$(fn_getJSONData "$1" "slass.hostname")
+	local hc=$(fn_getJSONData "$1" "slass.headlessClient" "-r")
+	local port=$(fn_getJSONData "$1" "slass.port" "-r")
+
+	printf "nhc=$hc" > $scfgi
+	printf "\nbasepath=$basepath" >> $scfgi
+	printf "\nip=$ip" >> $scfgi
+	printf "\nport=$port" >> $scfgi
+	printf "\notherparams=$otherparams" >> $scfgi
+	printf "\nlogfilelifetime=$logfilelifetime" >> $scfgi
+	printf "\nhostname=$hostname" >> $scfgi
+
+	printf "$scfgi"
 }

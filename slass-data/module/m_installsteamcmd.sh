@@ -26,6 +26,6 @@ read goinst
 if [ $goinst != "y" ]; then
 	exit 0
 fi
-#
+
 # install steamcmd
 fn_installsteamcmd

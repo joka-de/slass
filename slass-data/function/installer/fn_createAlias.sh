@@ -14,18 +14,20 @@
 #
 
 fn_createAlias () {
+	fn_getFunctionStatus $FUNCNAME
+
 	# create alias for slass.sh ($userAdmin)
-	file="/home/$userAdmin/.bash_aliases"
+	local file="/home/$userAdmin/.bash_aliases"
 
 	if [[ ! -f $file ]]; then
 			touch $file
 	fi
 
 	if ! grep -q 'alias for slass' "$file"; then
-		fn_debugMessage "Eintrag für Alias nicht gefunden, Alias wird eingetragen" ""
+		fn_printMessage "$FUNCNAME: Eintrag für Alias nicht gefunden, Alias wird eingetragen" "" "debug"
 		echo "#alias for slass" >> $file
 		printf 'alias slass="%s/slass.sh"' $installPath >> $file
 	else
-		fn_debugMessage "Eintrag für alias bereits vorhanden" ""
+		fn_printMessage "$FUNCNAME: Eintrag für alias bereits vorhanden" "" "debug"
 	fi
 }

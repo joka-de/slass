@@ -13,6 +13,7 @@
 # None <Any>
 #
 fn_a3filepermissions () {
+	fn_getFunctionStatus $FUNCNAME
 	fn_printMessage "Resetting the file permissions in a3master ..." ""
 	find -L ${basepath}/a3/a3master -type d -exec chmod 775 {} \;
 	find -L ${basepath}/a3/a3master -type f -exec chmod 664 {} \;

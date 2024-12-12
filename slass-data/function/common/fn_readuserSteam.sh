@@ -7,15 +7,18 @@
 # read "usersteam steampassword" from file scfg
 # 
 # Parameter(s):
-# 1. path to file
+# None <Any>
 #
 # Return Value:
 # None <Any>
 #
 fn_readuserSteam () {
-	fn_debugMessage "$FUNCNAME: start"
-	source <(sed '/^usersteam/!d' $1)
-	source <(sed '/^steampassword/!d' $1)
+	fn_getFunctionStatus $FUNCNAME
+
+	fn_printMessage "$FUNCNAME: start" "" "debug"
 	
-	fn_debugMessage "$FUNCNAME: stop"
+	usersteam=$(fn_getJSONData "" "global.slass.usersteam" "-r")
+	steampassword=$(fn_getJSONData "" "global.slass.steampassword" "-r")
+	
+	fn_printMessage "$FUNCNAME: stop" "" "debug"
 }

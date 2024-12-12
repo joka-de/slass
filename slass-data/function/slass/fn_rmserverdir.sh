@@ -13,17 +13,18 @@
 # None <Any>
 #
 fn_rmserverdir () {
-	#
+	fn_getFunctionStatus $FUNCNAME
+	
 	if (( $# != 1 )); then
-		fn_debugMessage "$FUNCNAME: aborted, one argument needed" ""
+		fn_printMessage "$FUNCNAME: aborted, one argument needed" "" "error"
 		return 1
 	fi
-	#
+	
 	if [ -d "${1}" ]; then
 		rm -rf "${1}"
-		fn_debugMessage "$FUNCNAME: Directory ${1} removed" ""
+		fn_printMessage "Directory ${1} removed" ""
 	else
-		fn_debugMessage "$FUNCNAME: Directory ${1} to remove not found" ""
+		fn_printMessage "Directory ${1} to remove not found" "" "warning"
 	fi
 	return 0
 }
