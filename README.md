@@ -113,7 +113,7 @@ The configs are located in `./config`
 
 2. Install prerequisites
 ```
-sudo apt install lib32gcc-s1 lib32stdc++6 rename
+sudo apt install lib32gcc-s1 lib32stdc++6 rename jq
 ```
 
 3. Create User for the server. For Security, leave the password disabled. You can still login to this user using ssh with a keypair or from root using su.
