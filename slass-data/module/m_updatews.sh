@@ -19,6 +19,11 @@ find -L ${basepath}/log -iname "*.log" -mtime 7 -delete
 # load Steam Credentials
 fn_readuserSteam
 
+if [[ "$usersteam" == "anonymous" ]]; then
+	fn_printMessage "To perform workshop downloads please add your steam creadentials in the server.json file." "" "warning"
+	exit 0
+fi
+
 # build steam script file
 while read line; do
 	appname=$(echo $line | awk '{ printf "%s", $1 }')
