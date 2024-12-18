@@ -13,7 +13,14 @@
 			"port" : 2302,
 			"logfilelifetime" : 3,
 			"usersteam" : "anonymous",
-			"steampassword" : ""
+			"steampassword" : "",
+			"mods" : {
+				"slt" : {
+					"appid" : 503315867,
+					"apptype" : "cmod",
+					"addtohostname" : "SLT"
+				}
+			}		
 		},
 
 		"password" : "",
@@ -118,7 +125,14 @@
 
 			"hostname" : "seelenlos | Server 1",
 			"headlessClient" : 0,
-			"port" : 2302
+			"port" : 2302,
+			"mods" : {
+				"cba" : {
+					"appid" : 450814997,
+					"apptype" : "mod",
+					"addtohostname" : ""
+				}
+			}
 		},
 
 		"passwordAdmin" : "server1",
