@@ -34,7 +34,7 @@ fn_mkaconfig () {
 
 		cp "${basepath}/config/basic.cfg" "${basepath}/a3/a3master/cfg/basic.cfg"
 
-		jq '.global * .server'"$1"' | del(.slass, ._comment)' ${basepath}/config/serverSml.json | sed \
+		jq '.global * .server'"$1"' | del(.slass, ._comment)' ${basepath}/config/server.json | sed \
 			-e 's/^.\{4\}$/  };/g' \
 			-e 's|^[{}]||g' \
 			-e '/"class [a-zA-Z0-9"]*:/,/},/{s/}/};/}' \

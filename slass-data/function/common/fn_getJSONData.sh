@@ -26,7 +26,7 @@ fn_getJSONData () {
     fn_getFunctionStatus $FUNCNAME
 
     local serverFile="${basepath}/config/server.json"
-                
+
     if [[ -n "$4" ]]; then
         serverFile="${basepath}/config/$4"
     fi
@@ -70,6 +70,6 @@ fn_getJSONData () {
             fn_printMessage "$FUNCNAME: argument 1 and 2 are missing (one of these are expected)" "" "error"
         fi
     fi      
-    
+
     printf "$output\n"
  }
