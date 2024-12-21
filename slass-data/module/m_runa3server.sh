@@ -30,7 +30,7 @@ case "$1" in
 	;;
 
 	stop)
-	# stopping the servers
+		# stopping the servers
 		source <(sed '/^nhc/!d' ${basepath}/config/a3srv${2}.scfg)
 
 		for index in $(seq 1 $(( $nhc + 1 ))); do
