@@ -5,29 +5,22 @@
 		"slass" : {
 			"_comment" : "The keys in this object are used by slass.",
 
-			"debug" : "n",
+			"debug" : "y",
 			"otherparams" : "-filepatching",
-			"ip" : "45.130.104.195",
-			"hostname" : "seelenlos | Master",
+			"ip" : "1.2.3.4",
+			"hostname" : "servername",
 			"headlessClient" : 0,
 			"port" : 2302,
 			"logfilelifetime" : 3,
-			"usersteam" : "anonymous",
-			"steampassword" : "",
-			"mods" : {
-				"slt" : {
-					"appid" : 503315867,
-					"apptype" : "cmod",
-					"addtohostname" : "SLT"
-				}
-			}		
+			"usersteam" : "username",
+			"steampassword" : "password"
 		},
 
 		"password" : "",
+		"passwordAdmin" : "password",
+		"serverCommandPassword" : "password",
 		"maxPlayers" : 48,
 		"kickDuplicate" : 1,
-		"passwordAdmin" : "test",
-		"serverCommandPassword" : "test",
 		"persistent" : 1,
 		"timeStampFormat" : "short",
 		"headlessClients[]" : [ "127.0.0.1" ],
@@ -49,8 +42,8 @@
 		"maxping" : 200,
 		"maxpacketloss" : 50,
 		"kickClientsOnSlowNetwork[]" : [ 0, 0, 0, 0 ],
-		
-		"kickTimeout[]" : [ 
+
+		"kickTimeout[]" : [
 			[0, -1],
 			[1, 0],
 			[2, 0],
@@ -83,25 +76,19 @@
 		},
 
 		"admins[]" : [
-			"65561197977140091",
-			"77561198140924504",
-			"34561198127717713",
-			"97561198078678117",
-			"23561198064899913",
-			"65561198878403548",
-			"12332198151501275"
+			"76561197977100000",
+			"76561198151500000"
 		],
-		
+
 		"motdInterval" : 5,
 
 		"motd[]" : [
-			"", "", 
-			"Willkommen auf dem Seelenlos - Server",
-			"Wir sind eine deutsche Spielergemeinschaft, die gern taktisch spielt.",
-			"Wenn du einfach nur etwas abballern und Punkte sammeln willst, bist du hier verkehrt.",
-			"", "", 
-			"Jeder Teamspieler ist eingeladen, sich uns anzuschließen.",
-			"Der Server wird zu unpassenden Zeiten neu gestartet werden.",
+			"", "",
+			"Message of the day",
+			"line 2",
+			"", "",
+			"more ..",
+			"even more ...",
 			""
 		],
 
@@ -123,26 +110,51 @@
 		"slass" : {
 			"_comment" : "The keys in this unit are used by slass.",
 
-			"hostname" : "seelenlos | Server 1",
-			"headlessClient" : 0,
-			"port" : 2302,
-			"mods" : {
-				"cba" : {
-					"appid" : 450814997,
-					"apptype" : "mod",
-					"addtohostname" : ""
-				}
-			}
+			"hostname" : "servername server 1",
+			"headlessClient" : 3,
+			"port" : 2302
 		},
-
-		"passwordAdmin" : "server1",
-		"serverCommandPassword" : "server1",
 
 		"class Missions" : {
 			"class MissionRotation1": {
-				"template" : "MP_Warlords_official_01_large_ver2.Altis",
+				"template" : "ALiVE_Operation_Cobra.SPE_Normandy",
 				"difficulty" : "Custom",
 				"class Params" : {}
+			}
+		}
+	},
+
+	"server3" : {
+		"_comment" : "This is  the local unit. It is used by one server instance",
+
+		"slass" : {
+			"_comment" : "The keys in this unit are used by slass.",
+
+			"hostname" : "servername server 3",
+			"headlessClient" : 4,
+			"port" : 2342
+		},
+
+		"password" : "loginpwd",
+		"passwordAdmin" : "otherpassword",
+		"serverCommandPassword" : "otherpassword",
+
+		"class Missions" : {
+			"class MissionRotation1": {
+				"template" : "OverthrowMPTanoa.Tanoa",
+				"difficulty" : "Custom",
+				"class Params" : {
+					"ace_medical_level" : 1,
+					"ot_enemy_faction" : 0,
+					"ot_randomizeloadouts" : 0,
+					"ace_medical_blood_enabledFor" : 1,
+					"ot_start_autoload" : 1,
+					"ot_start_difficulty" : 1,
+					"ot_start_fasttravel" : 0,
+					"ot_start_fasttravelrules" : 0,
+					"ot_showplayermarkers" : 0,
+					"ot_showenemygroup" : 0
+				}
 			}
 		}
 	}
