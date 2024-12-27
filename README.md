@@ -12,7 +12,7 @@
 
 ## General
 seelenlos Arma3 Server Script (SLASS) will greatly ease the installation and management of multiple Arma3 servers including mods from the Steam workshop.</br>
-**Version 2.0** Now with Headless Clients
+**Version 2.0** Now with Headless Clients and hierarchical JSON config.
 
 ## Features
 slass (seelenlos Arma 3 Server Script)
@@ -29,21 +29,22 @@ slass (seelenlos Arma 3 Server Script)
 - provides a central config file for all server instances
 - provides a central config file where you can specify an individual mod set for each server
 - differentiates between mod, servermod, and clientmod
+- supports CDLC
 - manages the *.bikey files in dependency of the loaded mods for each server instance
 - creates meaningful servernames for the server browser depending on the loaded mods
 #### management
 - updates Arma3 and all mods by a single command
 - ready for automated server updates / restarts
 - restarts the servers if they crash
-- provides diagnostic commands on the running servers
+- provides diagnostics on the running servers
 - reconfigures the servers upon each restart according to the config files
 - logs all events at a central location
 
 ## slass 2.0 release
-Version 2 is a major rework of the older versions of slass, with much of the code rewritten. Most important improvement is the support for Headless Clients. Other major improvements are the ability to run automated updates and the use of a centralized config. Code has been cleaned up and a more meaningful folder and code structure has been established.
+Version 2 is a major rework of the older versions of slass, with much of the code rewritten. Biggest improvement is the support for Headless Clients. Other major improvements are the ability to run automated updates and the use of a centralized config. Code has been cleaned up and a more meaningful folder and code structure has been established.
 
 ## How it works - Basic Concept
-The script will generate a master installation (./a3/a3master), that will never be started. Using symlinks, it will build each server instances out of this master installation. The whole set of server files, including the mission repository (mpmissions folder) and *.Arma3Profile is being shared among the instances, but the instances use individual config files and startup commands. A script will manage the mods and their keys to load for each server instance. The servers will only need about the disc space of one server, because each instance only exists in symlinks. You can run as many instances at once as far as your RAM allows. We tested to up to four simultaneously running server instances, i.e. servers.
+The script will generate a master installation (./a3/a3master), that will never be started. Using symlinks, it will build each server instances out of this master installation. The whole set of server files, including the mission repository (mpmissions folder) and *.Arma3Profile is being shared among the instances, but the instances use individual configs and startup commands. Slass will manage the mods and their keys to load for each server instance. The servers will only need about the disc space of one server, because each instance only exists in symlinks. You can run as many instances at once as far as your RAM allows. We tested to up to four simultaneously running server instances, i.e. servers.
 For each server instance you can set individually:
 - config file
 - mods to use including their keys
@@ -165,8 +166,9 @@ The configs are located in `./config`
 - Set parameters in the object slass to define options of the script. These are used by slass only and not passed to arma.
 - The key "_comment" can be used for commenting. You can add more of these lines. Do not use any other comment format.
 - Every other content will be written to the server config on startup of the server. slass will parse the json and reformat the entries to Arma3-Standard.
+- Add an object with an arbitrary server number i <integer> to the config to define more servers. Start the server with the command `slass start i`. Server i must exist in the config in order to be started.
 
-*Important: *Check validity of your config with a [JSON-Parser](http://json.parser.online.fr/ "JSON-Parser"). See [example file](https://github.com/joka-de/slass/blob/master/config/server.json "example file") for formatting of Arma3-Config Entries in the JSON.
+*Important:* Check validity of your config with a [JSON-Parser](http://json.parser.online.fr/ "JSON-Parser"). See [example file](https://github.com/joka-de/slass/blob/master/config/server.json "example file") for formatting of Arma3-Config Entries in the JSON.
 
 ###### slass parameters
 - "debug" : "y"</br>enable debug mode on the prompt
@@ -190,7 +192,7 @@ Mods to load / install
     - **mod** if the mod is to be loaded by server and client (key and mod is loaded), e.g. ACE</br>
     - **cmod** if the mod is only to be loaded client side (only key is loaded on server), e.g. JSRS</br>
     - **smod** if the mod is only to be loaded by the server (only mod is loaded on server), e.g. ace_server</br>
-  5. *active key*</br>this and and following columns contain a binary key 0/1 selecting if the mod is to be loaded on server #1/#2/#3/ ...</br>
+  5. *active key*</br>this and and following columns contain a binary key 0/1 selecting if the mod is to be loaded on server #1/#2/#3/ ...</br>Add more columns to the file to define more server instances.
 
 Example:
 
@@ -205,7 +207,7 @@ slt                   slt		503315867	cmod	1	1	1
 ```
 
 #####   basic.cfg
-  loaded by the server process as -cfg file (NOT -config)</br>
+loaded by the server process as -cfg file (NOT -config)</br>
 
 #### Logging
 Issue the command `./slass/slass log 1` to tail the log of server 1 to the prompt.</br></br>Logfiles are stored in `~/log`. Each Server and each of its HC will have a log.</br></br>Update-Logs of A3 and the Workshop are kept there as well.
@@ -213,7 +215,7 @@ Issue the command `./slass/slass log 1` to tail the log of server 1 to the promp
 #### Uninstall
 
 1. Open a shell.
-1. Remove the user and its home
+2. Remove the user and its home
 
 ```
 deluser --remove-home a3server
@@ -223,7 +225,7 @@ The basic idea is to run the command `./slass update` regularly. You can do this
 
 ##### Example with cron
 1. Open a shell and make a script file, i.e. `touch ./updatea3.sh`
-1. Edit the file to something like that:
+2. Edit the file to something like that:
 
 ```
 #!/bin/bash
@@ -243,3 +245,5 @@ sleep 15
 ```
 00 09 * * * /home/a3server/slass/updatea3.sh
 ```
+
+Consider adding slass to your bashrc to ease usage.
