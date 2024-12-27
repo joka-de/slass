@@ -10,10 +10,6 @@
 
 *License:* GNU GPLv3
 
-[TOCM]
-
-[TOC]
-
 ## General
 seelenlos Arma3 Server Script (SLASS) will greatly ease the installation and management of multiple Arma3 servers including mods from the Steam workshop.</br>
 **Version 2.0** Now with Headless Clients
