@@ -136,7 +136,7 @@ enter the steam guard code by issuing
 ```
 ./slass/steamcmd/steamcmd.sh
 ```
-and then `login  steamuser`, follow instuctions, then restart installation by
+and then `login  <yoursteamuser>`, follow instuctions, then restart installation by
 ```
 ./slass/slass install-arma3
 ```
