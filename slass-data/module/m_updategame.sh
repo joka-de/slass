@@ -20,7 +20,7 @@ find -L ${basepath}/log -iname "*.log" -mtime 7 -delete
 fn_readuserSteam
 
 if [[ "$usersteam" == "anonymous" ]]; then
-	fn_printMessage "To perform install or update arma 3 please add your steam creadentials in the server.json file." "" "warning"
+	fn_printMessage "To perform install or update arma 3 please add your steam credentials in the server.json file." "" "warning"
 	exit 0
 fi
 
