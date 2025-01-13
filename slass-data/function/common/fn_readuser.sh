@@ -14,9 +14,7 @@
 # None <Any>
 #
 fn_readuser () {
-	fn_getFunctionStatus $FUNCNAME
-	
-	fn_printMessage "$FUNCNAME: start" "" "debug"
+	fn_getFunctionStatus $FUNCNAME	
 		
 	useradm=$(whoami)
 	userlnch=$useradm
@@ -24,7 +22,5 @@ fn_readuser () {
 
 	fn_printMessage "$FUNCNAME: userlnch $userlnch" "" "debug"
 	fn_printMessage "$FUNCNAME: useradm $useradm" "" "debug"
-	fn_printMessage "$FUNCNAME: grpserver $grpserver" "" "debug"
-
-	fn_printMessage "$FUNCNAME: stop" "" "debug"
+	fn_printMessage "$FUNCNAME: grpserver $grpserver" "" "debug"	
 }
