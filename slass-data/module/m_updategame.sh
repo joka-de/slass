@@ -19,6 +19,11 @@ find -L ${basepath}/log -iname "*.log" -mtime 7 -delete
 # load Steam Credentials
 fn_readuserSteam
 
+if [[ "$usersteam" == "anonymous" ]]; then
+	fn_printMessage "To perform install or update arma 3 please add your steam creadentials in the server.json file." "" "warning"
+	exit 0
+fi
+
 # build steam script file - game
 tmpfile=$(mktemp --tmpdir=$basepath file.XXXXX)
 chmod 700 $tmpfile
