@@ -1,11 +1,11 @@
 #
 # SLASS - fn_mkaconfig
-# 
+#
 # Author: Fry
-# 
+#
 # Description:
 # create configs for server instance a3srv{i}
-# 
+#
 # Parameter(s):
 # 1. server id {i} <integer>
 #
@@ -14,13 +14,13 @@
 #
 fn_mkaconfig () {
 	fn_getFunctionStatus $FUNCNAME
-	fn_printMessage "$FUNCNAME: start" "" "debug"	
-	
+	fn_printMessage "$FUNCNAME: start" "" "debug"
+
 	local jsonData=$(fn_getJSONData "1")
 
 	if [[ "$jsonData" = "null" ]]; then
 		fn_printMessage "Server ${1} not exist. Please add the server to server.json file" "" "error"
-	else 
+	else
 		local cfgi="${basepath}/a3/a3master/cfg/a3srv${1}.cfg"
 		fn_printMessage "$FUNCNAME: cfg file $cfgi" "" "debug"
 
@@ -53,34 +53,36 @@ fn_mkaconfig () {
 			-e '/class [a-zA-Z0-9]*=/{s/=/ /}' \
 			-e 's/^..//' \
         	-e '/^[[:space:]]*$/d' \
+        	-e '/template/,/;/{s/{/\[/}' \
+        	-e '/template/,/;/{s/}/\]/}' \
         >> $cfgi
 
         # make modlist
-		local mods=""
-		local servermods=""
 		local hostname_mods=""
-		
-		while read line; do
-			local applistname=$(echo $line | awk '{ printf "%s", $2 }')
-			local appkey=$(echo $line | awk -v var=$(( $1 + 4 )) '{ printf "%s", $var }' )
-			
-			if [[ -z "$appkey" ]]; then
-				fn_printMessage "$FUNCNAME: No modlist entry found for server ${1}, consider extending modlist" "" "warning"
-				appkey=$(echo $line | awk -v var=$(( 5 )) '{ printf "%s", $var }' )
-				fn_printMessage "$FUNCNAME: ... defaulting to entry for server 1 = ${appkey}" "" "warning"
-			fi
-			
-			fn_printMessage "$FUNCNAME: applistname = ${applistname} | appkey = ${appkey}" "" "debug"
-						
-			if [[ "${applistname}" != "xx" ]] && [[ "${appkey}" = "1" ]]; then
+
+		local mods=$(fn_getJSONData "" "global.slass.modtoload + .server${1}.slass.modtoload | .[]" "-r")
+
+		for mod in $mods; do
+			local appname=$mod
+			local appid=$(fn_getJSONData "" "global.slass.modrepo.${appname}.appid")
+
+			fn_printMessage "$FUNCNAME: appname = ${appname} | appid = ${appid}" "" "debug"
+
+			local inservername=$(fn_getJSONData "" "global.slass.modrepo.${appname}.inservername" "-r")
+
+			fn_printMessage "$FUNCNAME: inservername: $inservername" "" "debug"
+
+			if [[ "$inservername" != "null" ]] && [[ ! -z "$inservername" ]]; then
 				if [[ "${hostname_mods}" = "" ]]; then
-					hostname_mods=${hostname_mods}" ${applistname}"
+					hostname_mods=${hostname_mods}" ${inservername}"
 				else
-					hostname_mods=${hostname_mods}", ${applistname}"
+					hostname_mods=${hostname_mods}", ${inservername}"
 				fi
+
+				fn_printMessage "$FUNCNAME: hostname_mods: $hostname_mods" "" "debug"
 			fi
-		done < ${basepath}/config/modlist.inp
-	
+		done
+
 		if [[ "${hostname_mods}" = "" ]]; then
 			hostname_mods=" Vanilla"
 		fi
@@ -90,6 +92,6 @@ fn_mkaconfig () {
 		fn_printMessage "$FUNCNAME: $hostname" "" "debug"
 		sed -i "1 i\hostname=\"$hostname\";" $cfgi
 	fi
-	
+
 	fn_printMessage "$FUNCNAME: end" "" "debug"
 }
