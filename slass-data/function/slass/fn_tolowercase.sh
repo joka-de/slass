@@ -1,14 +1,14 @@
 #
 # SLASS - modlowercase
-# 
+#
 # Author: joka
-# 
+#
 # Description:
 # makes all mod files lowercase
-# 
+#
 # Parameter(s):
 # 1. Path <String>
-# 
+#
 # Return Value:
 # None <Any>
 #

@@ -41,12 +41,12 @@ fn_getJSONData () {
 
     if [[ -n "$1" ]]; then
         local re='^[0-9]+$'
-        
-        if [[ ! $1 =~ $re ]]; then 
+
+        if [[ ! $1 =~ $re ]]; then
             fn_printMessage "$FUNCNAME: wrong argument 1 (must be integer number)" "" "error"
             exit 1
         fi
-        
+
         key+=".server${1}"
 
         if [[ -n "$2" ]]; then
@@ -57,7 +57,7 @@ fn_getJSONData () {
             if [[ "$output" = "null" ]]; then
                 key=".global.$2"
                 output=$(jq ''"$key"'' $serverFile $jqOption)
-            fi                        
+            fi
         else
              output=$(jq ''"$key"'' $serverFile $jqOption)
         fi
@@ -65,11 +65,11 @@ fn_getJSONData () {
         if [[ -n "$2" ]]; then
             key+=".$2"
 
-            output=$(jq ''"$key"'' $serverFile $jqOption)                                               
+            output=$(jq ''"$key"'' $serverFile $jqOption)
         else
             fn_printMessage "$FUNCNAME: argument 1 and 2 are missing (one of these are expected)" "" "error"
         fi
-    fi      
+    fi
 
     printf "$output\n"
  }

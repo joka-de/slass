@@ -1,14 +1,14 @@
 #
 # SLASS - fn_a3filepermissions
-# 
+#
 # Author: seelenlos
-# 
+#
 # Description:
 # resets file permissons for the master instance
-# 
+#
 # Parameter(s):
 # None <Any>
-# 
+#
 # Return Value:
 # None <Any>
 #

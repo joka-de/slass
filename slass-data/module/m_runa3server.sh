@@ -1,14 +1,14 @@
 #
 # SLASS - m_runa3server
-# 
+#
 # Author: joka
-# 
+#
 # Description:
 # laucher / manager for server instance {i}
-# 
+#
 # Parameter(s): { start | stop | restart | status | log } {i}
 # Message <String>
-# 
+#
 # Return Value:
 # None <Any>
 #
@@ -21,7 +21,7 @@ case "$1" in
 
 		# starting the servers
 		source <(sed '/^nhc/!d' $sourcescfg)
-		
+
 		for index in $(seq 1 $(( $nhc + 1 ))); do
 			fn_printMessage "m_runa3server: Starting process $index of server instance ${2}" "" "debug"
 			fn_printMessage "m_runa3server: /bin/bash $basepath/slass-data/p_a3server.sh start $basepath/a3/a3srv${2}/startparameters_$index.scfg" "" "debug"

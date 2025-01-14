@@ -44,12 +44,12 @@ class DifficultyPresets {
 			autoReport = 0;			// Automatic reporting	(0 = disabled, 1 = enabled)
 			multipleSaves = 0;		// Multiple saves		(0 = disabled, 1 = enabled)
 		};
-		
+
 		// aiLevelPreset defines AI skill level and is counted from 0 and can have following values: 0 (Low), 1 (Normal), 2 (High), 3 (Custom).
 		// when 3 (Custom) is chosen, values of skill and precision are taken from the class CustomAILevel.
 		aiLevelPreset = 3;
 	};
- 
+
 	class CustomAILevel {
 		skillAI = 0.5;
 		precisionAI = 0.25;

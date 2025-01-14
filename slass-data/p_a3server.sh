@@ -1,16 +1,16 @@
 #!/bin/bash
 #
 # SLASS - p_a3server
-# 
+#
 # Author: joka
-# 
+#
 # Description:
 # starts and stops a server instance with config file
-# 
+#
 # Parameter(s):
 # 1. option { start | stop | status | log} <string>
 # 2. scfg file {startparameters_{j}.scfg} <string>
-# 
+#
 # Return Value:
 # None <Any>
 #
@@ -75,14 +75,14 @@ case "$1" in
 
 	stop)
 		fn_printMessage "stopping a3 server if there is one (port=${port})..." ""
-		
+
 		if [ -e ${runfile} ]; then
 			# ask watchdog to exit by deleting its runfile...
 			rm -f ${runfile}
 		else
 			fn_printMessage "There is no runfile (${runfile}), server shouldn't be up, will shut it down if it is up!" "" "error"
 		fi
-		
+
 		# and terminate server process
 		if [ -e ${pidfile} ]; then
 			fn_printMessage "sending sigterm to process $(cat ${pidfile})..." ""
@@ -99,11 +99,11 @@ case "$1" in
 		else
 			fn_printMessage "runfile doesn't exist, server should be down or is going down..." ""
 		fi
-		
+
 		if [ -e ${pidfile} ]; then
 			pid=$(< ${pidfile})
 			fn_printMessage "pid file exists (pid=${pid})..." ""
-			
+
 			if [ -f /proc/${pid}/cmdline ]; then
 				fn_printMessage "server process seems to be running..." ""
 				ps ax | grep ${server} | grep ${port}
@@ -120,12 +120,12 @@ case "$1" in
 			# launch the server...
 			cd ${serverdir}
 			fn_printMessage "watchdog ($$): [$(date)] starting server (port ${port})..." ""
-			
+
 			if [[ "$ishc" = true ]]; then
 				${server} >>${logfile} 2>&1 -cfg=${cfg} -client -connect=127.0.0.1 -port=${port} -name=hc ${otherparams} -mod=${mods}&
 				pid=$!
 				echo $pid > $pidfile
-				chmod 664 $logfile				
+				chmod 664 $logfile
 				wait $pid
 			else
 				${server} >>${logfile} 2>&1 -config=${config} -cfg=${cfg} -port=${port} -name=${profile} ${otherparams} -mod=${mods} -servermod=${servermods} &
@@ -134,7 +134,7 @@ case "$1" in
 				chmod 664 $logfile
 				wait $pid
 			fi
-			
+
 			if [[ -f ${runfile} ]]; then
 				echo >>${logfile} "watchdog ($$): [$(date)] server died, waiting to restart..."
 				sleep 5s
@@ -149,7 +149,7 @@ case "$1" in
 		clear
 		fn_printMessage  "printing server log of ${name}" ""
 		fn_printMessage  "- to stop, press ctrl+c -" ""
-		echo "========================================"		
+		echo "========================================"
 		tail -fn5 ${logdir}/$(ls -t ${logdir} | grep ${name} | head -1)
 	;;
 

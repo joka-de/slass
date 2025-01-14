@@ -1,34 +1,34 @@
 #
 # SLASS - fn_printMessage
-# 
+#
 # Author: PhilipJFry
-# 
+#
 # Description:
-# Print a message in givin color with givin filler, centered or left allign  
-# 
+# Print a message in givin color with givin filler, centered or left allign
+#
 # Parameter(s):
 # 1: Message <String>
-# 2: Filler <String> 
+# 2: Filler <String>
 # 3: Type of Message (debug, warning, error) <String>
 #
 # Return Value:
 # None <Any>
 #
 # Example:
-# fn_printMessage "Hello" - message centered 
+# fn_printMessage "Hello" - message centered
 # fn_printMessage "Hello" "" - message left allign
 # fn_printMessage "Hello" " " - message centered without filler
 # fn_printMessage "Hello" "-" "error" - message centered, error marker and filler "-" left and right from the message
-# 
+#
 fn_printMessage () {
 	fn_getFunctionStatus $FUNCNAME
-	
-	[[ $# == 0 ]] && return 1	
+
+	[[ $# == 0 ]] && return 1
 
 	if [[ "$debug" == "n" && "$3" == "debug" ]]; then
 		return 0
 	fi
-	
+
 	local textColor=$(tput sgr0)
 	local slassTag="[SLASS]"
 	local messageType=""
@@ -51,18 +51,18 @@ fn_printMessage () {
 			textColor=$(tput setaf 5)
 			messageType="[Debug]: "
 		;;
-			
+
 		*)
 			#Normal
 			textColor=$(tput sgr0)
 		;;
 	esac
-	
+
 	GREEN=$(tput setaf 2)
-	NC=$(tput sgr0)	
-	
-	local tagAndMessage=$1	
-	
+	NC=$(tput sgr0)
+
+	local tagAndMessage=$1
+
 	if [[ -z $messageType ]]; then
 		slassTag+=": "
 	fi
@@ -75,8 +75,8 @@ fn_printMessage () {
 		fi
 	fi
 
-	if [[ $# == 1 ]]; then 
-		if [[ ${#1} -le 1 ]]; then 
+	if [[ $# == 1 ]]; then
+		if [[ ${#1} -le 1 ]]; then
 			unset slassTag
 		fi
 	fi
@@ -90,11 +90,11 @@ fn_printMessage () {
 	}
 
 	declare -i filler_len="$(( (TERM_COLS - str_len) / 2 ))"
-	
+
 	[[ $# -ge 2 ]] && ch="${2:0:1}" || ch=" "
-	
+
 	filler=""
-	
+
 	for (( i = 0; i < filler_len; i++ )); do
 		filler="${filler}${ch}"
 	done

@@ -1,15 +1,15 @@
 #
 # SLASS - m_install
-# 
+#
 # Author: joka
-# 
+#
 # Description:
 # installer module for steam and arma3
-# 
+#
 # Parameter(s):
 # 1. option { start | stop | restart | status | log } <string>
 # 2. server id {i} <integer>
-# 
+#
 # Return Value:
 # None <Any>
 #

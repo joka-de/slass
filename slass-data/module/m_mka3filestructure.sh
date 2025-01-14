@@ -1,14 +1,14 @@
 #
 # SLASS - mka3filestructure
-# 
+#
 # Author: joka
-# 
+#
 # Description:
 # resets file permissons for the server instance {i}
-# 
+#
 # Parameter(s):
 # 1. server id {i} <integer>
-# 
+#
 # Return Value:
 # None <Any>
 #

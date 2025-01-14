@@ -1,14 +1,14 @@
 #
 # SLASS - fn_ceateAlias
-# 
+#
 # Author: PhilipJFry
-# 
+#
 # Description:
 # Creates a alias for slass.sh
-# 
+#
 # Parameter(s):
 # None <Any>
-# 
+#
 # Return Value:
 # None <Any>
 #

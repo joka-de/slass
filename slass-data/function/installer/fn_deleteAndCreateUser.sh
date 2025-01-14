@@ -1,14 +1,14 @@
 #
 # SLASS - fn_deleteAndCreateUser
-# 
+#
 # Author: PhilipJFry
-# 
+#
 # Description:
 # Delete and create givin user(s) defined in install.cfg
-# 
+#
 # Parameter(s):
 # 1: Mode <String> - Mode: delete, create | Default: all
-# 
+#
 # Return Value:
 # None <Any>
 #

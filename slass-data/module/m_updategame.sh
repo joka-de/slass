@@ -1,14 +1,14 @@
 #
 # SLASS - m_updategame
-# 
+#
 # Author: joka
-# 
+#
 # Description:
 # performs the download of updates for arma3
-# 
+#
 # Parameter(s):
 # None <Any>
-# 
+#
 # Return Value:
 # None <Any>
 #
