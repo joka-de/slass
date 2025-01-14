@@ -5,7 +5,7 @@
 		"slass" : {
 			"_comment" : "The keys in this object are used by slass.",
 
-			"debug" : "y",
+			"debug" : "n",
 			"otherparams" : "-filepatching",
 			"ip" : "1.2.3.4",
 			"hostname" : "servername",
@@ -13,7 +13,64 @@
 			"port" : 2302,
 			"logfilelifetime" : 3,
 			"usersteam" : "username",
-			"steampassword" : "password"
+			"steampassword" : "password",
+
+			"modrepo" : {
+				"cba" : {
+					"_comment" : "CBA_A3",
+					"appid" : 450814997,
+					"apptype" :	"mod",
+					"inservername" : "CBA"
+				},
+
+				"em" : {
+					"_comment" : "Enhanced Movement",
+					"appid" : 333310405,
+					"apptype" : "mod",
+					"inservername" : ""
+				},
+
+				"slmd" : {
+					"_comment" : "seelenlos Markierungsdienst",
+					"appid" : 506841608,
+					"apptype" :	"smod",
+					"inservername" : ""
+				},
+
+				"slt" : {
+					"_comment" : "seelenlos Telegraphiedienst",
+					"appid" : 503315867,
+					"apptype" : "cmod",
+					"inservername" : ""
+				},
+
+				"slz" : {
+					"_comment" : "seelenlos Zeus",
+					"appid" : 647452409,
+					"apptype" : "smod",
+					"inservername" : ""
+				},
+
+				"spe" : {
+					"_comment" : "Spearhead 1944",
+					"appid" : "local",
+					"apptype" : "mod",
+					"inservername" : "Spearhead"
+				},
+
+				"antistasiu" : {
+					"_comment" : "Antistasi Ultimate",
+					"appid" : 3020755032,
+					"apptype" : "mod",
+					"inservername" : "Antistasi Ultimate"
+				}
+			},
+
+			"modtoload" : [
+				"slt",
+				"slmd",
+				"slz"
+			]
 		},
 
 		"password" : "",
@@ -97,7 +154,7 @@
 
 		"class Missions" : {
 			"class MissionRotation1": {
-				"template" : "KP_Liberation_Altis.Altis",
+				"template" : "MP_COOP_m01.Stratis",
 				"difficulty" : "Custom",
 				"class Params" : {}
 			}
@@ -111,13 +168,34 @@
 			"_comment" : "The keys in this unit are used by slass.",
 
 			"hostname" : "servername server 1",
-			"headlessClient" : 3,
-			"port" : 2302
+			"headlessClient" : 0,
+			"port" : 2302,
+
+			"modtoload" : [
+				"em"
+			]
+		}
+	},
+
+	"server2" : {
+		"_comment" : "This is  the local unit. It is used by one server instance",
+
+		"slass" : {
+			"_comment" : "The keys in this unit are used by slass.",
+
+			"hostname" : "servername server 2",
+			"headlessClient" : 0,
+			"port" : 2312,
+
+			"modtoload" : [
+				"spe",
+				"em"
+			]
 		},
 
 		"class Missions" : {
 			"class MissionRotation1": {
-				"template" : "ALiVE_Operation_Cobra.SPE_Normandy",
+				"template" : "CO_10_SPE_Combat_Patrol_SPE_Normandy.SPE_Normandy",
 				"difficulty" : "Custom",
 				"class Params" : {}
 			}
@@ -131,8 +209,17 @@
 			"_comment" : "The keys in this unit are used by slass.",
 
 			"hostname" : "servername server 3",
-			"headlessClient" : 4,
-			"port" : 2342
+			"headlessClient" : 3,
+			"port" : 2342,
+
+			"modtoload" : [
+				"cba",
+				"antistasiu",
+				"slt",
+				"slmd",
+				"slz",
+				"em"
+			]
 		},
 
 		"password" : "loginpwd",
@@ -141,19 +228,10 @@
 
 		"class Missions" : {
 			"class MissionRotation1": {
-				"template" : "OverthrowMPTanoa.Tanoa",
+				"template" : "Antistasi_Altis.Altis",
 				"difficulty" : "Custom",
 				"class Params" : {
-					"ace_medical_level" : 1,
-					"ot_enemy_faction" : 0,
-					"ot_randomizeloadouts" : 0,
-					"ace_medical_blood_enabledFor" : 1,
-					"ot_start_autoload" : 1,
-					"ot_start_difficulty" : 1,
-					"ot_start_fasttravel" : 0,
-					"ot_start_fasttravelrules" : 0,
-					"ot_showplayermarkers" : 0,
-					"ot_showenemygroup" : 0
+					"autoLoadLastGame" : 60
 				}
 			}
 		}
