@@ -1,11 +1,11 @@
 #
 # SLASS - fn_mksconfig
-# 
+#
 # Author: Fry
-# 
+#
 # Description:
 # create scfg for server instance a3srv{i}
-# 
+#
 # Parameter(s):
 # 1. server id {i} <integer>
 #
@@ -14,7 +14,7 @@
 #
 fn_mksconfig () {
 	fn_getFunctionStatus $FUNCNAME
-	
+
 	local scfgi=""
 
 	if [[ -z "$1" ]]; then
@@ -35,6 +35,7 @@ fn_mksconfig () {
 	local hostname=$(fn_getJSONData "$1" "slass.hostname")
 	local hc=$(fn_getJSONData "$1" "slass.headlessClient" "-r")
 	local port=$(fn_getJSONData "$1" "slass.port" "-r")
+	local password=$(fn_getJSONData "$1" "password" "-r")	
 
 	printf "nhc=$hc" > $scfgi
 	printf "\nbasepath=$basepath" >> $scfgi
@@ -43,6 +44,10 @@ fn_mksconfig () {
 	printf "\notherparams=$otherparams" >> $scfgi
 	printf "\nlogfilelifetime=$logfilelifetime" >> $scfgi
 	printf "\nhostname=$hostname" >> $scfgi
+
+	if [[ "$password" != "null" ]] && [[ ! -z "$password" ]]; then		
+		printf "\npassword=$password" >> $scfgi
+	fi	
 
 	printf "$scfgi"
 }
