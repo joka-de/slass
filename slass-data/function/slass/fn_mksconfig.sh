@@ -35,7 +35,7 @@ fn_mksconfig () {
 	local hostname=$(fn_getJSONData "$1" "slass.hostname")
 	local hc=$(fn_getJSONData "$1" "slass.headlessClient" "-r")
 	local port=$(fn_getJSONData "$1" "slass.port" "-r")
-	local password=$(fn_getJSONData "$1" "password" "-r")	
+	local password=$(fn_getJSONData "$1" "password" "-r")
 
 	printf "nhc=$hc" > $scfgi
 	printf "\nbasepath=$basepath" >> $scfgi
@@ -45,9 +45,9 @@ fn_mksconfig () {
 	printf "\nlogfilelifetime=$logfilelifetime" >> $scfgi
 	printf "\nhostname=$hostname" >> $scfgi
 
-	if [[ "$password" != "null" ]] && [[ ! -z "$password" ]]; then		
+	if [[ "$password" != "null" ]] && [[ ! -z "$password" ]]; then
 		printf "\npassword=$password" >> $scfgi
-	fi	
+	fi
 
 	printf "$scfgi"
 }

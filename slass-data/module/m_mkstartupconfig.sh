@@ -90,7 +90,7 @@ for index in $(seq 1 $imax); do
 		printf "\nishc=true\n" >> "${basepath}/a3/a3srv${1}/startparameters_${index}.scfg"
 
 		if [[ "$password" != "null" ]] && [[ ! -z "$password" ]]; then
-			otherparams+=" -password=$password"			
+			otherparams+=" -password=$password"
 		fi
 	fi
 

@@ -181,7 +181,7 @@ The configs are located in `./config`
 - "usersteam" : "username"</br>Steam user for Arma3-Updates.
 - "steampassword" : "password"</br>Password of the user.
 
-##### modlist.inp
+##### modlist.inp (Deprecated)
 Mods to load / install
   The file has several columns:</br>
 
@@ -205,6 +205,184 @@ slmd               xx		506841608	smod	1	1	1
 slt                   slt		503315867	cmod	1	1	1
 (....)
 ```
+
+##### mods
+There are two objects you have to define in the server.json file
+  
+  1. "modrepo" : {} - must be only defined in .global.slass
+  
+```
+{
+  "global" : {
+    "slass" : {
+      "modrepo" : {
+        "modname" : {}
+      }
+    }
+  }
+}
+```
+
+  In the modrepo object you have to define every mod as an object with 3 key values
+
+  Object: "modname" : {} 
+    - *shortname*</br>of the mod for your convenience</br>slass will label the mod folder in your arma3 directory by this, e.g. cup_w for CUP Weapons
+    - keep the name short, lowercase and don't use whitespaces, linux dosn't like that and the size of the startup parameter "mod" is limited 
+  
+  Key 1: "appid" : number/string
+    - *steam-app-id*</br>of the mod,</br>insert the word **local** if the mod is not in the workshop, i.e. loaded from disc like creator dlc</br>
+  
+  Key 2: "type" : "string"
+    - **mod** if the mod is to be loaded by server and client (key and mod is loaded), e.g. ACE</br>
+    - **cmod** if the mod is only to be loaded client side (only key is loaded on server), e.g. JSRS</br>
+    - **smod** if the mod is only to be loaded by the server (only mod is loaded on server), e.g. ace_server</br>
+  
+  Key 3: "inservername" : "string"
+    - name of the mod included in the server name for the server browser e.g. "CBA_A3" or "Spearhead 1944" 
+    - delete or set this key to empty string if you do not want the mod to appear in the server name for the server browser
+
+```
+{
+  "global" : {
+    "slass" : {
+      "modrepo" : {
+        "modname" : {
+          "appid" : number/string,
+          "type" : string,
+          "inservername" : string
+        },
+
+        "othermodname" : {
+          "appid" : number/string,
+          "type" : string,
+          "inservername" : string
+        }
+      }      
+    }
+  }
+}
+```
+
+  2. "modtoload" : [] - must/can defined in .global.slass or/and .server{n}.slass
+
+```
+{
+  "global" : {
+    "slass" : {
+      "modrepo" : {
+        "modname" : {
+          "appid" : number/string,
+          "type" : string,
+          "inservername" : string
+        },
+
+        "othermodname" : {
+          "appid" : number/string,
+          "type" : string,
+          "inservername" : string
+        }
+      },
+
+      "modtoload" : []
+    }
+  },
+
+  "server{n}" : {
+    "slass" : {
+      "modtoload" : []  
+    }
+  }
+}
+```
+
+  The modtoload object is a array of modnames.
+
+```
+{
+  "global" : {
+    "slass" : {
+      "modrepo" : {
+        "modname" : {
+          "appid" : number/string,
+          "type" : string,
+          "inservername" : string
+        },
+
+       "othermodname" : {
+          "appid" : number/string,
+          "type" : string,
+          "inservername" : string
+        }
+      },
+
+      "modtoload" : [
+        "modname"
+      ]
+    }
+  },
+
+  "server{n}" : {
+    "slass" : {
+      "modtoload" : [
+        "othermodname"
+      ]  
+    }
+  }
+}
+```
+
+Example:
+
+```
+{
+  "global" : {
+    "slass" : {
+      "modrepo" : {
+        "cba" : {
+          "appid" : 1234123123,
+          "type" : "mod",
+          "inservername" : "CBA_A3"
+        },
+
+        "ace" : {
+          "appid" : 5646545646,
+          "type" : "mod",
+          "inservername" : ""
+        },
+
+        "cup_w" : {
+          "appid" : 84983ß04889,
+          "type" : "mod"
+        }
+      },
+
+      "modtoload" : [
+        "cba"
+      ]
+    }
+  },
+
+  "server1" : {
+    "slass" : {
+      "modtoload" : [
+        "ace"
+      ]  
+    }
+  },
+
+  "server2" : {
+    "slass" : {
+      "modtoload" : [
+        "ace",
+        "cup_w"
+      ]  
+    }
+  }
+}
+```
+
+All server load cba because it is defined in the global section. "CBA_A3" is merged with the server name.
+Server1 starts with cba and ace while server2 starts with cba, ace and cup_w
 
 #####   basic.cfg
 loaded by the server process as -cfg file (NOT -config)</br>
