@@ -188,7 +188,7 @@ There are two objects you have to define in the server.json file
 
 ##### Structure
 "modrepo" : {}
-```json
+```
 {
     "modrepo" : {
         "modname" : {
@@ -267,7 +267,7 @@ Example:
         },
 
         "cup_w" : {
-          "appid" : 84983ß04889,
+          "appid" : 8498304889,
           "apptype" : "mod"
         }
       },
