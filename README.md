@@ -4,9 +4,9 @@
 
 <p align="center">
     <sup><strong>short: slass</br>
-	Tested on Ubuntu 22.04 (Jammy JellyFish)</br>
+  Tested on Ubuntu 22.04 (Jammy JellyFish)</br>
     Visit us on TS3: <a href="ts3server://45.130.104.195?port=9987">Seelenlos TS3</a> | <a href="https://units.arma3.com/unit/seelenlos">seelenlos on Steam</a></br>
-	(c)2017 by seelenlos</strong></sup></p>
+  (c)2017 by seelenlos</strong></sup></p>
 
 *License:* GNU GPLv3
 
@@ -26,8 +26,7 @@ slass (seelenlos Arma 3 Server Script)
 - HC are autostarted / rebooted / stopped with the main instance
 - HC configuration is automated to fit the master process
 #### config
-- provides a central config file for all server instances
-- provides a central config file where you can specify an individual mod set for each server
+- provides a central config file for all server instances and mods where you can specify an individual mod set for each server
 - differentiates between mod, servermod, and clientmod
 - supports CDLC
 - manages the *.bikey files in dependency of the loaded mods for each server instance
@@ -96,17 +95,17 @@ slass [option 1] [option 2]
 1. Open a shell.
 
 2. Install prerequisites
-```
+```sh
 sudo apt install lib32gcc-s1 lib32stdc++6 rename jq
 ```
 
 3. Create User for the server. For Security, leave the password disabled. You can still login to this user using ssh with a keypair or from root using su.
-```
+```sh
 adduser a3server --gecos "" --disabled-password
 ```
 
 4. Switch to the user
-```
+```sh
 sudo su - a3server
 ```
 
@@ -116,16 +115,16 @@ Download the files from this repository to the users home. We assume the folder 
 `~/slass`
 
 Steamcmd
-```
+```sh
 ./slass/slass install-steamcmd
 ```
 Arma3
-```
+```sh
 ./slass/slass install-arma3
 ```
 
 If prompted
-```
+```sh
 This computer has not been authenticated for your account using Steam Guard.
 Please check your email for the message from Steam, and enter the Steam Guard
  code from that message.
@@ -133,11 +132,11 @@ You can also enter this code at any time using 'set_steam_guard_code'
  at the console.
 ```
 enter the steam guard code by issuing
-```
+```sh
 ./slass/steamcmd/steamcmd.sh
 ```
 and then `login  <yoursteamuser>`, follow instuctions, then restart installation by
-```
+```sh
 ./slass/slass install-arma3
 ```
 
@@ -151,14 +150,14 @@ The configs are located in `./config`
 
 ###### Structure
 - global
-	- slass
-	- key : value
+  - slass
+  - key : value
 - server 1
-	- slass
-	- key : value
-	- ( ... )
+  - slass
+  - key : value
+  - ( ... )
 - server 2
-	 - ( repeat )
+   - ( repeat )
 - server ( i )
 
 ###### Usage:
@@ -181,159 +180,76 @@ The configs are located in `./config`
 - "usersteam" : "username"</br>Steam user for Arma3-Updates.
 - "steampassword" : "password"</br>Password of the user.
 
-##### modlist.inp (Deprecated)
-Mods to load / install
-  The file has several columns:</br>
-
-  1. *shortname*</br>of the mod for your convenience</br>slass will label the mod folder in your arma3 directory by this
-  2. *name*</br>of the mod included in the servername for the server browser</br>Type "xx" if do not want the mod to appear in the server name for the server browser
-  3. *steam-app-id*</br>of the mod,</br>insert the word **local** if the mod is not in the workshop, i.e. loaded from disc</br>
-  4. *mod type*,</br>use</br>
-    - **mod** if the mod is to be loaded by server and client (key and mod is loaded), e.g. ACE</br>
-    - **cmod** if the mod is only to be loaded client side (only key is loaded on server), e.g. JSRS</br>
-    - **smod** if the mod is only to be loaded by the server (only mod is loaded on server), e.g. ace_server</br>
-  5. *active key*</br>this and and following columns contain a binary key 0/1 selecting if the mod is to be loaded on server #1/#2/#3/ ...</br>Add more columns to the file to define more server instances.
-
-Example:
-
-```
-(...)
-cba_a3            xx		450814997	mod	1	1	1
-em                  xx		333310405	mod	1	1	1
-advtowing      xx		639837898	smod	1	1	1
-slmd               xx		506841608	smod	1	1	1
-slt                   slt		503315867	cmod	1	1	1
-(....)
-```
-
-##### mods
+##### Mods
 There are two objects you have to define in the server.json file
 
-  1. "modrepo" : {} - must be only defined in .global.slass
+  1. "modrepo" : {}</br>must be defined in .global.slass</br>It is your mod repository from which you can choose mods for the individual server
+  2. "modtoload" : []</br>must/can defined in .global.slass or/and .server{i}.slass</br>If you define *modtolaod* in the .global.slass all mods in the array wil be loaded on all server</br>If define *modtoload* in .global.slass and .server{i}.slass, both mod sets will be merged
 
-```
+##### Structure
+"modrepo" : {}
+```json
 {
-  "global" : {
-    "slass" : {
-      "modrepo" : {
-        "modname" : {}
-      }
+    "modrepo" : {
+        "modname" : {
+            "appid" : <workshop-id> or "local",
+            "apptype" : "mod" or "cmod" or "smod",
+            "inservername" : "name-of-mod-in-server-name"
+        },
+
+        "othermodname" : {
+            "appid" : <workshop-id> or "local",
+            "apptype" : "mod" or "cmod" or "smod",
+            "inservername" : "name-of-mod-in-server-name"
+        }
     }
-  }
 }
 ```
 
   In the modrepo object you have to define every mod as an object with 3 key values
 
-  Object: "modname" : {}
-    - *shortname*</br>of the mod for your convenience</br>slass will label the mod folder in your arma3 directory by this, e.g. cup_w for CUP Weapons
+- *"modname" : {}*
+    - **shortname**</br>of the mod for your convenience</br>slass will label the mod folder in your arma3 directory by this, e.g. cup_w for CUP Weapons
     - keep the name short, lowercase and don't use whitespaces, linux dosn't like that and the size of the startup parameter "mod" is limited
+- *"appid" : number/string*
+    - **workshop-id**</br>of the mod,</br>insert the word **local** if the mod is not in the workshop, i.e. loaded from disc like creator dlc</br>
 
-  Key 1: "appid" : number/string
-    - *steam-app-id*</br>of the mod,</br>insert the word **local** if the mod is not in the workshop, i.e. loaded from disc like creator dlc</br>
-
-  Key 2: "apptype" : "string"
+- *"apptype" : string*
     - **mod** if the mod is to be loaded by server and client (key and mod is loaded), e.g. ACE</br>
     - **cmod** if the mod is only to be loaded client side (only key is loaded on server), e.g. JSRS</br>
     - **smod** if the mod is only to be loaded by the server (only mod is loaded on server), e.g. ace_server</br>
 
-  Key 3: "inservername" : "string"
+- *"inservername" : string*
     - name of the mod included in the server name for the server browser e.g. "CBA_A3" or "Spearhead 1944"
     - delete or set this key to empty string if you do not want the mod to appear in the server name for the server browser
 
-```
+"modtoload" : []
+```json
 {
-  "global" : {
-    "slass" : {
-      "modrepo" : {
-        "modname" : {
-          "appid" : number/string,
-          "apptype" : string,
-          "inservername" : string
-        },
-
-        "othermodname" : {
-          "appid" : number/string,
-          "apptype" : string,
-          "inservername" : string
+    "global" : {
+        "slass" : {
+            "modtoload" : [
+                "modname1",
+                "modname2"
+            ]
         }
-      }
+    },
+
+    "server{i}" : {
+        "slass" : {
+            "modtoload" : [
+                "modname4",
+                "modname10"
+            ]
+        }
     }
-  }
 }
 ```
-
-  2. "modtoload" : [] - must/can defined in .global.slass or/and .server{n}.slass
-
-```
-{
-  "global" : {
-    "slass" : {
-      "modrepo" : {
-        "modname" : {
-          "appid" : number/string,
-          "apptype" : string,
-          "inservername" : string
-        },
-
-        "othermodname" : {
-          "appid" : number/string,
-          "apptype" : string,
-          "inservername" : string
-        }
-      },
-
-      "modtoload" : []
-    }
-  },
-
-  "server{n}" : {
-    "slass" : {
-      "modtoload" : []
-    }
-  }
-}
-```
-
-  The modtoload object is a array of modnames.
-
-```
-{
-  "global" : {
-    "slass" : {
-      "modrepo" : {
-        "modname" : {
-          "appid" : number/string,
-          "apptype" : string,
-          "inservername" : string
-        },
-
-       "othermodname" : {
-          "appid" : number/string,
-          "apptype" : string,
-          "inservername" : string
-        }
-      },
-
-      "modtoload" : [
-        "modname"
-      ]
-    }
-  },
-
-  "server{n}" : {
-    "slass" : {
-      "modtoload" : [
-        "othermodname"
-      ]
-    }
-  }
-}
-```
+- *"modtoload" : []*</br> is a array of strings</br>Add the **modname** from the **modrepo** to load mods when the server starts
 
 Example:
 
-```
+```json
 {
   "global" : {
     "slass" : {
@@ -381,7 +297,7 @@ Example:
 }
 ```
 
-All server load cba because it is defined in the global section. "CBA_A3" is merged with the server name.
+All server load cba because it is defined in the global section. "CBA_A3" is merged with the server name.</br>
 Server1 starts with cba and ace while server2 starts with cba, ace and cup_w
 
 #####   basic.cfg
