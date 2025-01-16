@@ -25,7 +25,7 @@ if [[ "$usersteam" == "anonymous" ]]; then
 fi
 
 # build steam script file
-mods=$(fn_getJSONData "" "global.slass.modrepo | keys.[]" "-r")
+mods=$(fn_getJSONData "" "global.slass.modrepo | keys[]" "-r")
 
 for mod in $mods; do
 	appname=$mod
