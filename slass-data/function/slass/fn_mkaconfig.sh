@@ -58,37 +58,13 @@ fn_mkaconfig () {
         >> $cfgi
 
         # make modlist
-		local hostname_mods=""
-
+        local hostname=$(fn_getJSONData "$1" "slass.hostname" "-r")
 		local mods=$(fn_getJSONData "" "global.slass.modtoload + .server${1}.slass.modtoload | .[]" "-r")
 
-		for mod in $mods; do
-			local appname=$mod
-			local appid=$(fn_getJSONData "" "global.slass.modrepo.${appname}.appid")
-
-			fn_printMessage "$FUNCNAME: appname = ${appname} | appid = ${appid}" "" "debug"
-
-			local inservername=$(fn_getJSONData "" "global.slass.modrepo.${appname}.inservername" "-r")
-
-			fn_printMessage "$FUNCNAME: inservername: $inservername" "" "debug"
-
-			if [[ "$inservername" != "null" ]] && [[ ! -z "$inservername" ]]; then
-				if [[ "${hostname_mods}" = "" ]]; then
-					hostname_mods=${hostname_mods}" ${inservername}"
-				else
-					hostname_mods=${hostname_mods}", ${inservername}"
-				fi
-
-				fn_printMessage "$FUNCNAME: hostname_mods: $hostname_mods" "" "debug"
-			fi
-		done
-
-		if [[ "${hostname_mods}" = "" ]]; then
-			hostname_mods=" Vanilla"
-		fi
-
-		local hostname=$(fn_getJSONData "$1" "slass.hostname" "-r")
-		hostname+=$hostname_mods
+		fn_workwithmod "hostname" "$mods"
+		hostname+=$returnValue
+		unset returnValue
+		
 		fn_printMessage "$FUNCNAME: $hostname" "" "debug"
 		sed -i "1 i\hostname=\"$hostname\";" $cfgi
 	fi
