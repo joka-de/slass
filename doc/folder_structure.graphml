@@ -446,22 +446,7 @@ primary connect to the user<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:Lab
     <node id="n30">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="90.0" width="158.0" x="3044.4080904724246" y="194.36573441996973"/>
-          <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
-          <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="61.357421875" x="48.3212890625" xml:space="preserve" y="4.0">modlist.inp</y:NodeLabel>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="top" visible="true" width="114.736328125" x="2.0" xml:space="preserve" y="30.701171875">cfg file
-defines mods to load<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:ModelParameter><y:ErdAttributesNodeLabelModelParameter/></y:ModelParameter></y:NodeLabel>
-          <y:StyleProperties>
-            <y:Property class="java.lang.Boolean" name="y.view.ShadowNodePainter.SHADOW_PAINTING" value="true"/>
-          </y:StyleProperties>
-        </y:GenericNode>
-      </data>
-    </node>
-    <node id="n31">
-      <data key="d6">
-        <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="155.01838131359307" width="178.68880140289502" x="3034.0636897709774" y="320.70631556358614"/>
+          <y:Geometry height="155.01838131359307" width="178.68880140289502" x="3034.0636897709774" y="222.49080934320347"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="62.6875" x="58.00065070144774" xml:space="preserve" y="4.0">server.json</y:NodeLabel>
@@ -478,7 +463,7 @@ see example<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Model
         </y:GenericNode>
       </data>
     </node>
-    <node id="n32">
+    <node id="n31">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.small_entity">
           <y:Geometry height="40.0" width="80.0" x="2718.889194630873" y="270.9343250239965"/>
@@ -491,7 +476,7 @@ see example<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Model
         </y:GenericNode>
       </data>
     </node>
-    <node id="n33">
+    <node id="n32">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="90.0" width="158.0" x="2679.889194630873" y="385.7246968771792"/>
@@ -507,7 +492,7 @@ do not touch<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Mode
         </y:GenericNode>
       </data>
     </node>
-    <node id="n34">
+    <node id="n33">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="90.0" width="158.0" x="2679.889194630873" y="505.7246968771792"/>
@@ -523,7 +508,7 @@ do not touch<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Mode
         </y:GenericNode>
       </data>
     </node>
-    <node id="n35">
+    <node id="n34">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="96.86281879194644" width="212.90255033557048" x="787.1800335570468" y="533.9135876086765"/>
@@ -538,7 +523,7 @@ do not touch<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><y:Mode
         </y:GenericNode>
       </data>
     </node>
-    <node id="n36">
+    <node id="n35">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="96.86281879194644" width="212.90255033557048" x="787.1800335570465" y="305.2607458855565"/>
@@ -553,7 +538,7 @@ headless client(s)<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelModel><
         </y:GenericNode>
       </data>
     </node>
-    <node id="n37">
+    <node id="n36">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
           <y:Geometry height="96.86281879194644" width="212.90255033557048" x="1098.811342281879" y="397.79714381594295"/>
@@ -568,10 +553,10 @@ generated by slass, no need to edit this<y:LabelModel><y:ErdAttributesNodeLabelM
         </y:GenericNode>
       </data>
     </node>
-    <node id="n38">
+    <node id="n37">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="90.0" width="158.0" x="3044.408090472425" y="505.7246968771792"/>
+          <y:Geometry height="90.0" width="158.0" x="3044.408090472425" y="407.50919065679653"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="51.35546875" x="53.322265625" xml:space="preserve" y="4.0">basic.cfg</y:NodeLabel>
@@ -898,7 +883,7 @@ defines some parameters<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelMo
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e27" source="n7" target="n32">
+    <edge id="e27" source="n7" target="n31">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
@@ -911,7 +896,7 @@ defines some parameters<y:LabelModel><y:ErdAttributesNodeLabelModel/></y:LabelMo
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e28" source="n32" target="n33">
+    <edge id="e28" source="n31" target="n32">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>

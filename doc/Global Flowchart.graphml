@@ -86,19 +86,6 @@ nhc = number of hc
     </node>
     <node id="n5">
       <data key="d6">
-        <y:GenericNode configuration="com.yworks.flowchart.document">
-          <y:Geometry height="94.0" width="193.50016583713352" x="-677.2203049830119" y="298.7493171619893"/>
-          <y:Fill color="#00FFFF" color2="#FFFFFF" transparent="false"/>
-          <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="62.8046875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="169.439453125" x="12.030356356066818" xml:space="preserve" y="4.0">modlist.inp
-
-list of mods to load
-space/tab seperated ascii table<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="-0.5" nodeRatioX="0.0" nodeRatioY="-0.5" offsetX="0.0" offsetY="4.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
-        </y:GenericNode>
-      </data>
-    </node>
-    <node id="n6">
-      <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="63.0" width="315.70233600000006" x="284.64883199999997" y="91.01377575766725"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
@@ -109,7 +96,7 @@ submodule to handle actions on the server itself<y:LabelModel><y:SmartNodeLabelM
         </y:GenericNode>
       </data>
     </node>
-    <node id="n7">
+    <node id="n6">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.cloud">
           <y:Geometry height="50.0" width="164.0" x="658.0587333032315" y="1864.6113997980697"/>
@@ -119,7 +106,7 @@ submodule to handle actions on the server itself<y:LabelModel><y:SmartNodeLabelM
         </y:GenericNode>
       </data>
     </node>
-    <node id="n8">
+    <node id="n7">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="63.0" width="253.0" x="315.99999999999994" y="490.5789994778605"/>
@@ -132,7 +119,7 @@ creates .cfg -file { i }
         </y:GenericNode>
       </data>
     </node>
-    <node id="n9">
+    <node id="n8">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.document">
           <y:Geometry height="94.0" width="173.0511719298247" x="676.5901448586749" y="475.6906910198237"/>
@@ -145,7 +132,7 @@ creates .cfg -file { i }
         </y:GenericNode>
       </data>
     </node>
-    <node id="n10">
+    <node id="n9">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.terminator">
           <y:Geometry height="40.0" width="80.0" x="402.49999999999994" y="1693.5363835818534"/>
@@ -155,7 +142,7 @@ creates .cfg -file { i }
         </y:GenericNode>
       </data>
     </node>
-    <node id="n11">
+    <node id="n10">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.start2">
           <y:Geometry height="17.416648648648675" width="34.83329729729712" x="425.0833513513514" y="1391.8030538521239"/>
@@ -172,7 +159,7 @@ creates .cfg -file { i }
         </y:GenericNode>
       </data>
     </node>
-    <node id="n12">
+    <node id="n11">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.decision">
           <y:Geometry height="40.0" width="110.48752432432434" x="387.2562378378378" y="1592.8826977440153"/>
@@ -182,7 +169,7 @@ creates .cfg -file { i }
         </y:GenericNode>
       </data>
     </node>
-    <node id="n13">
+    <node id="n12">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.predefinedProcess">
           <y:Geometry height="40.0" width="181.62508108108102" x="649.246192762691" y="1743.41299979807"/>
@@ -192,7 +179,7 @@ creates .cfg -file { i }
         </y:GenericNode>
       </data>
     </node>
-    <node id="n14">
+    <node id="n13">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.cloud">
           <y:Geometry height="50.0" width="206.90836756756755" x="838.0196508897657" y="1864.6113997980697"/>
@@ -202,7 +189,7 @@ creates .cfg -file { i }
         </y:GenericNode>
       </data>
     </node>
-    <node id="n15">
+    <node id="n14">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.predefinedProcess">
           <y:Geometry height="40.0" width="181.62508108108102" x="846.8321914303062" y="1743.41299979807"/>
@@ -212,7 +199,7 @@ creates .cfg -file { i }
         </y:GenericNode>
       </data>
     </node>
-    <node id="n16">
+    <node id="n15">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="84.46088421052633" width="281.0033556756757" x="301.9983221621621" y="342.7252015091552"/>
@@ -225,7 +212,7 @@ removes if exists<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelM
         </y:GenericNode>
       </data>
     </node>
-    <node id="n17">
+    <node id="n16">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="113.0" width="246.23853559697233" x="319.38073220151387" y="-934.2996347888858"/>
@@ -240,7 +227,7 @@ calls other code based on options<y:LabelModel><y:SmartNodeLabelModel distance="
         </y:GenericNode>
       </data>
     </node>
-    <node id="n18">
+    <node id="n17">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="40.0" width="143.23338378378378" x="370.88330810810817" y="-778.261390518015"/>
@@ -250,7 +237,7 @@ calls other code based on options<y:LabelModel><y:SmartNodeLabelModel distance="
         </y:GenericNode>
       </data>
     </node>
-    <node id="n19">
+    <node id="n18">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.document">
           <y:Geometry height="40.0" width="219.1134443243244" x="597.3818578880639" y="-778.261390518015"/>
@@ -260,7 +247,7 @@ calls other code based on options<y:LabelModel><y:SmartNodeLabelModel distance="
         </y:GenericNode>
       </data>
     </node>
-    <node id="n20">
+    <node id="n19">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.document">
           <y:Geometry height="40.0" width="219.1134443243244" x="597.381857888064" y="-719.4501106294321"/>
@@ -270,7 +257,7 @@ calls other code based on options<y:LabelModel><y:SmartNodeLabelModel distance="
         </y:GenericNode>
       </data>
     </node>
-    <node id="n21">
+    <node id="n20">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.decision">
           <y:Geometry height="63.0" width="122.45670054054051" x="381.2716497297297" y="-359.94512852480165"/>
@@ -281,7 +268,7 @@ start { i }<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><
         </y:GenericNode>
       </data>
     </node>
-    <node id="n22">
+    <node id="n21">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.decision">
           <y:Geometry height="40.0" width="110.48752432432434" x="684.8149711410692" y="1481.0512001223938"/>
@@ -291,7 +278,7 @@ start { i }<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><
         </y:GenericNode>
       </data>
     </node>
-    <node id="n23">
+    <node id="n22">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.decision">
           <y:Geometry height="63.0" width="122.45670054054051" x="381.27164972972975" y="225.15782466704997"/>
@@ -302,7 +289,7 @@ start { i }<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><
         </y:GenericNode>
       </data>
     </node>
-    <node id="n24">
+    <node id="n23">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="92.71729450768498" width="310.83862433684214" x="287.0806878315789" y="992.205575787093"/>
@@ -315,7 +302,7 @@ for instance { i }<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:Label
         </y:GenericNode>
       </data>
     </node>
-    <node id="n25">
+    <node id="n24">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.decision">
           <y:Geometry height="63.0" width="122.45670054054051" x="758.2862687403522" y="225.15782466704997"/>
@@ -326,7 +313,7 @@ stop { i }<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y
         </y:GenericNode>
       </data>
     </node>
-    <node id="n26">
+    <node id="n25">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="33.15551579952273" width="85.54251104934417" x="1153.757982496573" y="391.2128962729325"/>
@@ -336,7 +323,7 @@ stop { i }<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y
         </y:GenericNode>
       </data>
     </node>
-    <node id="n27">
+    <node id="n26">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.decision">
           <y:Geometry height="63.0" width="122.45670054054051" x="1135.3008877509747" y="225.15782466704997"/>
@@ -347,7 +334,7 @@ restart { i }<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel
         </y:GenericNode>
       </data>
     </node>
-    <node id="n28">
+    <node id="n27">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="33.15551579952273" width="102.17876414317618" x="1145.4398559496565" y="527.4234836783378"/>
@@ -358,7 +345,7 @@ restart { i }<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel
         </y:GenericNode>
       </data>
     </node>
-    <node id="n29">
+    <node id="n28">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="33.15551579952273" width="67.96504541638376" x="1162.5467153130533" y="457.267967878815"/>
@@ -368,7 +355,7 @@ restart { i }<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel
         </y:GenericNode>
       </data>
     </node>
-    <node id="n30">
+    <node id="n29">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="33.15551579952273" width="305.5192419967126" x="1442.9980235446822" y="394.11245207929227"/>
@@ -379,7 +366,7 @@ restart { i }<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel
         </y:GenericNode>
       </data>
     </node>
-    <node id="n31">
+    <node id="n30">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.decision">
           <y:Geometry height="63.0" width="122.45670054054051" x="1534.5292942727683" y="225.15782466704997"/>
@@ -390,7 +377,7 @@ log { i }<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:
         </y:GenericNode>
       </data>
     </node>
-    <node id="n32">
+    <node id="n31">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.decision">
           <y:Geometry height="63.0" width="122.45670054054051" x="108.92048172972972" y="-359.94512852480165"/>
@@ -401,7 +388,7 @@ install-steamcmd<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelMo
         </y:GenericNode>
       </data>
     </node>
-    <node id="n33">
+    <node id="n32">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.decision">
           <y:Geometry height="63.0" width="122.45670054054051" x="976.6876687787095" y="-359.94512852480165"/>
@@ -412,7 +399,7 @@ update-game<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><
         </y:GenericNode>
       </data>
     </node>
-    <node id="n34">
+    <node id="n33">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.decision">
           <y:Geometry height="63.0" width="122.45670054054051" x="1190.9974651940722" y="-359.94512852480165"/>
@@ -423,7 +410,7 @@ update-ws<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:
         </y:GenericNode>
       </data>
     </node>
-    <node id="n35">
+    <node id="n34">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="30.0" width="184.3097964153626" x="945.7611208412984" y="-19.84375387601596"/>
@@ -433,7 +420,7 @@ update-ws<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:
         </y:GenericNode>
       </data>
     </node>
-    <node id="n36">
+    <node id="n35">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="40.0" width="173.2778455943101" x="83.5099092028449" y="-94.1362113069039"/>
@@ -443,7 +430,7 @@ update-ws<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:
         </y:GenericNode>
       </data>
     </node>
-    <node id="n37">
+    <node id="n36">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.document">
           <y:Geometry height="75.0" width="164.0" x="1766.8656493576236" y="-503.0649478020002"/>
@@ -454,7 +441,7 @@ file with user input<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:Lab
         </y:GenericNode>
       </data>
     </node>
-    <node id="n38">
+    <node id="n37">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.decision">
           <y:Geometry height="63.0" width="122.45670054054051" x="1909.7661218471937" y="225.15782466704997"/>
@@ -465,7 +452,7 @@ status { i }<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel>
         </y:GenericNode>
       </data>
     </node>
-    <node id="n39">
+    <node id="n38">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="33.15551579952273" width="305.5192419967126" x="1818.2348511191078" y="394.11245207929227"/>
@@ -476,7 +463,7 @@ status { i }<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel>
         </y:GenericNode>
       </data>
     </node>
-    <node id="n40">
+    <node id="n39">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="33.15551579952273" width="305.5192419967126" x="666.754998012266" y="342.5351752203009"/>
@@ -487,7 +474,7 @@ status { i }<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel>
         </y:GenericNode>
       </data>
     </node>
-    <node id="n41">
+    <node id="n40">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.decision">
           <y:Geometry height="63.0" width="122.45670054054051" x="1434.064615150878" y="-359.94512852480165"/>
@@ -498,7 +485,7 @@ stopall<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:Mo
         </y:GenericNode>
       </data>
     </node>
-    <node id="n42">
+    <node id="n41">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="85.9402797574175" width="201.77471921776498" x="1394.4056058122655" y="-240.14214417050874"/>
@@ -512,7 +499,7 @@ stopall<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:Mo
         </y:GenericNode>
       </data>
     </node>
-    <node id="n43">
+    <node id="n42">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="40.0" width="184.3097964153627" x="77.99393379231861" y="-258.07410818170285"/>
@@ -522,7 +509,7 @@ stopall<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:Mo
         </y:GenericNode>
       </data>
     </node>
-    <node id="n44">
+    <node id="n43">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="85.9402797574175" width="236.14431711711705" x="665.4168156805587" y="-249.5356974449685"/>
@@ -536,7 +523,7 @@ stopall<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:Mo
         </y:GenericNode>
       </data>
     </node>
-    <node id="n45">
+    <node id="n44">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.terminator">
           <y:Geometry height="40.0" width="80.0" x="130.14883199999997" y="8.753542383486604"/>
@@ -546,7 +533,7 @@ stopall<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:Mo
         </y:GenericNode>
       </data>
     </node>
-    <node id="n46">
+    <node id="n45">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.terminator">
           <y:Geometry height="40.0" width="80.0" x="1156.5292380212445" y="604.3477901075632"/>
@@ -556,7 +543,7 @@ stopall<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:Mo
         </y:GenericNode>
       </data>
     </node>
-    <node id="n47">
+    <node id="n46">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.terminator">
           <y:Geometry height="40.0" width="80.0" x="779.5146190106223" y="405.69069101982365"/>
@@ -566,7 +553,7 @@ stopall<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:Mo
         </y:GenericNode>
       </data>
     </node>
-    <node id="n48">
+    <node id="n47">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.terminator">
           <y:Geometry height="40.0" width="80.0" x="1930.994472117464" y="470.1383878665494"/>
@@ -576,7 +563,7 @@ stopall<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:Mo
         </y:GenericNode>
       </data>
     </node>
-    <node id="n49">
+    <node id="n48">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.terminator">
           <y:Geometry height="40.0" width="80.0" x="1455.292965421148" y="-114.72911839412313"/>
@@ -586,7 +573,7 @@ stopall<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:Mo
         </y:GenericNode>
       </data>
     </node>
-    <node id="n50">
+    <node id="n49">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.decision">
           <y:Geometry height="63.0" width="122.45670054054051" x="722.260623968847" y="-359.94512852480165"/>
@@ -597,7 +584,7 @@ install-arma3<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel
         </y:GenericNode>
       </data>
     </node>
-    <node id="n51">
+    <node id="n50">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="40.0" width="143.23338378378378" x="966.2993271570878" y="-258.07410818170285"/>
@@ -607,7 +594,7 @@ install-arma3<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel
         </y:GenericNode>
       </data>
     </node>
-    <node id="n52">
+    <node id="n51">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="40.0" width="184.3097964153627" x="945.7611208412984" y="-164.1362113069039"/>
@@ -617,7 +604,7 @@ install-arma3<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel
         </y:GenericNode>
       </data>
     </node>
-    <node id="n53">
+    <node id="n52">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.terminator">
           <y:Geometry height="40.0" width="80.0" x="997.9160190489797" y="79.1827842239327"/>
@@ -627,7 +614,7 @@ install-arma3<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel
         </y:GenericNode>
       </data>
     </node>
-    <node id="n54">
+    <node id="n53">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="40.0" width="143.23338378378378" x="1180.6091235724507" y="-258.07410818170285"/>
@@ -637,7 +624,7 @@ install-arma3<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel
         </y:GenericNode>
       </data>
     </node>
-    <node id="n55">
+    <node id="n54">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="40.0" width="184.3097964153627" x="1160.0709172566612" y="-164.1362113069039"/>
@@ -647,7 +634,7 @@ install-arma3<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel
         </y:GenericNode>
       </data>
     </node>
-    <node id="n56">
+    <node id="n55">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.terminator">
           <y:Geometry height="40.0" width="80.0" x="1212.2258154643425" y="79.1827842239327"/>
@@ -657,7 +644,7 @@ install-arma3<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel
         </y:GenericNode>
       </data>
     </node>
-    <node id="n57">
+    <node id="n56">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.decision">
           <y:Geometry height="63.0" width="122.45670054054051" x="1677.1317651076833" y="-359.94512852480165"/>
@@ -668,7 +655,7 @@ update<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:Mod
         </y:GenericNode>
       </data>
     </node>
-    <node id="n58">
+    <node id="n57">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="40.0" width="143.23338378378378" x="1666.7434234860616" y="-258.07410818170285"/>
@@ -678,7 +665,7 @@ update<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:Mod
         </y:GenericNode>
       </data>
     </node>
-    <node id="n59">
+    <node id="n58">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="40.0" width="143.23338378378378" x="1666.7434234860616" y="-188.07410818170285"/>
@@ -688,7 +675,7 @@ update<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:Mod
         </y:GenericNode>
       </data>
     </node>
-    <node id="n60">
+    <node id="n59">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="40.0" width="143.23338378378378" x="1666.7434234860616" y="-121.4535615674751"/>
@@ -698,7 +685,7 @@ update<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:Mod
         </y:GenericNode>
       </data>
     </node>
-    <node id="n61">
+    <node id="n60">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.terminator">
           <y:Geometry height="40.0" width="80.0" x="1698.3601153779534" y="-49.729118394123134"/>
@@ -708,7 +695,7 @@ update<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:Mod
         </y:GenericNode>
       </data>
     </node>
-    <node id="n62">
+    <node id="n61">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="30.0" width="184.3097964153626" x="1160.0709172566612" y="-94.1362113069039"/>
@@ -718,7 +705,7 @@ update<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:Mod
         </y:GenericNode>
       </data>
     </node>
-    <node id="n63">
+    <node id="n62">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="63.0" width="253.0" x="315.99999999999994" y="616.9719132360394"/>
@@ -731,7 +718,7 @@ creates .scfg -file { i }
         </y:GenericNode>
       </data>
     </node>
-    <node id="n64">
+    <node id="n63">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="40.0" width="173.2778455943101" x="696.8500514419623" y="-140.98613434189153"/>
@@ -741,20 +728,7 @@ creates .scfg -file { i }
         </y:GenericNode>
       </data>
     </node>
-    <node id="n65">
-      <data key="d6">
-        <y:GenericNode configuration="com.yworks.flowchart.document">
-          <y:Geometry height="94.0" width="332.3476130439088" x="-448.154856689738" y="238.2433729514632"/>
-          <y:Fill color="#00FFFF" color2="#FFFFFF" transparent="false"/>
-          <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="62.8046875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="280.814453125" x="25.76657995945436" xml:space="preserve" y="4.0">server.json
-
-config data for all instances according to json format
-see example file to learn to put content<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="-0.5" nodeRatioX="0.0" nodeRatioY="-0.5" offsetX="0.0" offsetY="4.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
-        </y:GenericNode>
-      </data>
-    </node>
-    <node id="n66">
+    <node id="n64">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="63.0" width="253.0" x="-98.45386492942453" y="421.40920243020537"/>
@@ -767,7 +741,7 @@ reads variable from json
         </y:GenericNode>
       </data>
     </node>
-    <node id="n67">
+    <node id="n65">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="63.0" width="253.0" x="-343.5940456483227" y="580.9126149904254"/>
@@ -780,7 +754,7 @@ reads variable from json
         </y:GenericNode>
       </data>
     </node>
-    <node id="n68">
+    <node id="n66">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="40.0" width="184.3097964153627" x="77.99393379231859" y="-179.20308783860406"/>
@@ -790,17 +764,17 @@ reads variable from json
         </y:GenericNode>
       </data>
     </node>
-    <node id="n69">
+    <node id="n67">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="40.0" width="201.774719217765" x="937.0286594400973" y="-94.1362113069039"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="118.732421875" x="41.52114867138255" xml:space="preserve" y="10.6494140625">fn_readuserSteam.sh<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="118.732421875" x="41.521148671382434" xml:space="preserve" y="10.6494140625">fn_readuserSteam.sh<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
         </y:GenericNode>
       </data>
     </node>
-    <node id="n70">
+    <node id="n68">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="40.0" width="173.2778455943101" x="696.8500514419623" y="-19.84375387601596"/>
@@ -810,7 +784,7 @@ reads variable from json
         </y:GenericNode>
       </data>
     </node>
-    <node id="n71">
+    <node id="n69">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.process">
           <y:Geometry height="40.0" width="173.2778455943101" x="696.8500514419623" y="-80.41494410895375"/>
@@ -820,13 +794,26 @@ reads variable from json
         </y:GenericNode>
       </data>
     </node>
-    <node id="n72">
+    <node id="n70">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.flowchart.terminator">
           <y:Geometry height="40.0" width="80.0" x="743.4889742391172" y="75.97854918684641"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="32.681640625" x="23.6591796875" xml:space="preserve" y="10.6494140625">exit 0<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+        </y:GenericNode>
+      </data>
+    </node>
+    <node id="n71">
+      <data key="d6">
+        <y:GenericNode configuration="com.yworks.flowchart.document">
+          <y:Geometry height="94.0" width="332.3476130439088" x="-453.7201391458784" y="253.0"/>
+          <y:Fill color="#00FFFF" color2="#FFFFFF" transparent="false"/>
+          <y:BorderStyle color="#000000" type="line" width="1.0"/>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="62.8046875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="280.814453125" x="25.76657995945442" xml:space="preserve" y="4.0">server.json
+
+config data for all instances according to json format
+see example file to learn to put content<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="-0.5" nodeRatioX="0.0" nodeRatioY="-0.5" offsetX="0.0" offsetY="4.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
         </y:GenericNode>
       </data>
     </node>
@@ -850,7 +837,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e2" source="n8" target="n9">
+    <edge id="e2" source="n7" target="n8">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -860,7 +847,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e3" source="n11" target="n0">
+    <edge id="e3" source="n10" target="n0">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -870,7 +857,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e4" source="n0" target="n12">
+    <edge id="e4" source="n0" target="n11">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -880,7 +867,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e5" source="n12" target="n10">
+    <edge id="e5" source="n11" target="n9">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -890,7 +877,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e6" source="n12" target="n11">
+    <edge id="e6" source="n11" target="n10">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
@@ -903,7 +890,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e7" source="n13" target="n7">
+    <edge id="e7" source="n12" target="n6">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -913,7 +900,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e8" source="n15" target="n14">
+    <edge id="e8" source="n14" target="n13">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -923,19 +910,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e9" source="n5" target="n3">
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
-            <y:Point x="-423.00187325698215" y="876.8202434496096"/>
-          </y:Path>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="none" target="standard"/>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="e10" source="n18" target="n19">
+    <edge id="e9" source="n17" target="n18">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -945,7 +920,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e11" source="n18" target="n20">
+    <edge id="e10" source="n17" target="n19">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -955,7 +930,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e12" source="n0" target="n22">
+    <edge id="e11" source="n0" target="n21">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -965,7 +940,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e13" source="n22" target="n13">
+    <edge id="e12" source="n21" target="n12">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -975,7 +950,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e14" source="n22" target="n15">
+    <edge id="e13" source="n21" target="n14">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
@@ -987,19 +962,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e15" source="n5" target="n24">
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
-            <y:Point x="-617.0315393562764" y="1038.5642230409355"/>
-          </y:Path>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="none" target="standard"/>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="e16" source="n27" target="n26">
+    <edge id="e14" source="n26" target="n25">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1009,7 +972,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e17" source="n26" target="n29">
+    <edge id="e15" source="n25" target="n28">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1019,7 +982,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e18" source="n29" target="n28">
+    <edge id="e16" source="n28" target="n27">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1029,7 +992,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e19" source="n6" target="n23">
+    <edge id="e17" source="n5" target="n22">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1039,7 +1002,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e20" source="n31" target="n30">
+    <edge id="e18" source="n30" target="n29">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1049,7 +1012,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e21" source="n23" target="n16">
+    <edge id="e19" source="n22" target="n15">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1059,7 +1022,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e22" source="n16" target="n8">
+    <edge id="e20" source="n15" target="n7">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1069,7 +1032,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e23" source="n3" target="n24">
+    <edge id="e21" source="n3" target="n23">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1079,7 +1042,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e24" source="n23" target="n25">
+    <edge id="e22" source="n22" target="n24">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1089,7 +1052,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e25" source="n27" target="n31">
+    <edge id="e23" source="n26" target="n30">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1099,7 +1062,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e26" source="n21" target="n6">
+    <edge id="e24" source="n20" target="n5">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1109,7 +1072,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e27" source="n33" target="n34">
+    <edge id="e25" source="n32" target="n33">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1119,7 +1082,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e28" source="n24" target="n11">
+    <edge id="e26" source="n23" target="n10">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1129,7 +1092,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e29" source="n17" target="n18">
+    <edge id="e27" source="n16" target="n17">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1139,7 +1102,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e30" source="n1" target="n0">
+    <edge id="e28" source="n1" target="n0">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
@@ -1151,7 +1114,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e31" source="n31" target="n38">
+    <edge id="e29" source="n30" target="n37">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1161,7 +1124,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e32" source="n38" target="n39">
+    <edge id="e30" source="n37" target="n38">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1171,7 +1134,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e33" source="n4" target="n12">
+    <edge id="e31" source="n4" target="n11">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
@@ -1183,7 +1146,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e34" source="n25" target="n40">
+    <edge id="e32" source="n24" target="n39">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1193,7 +1156,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e35" source="n41" target="n42">
+    <edge id="e33" source="n40" target="n41">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1203,7 +1166,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e36" source="n25" target="n27">
+    <edge id="e34" source="n24" target="n26">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1213,7 +1176,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e37" source="n34" target="n41">
+    <edge id="e35" source="n33" target="n40">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1223,7 +1186,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e38" source="n21" target="n32">
+    <edge id="e36" source="n20" target="n31">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1233,7 +1196,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e39" source="n18" target="n21">
+    <edge id="e37" source="n17" target="n20">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1243,7 +1206,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e40" source="n32" target="n43">
+    <edge id="e38" source="n31" target="n42">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1253,7 +1216,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e41" source="n28" target="n46">
+    <edge id="e39" source="n27" target="n45">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1263,7 +1226,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e42" source="n40" target="n47">
+    <edge id="e40" source="n39" target="n46">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1273,7 +1236,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e43" source="n39" target="n48">
+    <edge id="e41" source="n38" target="n47">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1283,7 +1246,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e44" source="n42" target="n49">
+    <edge id="e42" source="n41" target="n48">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1293,7 +1256,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e45" source="n50" target="n44">
+    <edge id="e43" source="n49" target="n43">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1303,7 +1266,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e46" source="n33" target="n51">
+    <edge id="e44" source="n32" target="n50">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1313,7 +1276,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e47" source="n51" target="n52">
+    <edge id="e45" source="n50" target="n51">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1323,7 +1286,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e48" source="n34" target="n54">
+    <edge id="e46" source="n33" target="n53">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1333,7 +1296,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e49" source="n54" target="n55">
+    <edge id="e47" source="n53" target="n54">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1343,7 +1306,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e50" source="n21" target="n50">
+    <edge id="e48" source="n20" target="n49">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1353,7 +1316,27 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e51" source="n50" target="n33">
+    <edge id="e49" source="n49" target="n32">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e50" source="n56" target="n57">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e51" source="n40" target="n56">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1373,7 +1356,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e53" source="n41" target="n57">
+    <edge id="e53" source="n58" target="n59">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1383,7 +1366,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e54" source="n58" target="n59">
+    <edge id="e54" source="n59" target="n60">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1393,7 +1376,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e55" source="n59" target="n60">
+    <edge id="e55" source="n43" target="n63">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1403,7 +1386,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e56" source="n60" target="n61">
+    <edge id="e56" source="n34" target="n52">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1413,7 +1396,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e57" source="n44" target="n64">
+    <edge id="e57" source="n54" target="n61">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1423,7 +1406,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e58" source="n35" target="n53">
+    <edge id="e58" source="n61" target="n55">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1433,7 +1416,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e59" source="n55" target="n62">
+    <edge id="e59" source="n7" target="n62">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1443,7 +1426,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e60" source="n62" target="n56">
+    <edge id="e60" source="n62" target="n3">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1453,7 +1436,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e61" source="n8" target="n63">
+    <edge id="e61" source="n62" target="n4">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1463,27 +1446,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e62" source="n63" target="n3">
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="none" target="standard"/>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="e63" source="n63" target="n4">
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="none" target="standard"/>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="e64" source="n65" target="n8">
+    <edge id="e62" source="n71" target="n7">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
@@ -1495,7 +1458,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e65" source="n65" target="n66">
+    <edge id="e63" source="n71" target="n64">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1505,19 +1468,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e66" source="n5" target="n8">
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
-            <y:Point x="-361.76170076004354" y="539.2888079287732"/>
-          </y:Path>
-          <y:LineStyle color="#000000" type="line" width="1.0"/>
-          <y:Arrows source="none" target="standard"/>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="e67" source="n8" target="n66">
+    <edge id="e64" source="n7" target="n64">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1527,8 +1478,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e68" source="n63" target="n67">
-      <data key="d9"/>
+    <edge id="e65" source="n62" target="n65">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1538,8 +1488,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e69" source="n65" target="n67">
-      <data key="d9"/>
+    <edge id="e66" source="n71" target="n65">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1549,8 +1498,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e70" source="n43" target="n68">
-      <data key="d9"/>
+    <edge id="e67" source="n42" target="n66">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1560,8 +1508,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e71" source="n68" target="n36">
-      <data key="d9"/>
+    <edge id="e68" source="n66" target="n35">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1571,8 +1518,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e72" source="n36" target="n45">
-      <data key="d9"/>
+    <edge id="e69" source="n35" target="n44">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1582,8 +1528,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e73" source="n52" target="n69">
-      <data key="d9"/>
+    <edge id="e70" source="n51" target="n67">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1593,8 +1538,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e74" source="n69" target="n35">
-      <data key="d9"/>
+    <edge id="e71" source="n67" target="n34">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1604,8 +1548,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e75" source="n64" target="n71">
-      <data key="d9"/>
+    <edge id="e72" source="n63" target="n69">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1615,8 +1558,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e76" source="n71" target="n70">
-      <data key="d9"/>
+    <edge id="e73" source="n69" target="n68">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1626,8 +1568,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e77" source="n71" target="n52">
-      <data key="d9"/>
+    <edge id="e74" source="n69" target="n51">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
@@ -1640,8 +1581,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e78" source="n70" target="n72">
-      <data key="d9"/>
+    <edge id="e75" source="n68" target="n70">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1651,8 +1591,7 @@ reads variable from json
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e79" source="n70" target="n55">
-      <data key="d9"/>
+    <edge id="e76" source="n68" target="n54">
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0">
@@ -1663,6 +1602,34 @@ reads variable from json
           </y:Path>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="standard" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e77" source="n71" target="n3">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="-143.12052419676638" sy="0.0" tx="-126.26319131079384" ty="6.09846433160817">
+            <y:Point x="-540.0" y="300.0"/>
+            <y:Point x="-540.0" y="882.9187077812178"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="e78" source="n71" target="n23">
+      <data key="d9"/>
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="-159.65506845895067" sy="0.0" tx="-154.91903856134513" ty="0.0">
+            <y:Point x="-540.0" y="300.0"/>
+            <y:Point x="-540.0" y="1038.5642230409355"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
