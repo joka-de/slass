@@ -44,37 +44,56 @@ fn_workwithmod () {
 							linkmod+=" $appname"
 						fi
 
-						local tmpfile=$(mktemp --tmpdir=$basepath file.XXXXX)
-						chmod 700 $tmpfile
-						echo "@ShutdownOnFailedCommand 1
-						@NoPromptForPassword 1
-						force_install_dir ${basepath}
-						login $usersteam $steampassword" >> $tmpfile
-						echo "workshop_download_item 107410 "${appid}" validate" >> $tmpfile
-						echo "quit" >> $tmpfile
-						local download_status=1
-						local counter=1
+						local lastupdatelocal=$(fn_getJSONData "" "global.slass.modrepo.${appname}.lastupdate")
+						local lastupdateonline=0						
 
-						until [ "${download_status}" == "0" ]; do
-							fn_printMessage "--- Attempt ${counter} downloading app ${appid} - ${appname} ---" ""
+						if [[ $lastupdatelocal != "null" ]]; then
+							lastupdateonline=$(curl -s --data "itemcount=1&publishedfileids[0]=${appid}" https://api.steampowered.com/ISteamRemoteStorage/GetPublishedFileDetails/v1/ | jq '.response.publishedfiledetails[].time_updated' -r)
+						else
+							lastupdatelocal=0
+						fi
 
-							${basepath}/steamcmd/steamcmd.sh +runscript $tmpfile | sed -u "s/${steampassword}/----/g" | awk 'BEGIN{s=0} /ERROR/{s=1} 1; END{exit(s)}' &
-							local steampid=$!
-							wait $steampid
-							download_status=$?
+						fn_printMessage "$FUNCNAME: mod = $appname | lastupdatelocal = $lastupdatelocal | lastupdateonline = $lastupdateonline" "" "debug"
 
-							if ((counter > 4)); then
-								fn_printMessage "Steam returned ${counter} consecutive errors. [${appname}, ${appid}] Exiting." ""
-								sleep 2s
-								exit 1
-							fi
+						if (( $lastupdatelocal <= $lastupdateonline )); then
+							currenttimestamp=$(date +%s)
+							fn_getJSONData "" "global.slass.modrepo.${appname}.lastupdate=$currenttimestamp" > $basepath/config/server~.json && mv $basepath/config/server~.json $basepath/config/server.json
 
-							((counter++))
-						done
+							local tmpfile=$(mktemp --tmpdir=$basepath file.XXXXX)
+							chmod 700 $tmpfile
+							echo "@ShutdownOnFailedCommand 1
+							@NoPromptForPassword 1
+							force_install_dir ${basepath}
+							login $usersteam $steampassword" >> $tmpfile
+							echo "workshop_download_item 107410 "${appid}" validate" >> $tmpfile
+							echo "quit" >> $tmpfile
+							local download_status=1
+							local counter=1
 
-						fn_printMessage "$FUNCNAME: download_status: ${download_status}" "" "debug"
+							until [ "${download_status}" == "0" ]; do
+								fn_printMessage "--- Attempt ${counter} downloading app ${appid} - ${appname} ---" ""
 
-						rm $tmpfile
+								${basepath}/steamcmd/steamcmd.sh +runscript $tmpfile | sed -u "s/${steampassword}/----/g" | awk 'BEGIN{s=0} /ERROR/{s=1} 1; END{exit(s)}' &
+								local steampid=$!
+								wait $steampid
+								download_status=$?
+
+								if ((counter > 4)); then
+									fn_printMessage "Steam returned ${counter} consecutive errors. [${appname}, ${appid}] Exiting." ""
+									sleep 2s
+									exit 1
+								fi
+
+								((counter++))
+							done
+
+							fn_printMessage "$FUNCNAME: download_status: ${download_status}" "" "debug"
+
+							rm $tmpfile
+						else
+							fn_printMessage "$FUNCNAME: lastupdatelocal = $lastupdatelocal | lastupdateonline = $lastupdateonline" "" "debug"
+							fn_printMessage "$FUNCNAME: No update available for $appname" ""
+						fi
 					fi
 				;;
 
