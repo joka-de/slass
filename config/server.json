@@ -12,15 +12,15 @@
 			"headlessClient" : 0,
 			"port" : 2302,
 			"logfilelifetime" : 3,
-			"usersteam" : "username",
-			"steampassword" : "password",
+			"usersteam" : "anonymous",
+			"steampassword" : "",
 
 			"modrepo" : {
 				"cba" : {
 					"_comment" : "CBA_A3",
 					"appid" : 450814997,
 					"apptype" :	"mod",
-					"inservername" : "CBA"
+					"inservername" : "CBA"					
 				},
 
 				"em" : {
@@ -63,6 +63,13 @@
 					"appid" : 3020755032,
 					"apptype" : "mod",
 					"inservername" : "Antistasi Ultimate"
+				}
+			},
+
+			"missionrepo" : {
+				"droaltis" : {
+					"_comment" : "Dynamic Reacon Ops Altis",
+					"appid" : 705986840
 				}
 			},
 

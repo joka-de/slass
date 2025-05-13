@@ -27,7 +27,7 @@ fn_mka3masterdir () {
 
 	rm -rf ${basepath}/a3/a3master
 	mkdir -p ${basepath}/a3/a3master --mode=775
-	mkdir ${basepath}/log --mode=775
+	mkdir -p ${basepath}/log --mode=775
 
 	mkdir ${basepath}/a3/a3master/_mods --mode=775
 	mkdir ${basepath}/a3/a3master/cfg --mode=775

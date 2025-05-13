@@ -25,8 +25,13 @@ if [[ "$usersteam" == "anonymous" ]]; then
 fi
 
 # build steam script file
-mods=$(fn_getJSONData "" "global.slass.modrepo | keys[]" "-r")
+fn_manageWSItem "modrepo"
+fn_manageWSItem "missionrepo"
 
-fn_workwithmod "update" "$mods"
+mods=$(fn_getJSONData "" ".global.slass.modrepo | keys[]" "-r")
+fn_manageMod "update" "$mods" "" "modrepo"
 
-fn_tolowercase $basepath/a3/a3master/_mods/
+missions=$(fn_getJSONData "" ".global.slass.missionrepo | keys[]" "-r")
+fn_manageMod "update" "$missions" "" "missionrepo"
+
+fn_removeWSItemFromStorage

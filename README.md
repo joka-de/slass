@@ -25,6 +25,10 @@ slass (seelenlos Arma 3 Server Script)
 - automated setup of HeadlessClients (HC) to each Server Instance. Number of HC per instance can be set from 0...dafuck
 - HC are autostarted / rebooted / stopped with the main instance
 - HC configuration is automated to fit the master process
+#### mod, mission and mependencies managemant
+ - mods and mission will be only downloaded if there is an update
+ - if a mod/mission has dependencies the script will automatically download these mods
+ - if a mod/mission has dependencies the script will automatically load the mods if you start a server
 #### config
 - provides a central config file for all server instances and mods where you can specify an individual mod set for each server
 - differentiates between mod, servermod, and clientmod
@@ -245,7 +249,9 @@ There are two objects you have to define in the server.json file
     }
 }
 ```
-- *"modtoload" : []*</br> is a array of strings</br>Add the **modname** from the **modrepo** to load mods when the server starts
+- *"modtoload" : []*</br> 
+    - is a array of strings</br>
+    - add the **modname** from the **modrepo** to load mods when the server starts
 
 Example:
 
@@ -255,18 +261,21 @@ Example:
     "slass" : {
       "modrepo" : {
         "cba" : {
+          "_comment" : "CBA_A3",
           "appid" : 1234123123,
           "apptype" : "mod",
           "inservername" : "CBA_A3"
         },
 
         "ace" : {
+          "_comment" : "ace3",
           "appid" : 5646545646,
           "apptype" : "mod",
           "inservername" : ""
         },
 
         "cup_w" : {
+          "_comment" : "CUP Weapons",
           "appid" : 8498304889,
           "apptype" : "mod"
         }
@@ -297,8 +306,174 @@ Example:
 }
 ```
 
-All server load cba because it is defined in the global section. "CBA_A3" is merged with the server name.</br>
-Server1 starts with cba and ace while server2 starts with cba, ace and cup_w
+The "_comment" key will be not interpreted, you can use this key to have store more information about the mission. All server load cba because it is defined in the global section. "CBA_A3" is merged with the server name. Server1 starts with cba and ace while server2 starts with cba, ace and cup_w. After you do the workshop update with "./slass.sh workshop-update" three other keys will be added to the mod.
+
+- *"require" : {}*
+    - all mods that are necessary to use the mod
+- *"lastupdate" : number*
+    - unix times tamp
+
+Example:
+
+After you do the workshop update
+
+```json
+{
+  "global" : {
+    "slass" : {
+      "modrepo" : {
+        "cba" : {
+          "_comment" : "CBA_A3",
+          "appid" : 1234123123,
+          "apptype" : "mod",
+          "inservername" : "CBA_A3",
+          "lastupdate": 1743590962
+        },
+
+        "ace" : {
+          "_comment" : "ace3",
+          "appid" : 5646545646,
+          "apptype" : "mod",
+          "inservername" : "",
+          "lastupdate": 1743591092,
+          "require": {
+            "450814997": "cba"
+          }
+        },
+
+        "cup_w" : {
+          "_comment" : "CUP Weapons",
+          "appid" : 8498304889,
+          "apptype" : "mod",
+          "lastupdate": 1738255675,
+          "require": {
+            "450814997": "cba"
+          }
+        }
+      },
+
+      "modtoload" : [
+        "cba"
+      ]
+    }
+  },
+
+  "server1" : {
+    "slass" : {
+      "modtoload" : [
+        "ace"
+      ]
+    }
+  },
+
+  "server2" : {
+    "slass" : {
+      "modtoload" : [
+        "ace",
+        "cup_w"
+      ]
+    }
+  }
+}
+```
+The mod "cba" don't have dependencies so the key "require" is not added. "cup_w" and "ace" need "cba" to run properly and the script add this mod to "cup_w" and "ace". If you start a server and forget to add "cba" to "modtoload", it is automatically loaded.
+
+##### Missions
+You have to define one object in the server.json file
+
+1. "missionrepo" : {}
+  </br> - must be defined in .global.slass</br> - it is your mission repository to keep track of required mods for each mission</br> - works only for mission you can download from workshop (scenarios)</br> - missions like antistasi.altis which are included in the antistasi mod are not supported
+
+##### Structure
+"missionrepo" : {}
+```
+{
+    "missionsrepo" : {
+        "missionname" : {
+            "appid" : <workshop-id>
+        },
+
+        "othermissionname" : {
+            "appid" : <workshop-id>
+        }
+    }
+}
+```
+In the missionrepo object you have to define every mission as an object with 1 key value
+
+- *"missionname" : {}*
+    - **shortname**</br>
+      of the mission for your convenience</br>
+      don't use whitespaces and special characters
+- *"appid" : number*
+    - **workshop-id**</br>of the mission
+
+Example:
+
+```json
+{
+  "global" : {
+    "slass" : {
+      "missionrepo" : {
+        "desertocean" : {
+          "_comment" : "Desert Ocean [SP/COOP 1-8]"
+          "appid" : 3386249759
+        },
+
+        "slterroristhunt" : {
+          "_comment" : "SL[SP_CO-06]TerroristHunt"
+          "appid" : 5646545646
+        }
+      }
+    }
+  }
+}
+```
+
+The "_comment" key will be not interpreted, you can use this key to have store more information about the mission. After you do the workshop update with "./slass.sh workshop-update" three other keys will be added to the mission and it copy the file to "./a3master/mpmissions"
+
+- *"require" : {}*
+    - all mods that are necessary to use the mission
+- *"lastupdate" : number*
+    - unix times tamp
+
+- *"filename" : string*
+    - filename of the mission
+    - the script will remove all special characters and set it to lowercase to prevent errors 
+
+Example:
+
+After you do the workshop update
+
+```json
+{
+  "global" : {
+    "slass" : {
+      "missionrepo" : {
+        "desertocean" : {
+          "_comment" : "Desert Ocean [SP/COOP 1-8]"
+          "appid" : 3386249759,
+          "lastupdate": 1745755027,
+          "filename": "desertocean[spcoop1-8].sefrouramal.pbo"
+        },
+                
+        "slterroristhunt" : {
+          "_comment" : "SL[SP_CO-06]TerroristHunt"
+          "appid" : 5646545646,
+          "require": {
+            "583496184": "cup_terraincore",
+            "583544987": "cup_terrain",
+            "843425103": "rhsafrf"
+          },
+          "lastupdate": 1746458234,
+          "filename": "sl[sp_co-06]terroristhunt.chernarus.pbo"
+        }
+      }
+    }
+  }
+}
+```
+The mission "desertocean" has no dependencies so the key "require" is not added. The mission slterroristhunt require three mods (CUP Terrain, CUP Terrain Core, RHSAFRF). If you start a server with the mission slterroristhunt, the script will automatically load the required mods if you have forget to put it in the "modtoload" array.
 
 #####   basic.cfg
 loaded by the server process as -cfg file (NOT -config)</br>

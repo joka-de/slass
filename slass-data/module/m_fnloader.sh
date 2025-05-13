@@ -18,7 +18,16 @@ for file in $(find $basepath/slass-data/function/ -name 'fn_*.sh' -print); do
 	source $file
 done
 
-debug=$(fn_getJSONData "" "global.slass.debug" "-r")
+validateJSON=$(jq . $basepath/config/server.json 1> /dev/null 2>&1 ; echo $?)
+
+if [[ "$validateJSON" == "0" ]]; then 
+	fn_printMessage "spell check $basepath/config/server.json: valid" ""
+else
+	fn_printMessage "spell check $basepath/config/server.json: invalid" "" "error"
+	exit 1
+fi
+
+debug=$(fn_getJSONData "" ".global.slass.debug" "-r")
 
 if [[ "$debug" == "y" ]] && [[ "$1" -eq 1 ]]; then
 	for file in "${allFunction[@]}"; do

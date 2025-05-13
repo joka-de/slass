@@ -13,10 +13,10 @@
 # JSON File <String>
 #
 # Example(s):
-# output=$(fn_getJSONData "1" "slass.port")
-# output=$(fn_getJSONData "1" "slass.ip" "-r")
-# output=$(fn_getJSONData "1" "slass.ip" "" "myServer.json")
-# output=$(fn_getJSONData "" "global.slass.port")
+# output=$(fn_getJSONData "1" ".slass.port")
+# output=$(fn_getJSONData "1" ".slass.ip" "-r")
+# output=$(fn_getJSONData "1" ".slass.ip" "" "myServer.json")
+# output=$(fn_getJSONData "" ".global.slass.port")
 # output=$(fn_getJSONData "1")
 #
 # Return Value:
@@ -50,12 +50,12 @@ fn_getJSONData () {
         key+=".server${1}"
 
         if [[ -n "$2" ]]; then
-            key+=".$2"
+            key+="$2"
 
             output=$(jq ''"$key"'' $serverFile $jqOption)
 
             if [[ "$output" = "null" ]]; then
-                key=".global.$2"
+                key=".global$2"
                 output=$(jq ''"$key"'' $serverFile $jqOption)
             fi
         else
@@ -63,8 +63,7 @@ fn_getJSONData () {
         fi
     else
         if [[ -n "$2" ]]; then
-            key+=".$2"
-
+            key+="$2"
             output=$(jq ''"$key"'' $serverFile $jqOption)
         else
             fn_printMessage "$FUNCNAME: argument 1 and 2 are missing (one of these are expected)" "" "error"

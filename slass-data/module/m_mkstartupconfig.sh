@@ -24,9 +24,18 @@ fi
 mods=""
 servermods=""
 
-loadedmods=$(fn_getJSONData "" "global.slass.modtoload + .server${1}.slass.modtoload | .[]" "-r")
+loadedmods=$(fn_getJSONData "" ".global.slass.modtoload + .server${1}.slass.modtoload | .[]" "-r")
 
-fn_workwithmod "startup" "$loadedmods"
+fn_getAppID "$loadedmods" "require" "$1"
+loadedmods=$returnValue
+unset returnValue
+
+fn_printMessage "MODS: $mods" "" "debug"
+fn_printMessage "SERVERMODS: $servermods" "" "debug"
+
+fn_manageMod "startup" "$loadedmods" "" "modrepo"
+fn_printMessage "MODS: $mods" "" "debug"
+fn_printMessage "SERVERMODS: $servermods" "" "debug"
 
 # extract port from source
 source <(sed '/^port/!d' $scfgi)

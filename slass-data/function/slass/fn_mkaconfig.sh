@@ -16,12 +16,15 @@ fn_mkaconfig () {
 	fn_getFunctionStatus $FUNCNAME
 	fn_printMessage "$FUNCNAME: start" "" "debug"
 
-	local jsonData=$(fn_getJSONData "1")
+	local jsonData
+	jsonData=$(fn_getJSONData "1")
 
 	if [[ "$jsonData" = "null" ]]; then
 		fn_printMessage "Server ${1} not exist. Please add the server to server.json file" "" "error"
 	else
-		local cfgi="${basepath}/a3/a3master/cfg/a3srv${1}.cfg"
+		local cfgi
+		cfgi="${basepath}/a3/a3master/cfg/a3srv${1}.cfg"
+		
 		fn_printMessage "$FUNCNAME: cfg file $cfgi" "" "debug"
 
 		if [[ -f "$cfgi" ]]; then
@@ -58,13 +61,20 @@ fn_mkaconfig () {
         >> $cfgi
 
         # make modlist
-        local hostname=$(fn_getJSONData "$1" "slass.hostname" "-r")
-		local mods=$(fn_getJSONData "" "global.slass.modtoload + .server${1}.slass.modtoload | .[]" "-r")
+        local hostname
+        hostname=$(fn_getJSONData "$1" ".slass.hostname" "-r")
+		
+		local mods
+		mods=$(fn_getJSONData "" ".global.slass.modtoload + .server$1.slass.modtoload | .[]" "-r")
 
-		fn_workwithmod "hostname" "$mods"
-		hostname+=$returnValue
+		fn_getAppID "$mods" "require" "$1"
+		mods=$returnValue
 		unset returnValue
 		
+		fn_manageMod "hostname" "$mods" "" "modrepo"
+		hostname+=$returnValue
+		unset returnValue
+
 		fn_printMessage "$FUNCNAME: $hostname" "" "debug"
 		sed -i "1 i\hostname=\"$hostname\";" $cfgi
 	fi

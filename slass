@@ -64,7 +64,7 @@ case "$opt1" in
 		# make a3 dir
 		fn_mka3masterdir
 		source $basepath/slass-data/module/m_updategame.sh
-		source $basepath/slass-data/module/m_updatews.sh
+		#source $basepath/slass-data/module/m_updatews.sh
 	;;
 
 	update-game)

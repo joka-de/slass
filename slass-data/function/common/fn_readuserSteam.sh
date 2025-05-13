@@ -17,8 +17,8 @@ fn_readuserSteam () {
 
 	fn_printMessage "$FUNCNAME: start" "" "debug"
 
-	usersteam=$(fn_getJSONData "" "global.slass.usersteam" "-r")
-	steampassword=$(fn_getJSONData "" "global.slass.steampassword" "-r")
+	usersteam=$(fn_getJSONData "" ".global.slass.usersteam" "-r")
+	steampassword=$(fn_getJSONData "" ".global.slass.steampassword" "-r")
 
 	fn_printMessage "$FUNCNAME: stop" "" "debug"
 }
