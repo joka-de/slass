@@ -1,6 +1,4 @@
-<p align="center">
-    <img src="https://github.com/joka-de/slass/raw/master/doc/logo.png" width="640">
-</p>
+
 
 <p align="center">
     <sup><strong>short: slass</br>
