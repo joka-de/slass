@@ -20,38 +20,38 @@ slass (seelenlos Arma 3 Server Script)
 - installs multiple arma3 server instances on Linux
 - saves precious storage by using symlinks (about the space for one installation is needed, even if you run four or more servers)
 - provides a central mission repository for all instances
-- installs Arma3 mods from the workshop
+- updates Arma3, all mods and all missions from the workshop by a single command
+#### mod, mission and dependencies management
+- installs Arma3 mods from the workshop, missing dependencies (mods) will be automatically downloaded
+- installs Arma3 missions from the workshop, missing dependencies (mods) will be automatically downloaded
+- differentiates between mod, servermod, and clientmod
+- supports CDLC
+- manages the *.bikey files in dependency of the loaded mods for each server instance
+- updates all mods and all missions from the workshop by a single command
+- skips mod update if the mod has no pending update (faster verification process for large mods)
+#### config
+- provides a central config file for all server instances in .json format, see details below
+- allows to make global settings for all servers that are automatically overwritten if settings for a specific server instance are set
+- creates meaningful servernames for the server browser depending on the loaded mods
+- parses the central .json config for Arma3 [ Server Options](https://community.bistudio.com/wiki/Arma_3:_Server_Config_File " Server Options") and creates a suitable server config file on server runtime
+- config also includes mods and missons to load
 #### headless clients (HC)
 - automated setup of HeadlessClients (HC) to each Server Instance. Number of HC per instance can be set from 0...dafuck
 - HC are autostarted / rebooted / stopped with the main instance
 - HC configuration is automated to fit the master process
-#### mod, mission and mependencies managemant
- - mods and mission will be only downloaded if there is an update
- - if a mod/mission has dependencies the script will automatically download these mods
- - if a mod/mission has dependencies the script will automatically load the mods if you start a server
-#### config
-- provides a central config file for all server instances and mods where you can specify an individual mod set for each server
-- differentiates between mod, servermod, and clientmod
-- supports CDLC
-- manages the *.bikey files in dependency of the loaded mods for each server instance
-- creates meaningful servernames for the server browser depending on the loaded mods
-#### management
-- updates Arma3 and all mods by a single command
+#### server management
 - ready for automated server updates / restarts
 - restarts the servers if they crash
+- automatically loads missing dependencies for your mod / mission on serverstart (provided the author has correctly configured this in the workshop)
 - provides diagnostics on the running servers
 - reconfigures the servers upon each restart according to the config files
-- logs all events at a central location
+- central location for logrotate
 
 ## slass 2.0 release
 Version 2 is a major rework of the older versions of slass, with much of the code rewritten. Biggest improvement is the support for Headless Clients. Other major improvements are the ability to run automated updates and the use of a centralized config. Code has been cleaned up and a more meaningful folder and code structure has been established.
 
 ## How it works - Basic Concept
 The script will generate a master installation (./a3/a3master), that will never be started. Using symlinks, it will build each server instances out of this master installation. The whole set of server files, including the mission repository (mpmissions folder) and *.Arma3Profile is being shared among the instances, but the instances use individual configs and startup commands. Slass will manage the mods and their keys to load for each server instance. The servers will only need about the disc space of one server, because each instance only exists in symlinks. You can run as many instances at once as far as your RAM allows. We tested to up to four simultaneously running server instances, i.e. servers.
-For each server instance you can set individually:
-- config file
-- mods to use including their keys
-- servername</br>
 
 All instances will share</br>
 - the Arma3-files and mod files (update all instances at once)
