@@ -162,7 +162,7 @@ The configs are located in `./config`
   - ( ... )
 - server 2
    - ( repeat )
-- server ( i )
+- server i
 
 ###### Usage:
 - Set key-value pairs and objects in the object "global" AND/OR in the object "server". If a key is defined in both global and server, the server entry will be used. You can understand the global section as a default setting.
@@ -179,7 +179,7 @@ The configs are located in `./config`
 - "ip" : "1.2.3.4"</br>ip of the NIC to be used
 - "hostname" : "servername"</br>server name in the browser
 - "headlessClient" : 3</br> number of HeadlessClients
-- "port" : 2302</br>Port Number, the server will use more ports, kepp 10 ports clear between the instances
+- "port" : 2302</br>Port Number, the server will use more ports, keep 10 ports clear between the instances
 - "logfilelifetime" : 3</br>Age of the oldest logfile. Older ones are deleted during update/restart.
 - "usersteam" : "username"</br>Steam user for Arma3-Updates.
 - "steampassword" : "password"</br>Password of the user.
@@ -187,8 +187,8 @@ The configs are located in `./config`
 ##### Mods
 There are two objects you have to define in the server.json file
 
-  1. "modrepo" : {}</br>must be defined in .global.slass</br>It is your mod repository from which you can choose mods for the individual server
-  2. "modtoload" : []</br>must/can defined in .global.slass or/and .server{i}.slass</br>If you define *modtolaod* in the .global.slass all mods in the array wil be loaded on all server</br>If define *modtoload* in .global.slass and .server{i}.slass, both mod sets will be merged
+  1. "modrepo" : {}</br>must be defined in .global.slass</br>It is your mod repository from which you can choose mods for the individual server. Mods included here are kept up to date by slass.
+  2. "modtoload" : []</br>must/can be defined in .global.slass or/and .server{i}.slass</br>If you define *modtolaod* in the .global.slass all mods in the array wil be loaded on all server instances</br>If *modtoload* is defined in .global.slass and .server{i}.slass, both mod sets will be merged.
 
 ##### Structure
 "modrepo" : {}
@@ -311,7 +311,7 @@ The "_comment" key will be not interpreted, you can use this key to have store m
 - *"require" : {}*
     - all mods that are necessary to use the mod
 - *"lastupdate" : number*
-    - unix times tamp
+    - unix time stamp
 
 Example:
 
