@@ -48,8 +48,14 @@ fn_getAppID () {
 			fn_printMessage "$FUNCNAME: missionKey = $missionKey" "" "debug"
 
 			if [[ "$missionKey" != "null" ]] && [[ ! -z "$missionKey" ]]; then
+				local requireMissionModExist
 				local requiredMissionMod
-				requiredMissionMod=$(fn_getJSONData "" ".global.slass.missionrepo.$missionKey.require | .[]" "-r")
+
+				requireMissionModExist=$(fn_getJSONData "" ".global.slass.missionrepo.$missionKey.require")
+
+				if [[ "$requireMissionModExist" != "null" ]] && [[ ! -z "$2" ]]; then
+					requiredMissionMod=$(fn_getJSONData "" ".global.slass.missionrepo.$missionKey.require | .[]" "-r")
+				fi
 
 				fn_printMessage "$FUNCNAME: required mission mods: $requiredMissionMod" "" "debug"
 
