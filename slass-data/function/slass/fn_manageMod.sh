@@ -166,7 +166,7 @@ fn_manageMod () {
 								ln -s $basepath/a3/a3master/keys/$mod.bikey $basepath/a3/a3srv$3/keys/
 							;;
 							*)
-								find $basepath/a3/a3master/_mods/@$mod/ -type f -name "*.bikey" -exec ln -sf {} $basepath/a3/a3srv$3/keys/ \;
+								find $basepath/a3/a3master/_mods/@$mod/keys/ -type f -name "*.bikey" -exec ln -sf {} $basepath/a3/a3srv$3/keys/ \;
 							;;
 						esac
 					fi
