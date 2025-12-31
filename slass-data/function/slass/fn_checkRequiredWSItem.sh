@@ -31,7 +31,7 @@ fn_checkRequiredWSItem() {
 	rwsItemNameInWS=$(curl -s --data "itemcount=1&publishedfileids[0]=${rwsItemID}" https://api.steampowered.com/ISteamRemoteStorage/GetPublishedFileDetails/v1/ | jq '.response.publishedfiledetails[].title' -r)
 
 	# remove every character that's not compatible with json
-	rwsItemNameInWS=$(echo "$rwsItemNameInWS" | sed -e 's/\(.*\)/\L\1/' -e 's/ /_/g' -e 's/[][]//g' -e "s/'//g" -e 's/://g' -e 's/-//g' -e 's/,//g')
+	rwsItemNameInWS=$(echo "$rwsItemNameInWS" | sed -e 's/\(.*\)/\L\1/' -e 's/ /_/g' -e 's/[][]//g' -e "s/'//g" -e 's/://g' -e 's/-//g' -e 's/,//g' -e 's/[()]//g')
 	
 	local rwsItemName
 	rwsItemName=$rwsItemNameInWS
