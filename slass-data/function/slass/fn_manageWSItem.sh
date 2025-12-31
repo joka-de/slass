@@ -34,6 +34,7 @@ fn_manageWSItem() {
 		if [[ "$wsItemID" != "local" ]]; then
 			local rwsItemIDAllInWS
 			rwsItemIDAllInWS=$(curl -s "https://steamcommunity.com/workshop/filedetails/?id=$wsItemID" | sed -n 's/.*<a href="https:\/\/steamcommunity.com\/workshop\/filedetails\/?id=\([0-9]*\).*/\1/p')
+			sleep 3
 
 			# remove linebreaks with whitespaces
 			rwsItemIDAllInWS="${rwsItemIDAllInWS//$'\n'/ }"
