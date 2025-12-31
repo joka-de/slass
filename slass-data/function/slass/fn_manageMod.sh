@@ -1,4 +1,3 @@
-#
 # SLASS - fn_manageMod
 #
 # Author: PhilipJFry
